@@ -1,0 +1,26 @@
+@**
+ * Generate an HTML form.
+ *
+ * Example:
+ * {{{
+ * @form(action = routes.Users.submit, args = 'class -> "myForm") {
+ *   ...
+ * }
+ * }}}
+ *
+ * @param action The submit action.
+ * @param args Set of extra HTML attributes.
+ * @param body The form body.
+ *@
+@(action: play.api.mvc.Call, args: (Symbol,String)*)(body: => Html)(implicit request: RequestHeader) 
+
+@formAction = @{ if(action.method.toString == "POST") {
+        helper.CSRF(action).path
+    } else { 
+        action.path 
+    }
+ }
+
+<form action="@formAction" method="@action.method" @toHtmlArgs(args.toMap)>
+    @body
+</form>

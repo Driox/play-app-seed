@@ -1,0 +1,43 @@
+@(credentialsForm: Form[Credentials])(implicit request: RequestHeader, lang:Lang)
+
+@layout.home(m("meta.security.signin.title")
+, m("meta.security.signin.description")
+, m("meta.security.signin.keyword")) {
+
+    <div class="inner cover">
+        <div class="dark-row text-left" id="signup-form">
+            <h1>@{m("security.signin.h1")}</h1>
+            <div class="white-row social-authentification">
+                <div class="row">
+                    @common.socialLogin()
+                </div>
+            </div>
+
+            @form(action = routes.AuthenticationController.register(), 'class -> "white-row") {
+                <div class="row">
+                    <div class="col-md-12">
+                        @inputText(credentialsForm("email"), 'required -> true,
+                        'placeholder -> m("security.signin.mail.placeholder"))
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @inputPassword(credentialsForm("password"), 'required -> true,
+                        'placeholder -> m("security.signin.password.placeholder"))
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input id="signinBtn" type="submit" value="@m("general.signin")" class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+                <div class="row margin-top10">
+                    <div class="col-xs-12">
+                        <a href="@routes.Assets.versioned("doc/cgu.html")" class="legal-info">@m("security.signin.legal")</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}

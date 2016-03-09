@@ -1,0 +1,32 @@
+@**
+* Default field constructor.
+*
+* @param el The field informations.
+*@
+@(elements: FieldElements)
+
+<div id="@elements.args.get('_id).getOrElse(elements.id + "_field")"
+     class="form-group @elements.args.get('_headClass) @if(elements.hasErrors) {has-error} @if(elements.isRequired) {is-required}">
+
+    @if(elements.hasLabel) {
+        <label for="@elements.id">@m(elements.label.toString)(elements.lang)</label>
+    }
+
+    @if(elements.args.get('_suffix)) {
+    <div class="input-group">
+    }
+
+    @elements.input
+
+    @if(elements.args.get('_suffix)) {
+        <span class="input-group-addon">@elements.args.get('_suffix)</span></div>
+    }
+
+    @elements.args.get('_helpBlock).map { help =>
+        <div class="help-block">@help</div>
+    }
+
+    @elements.errors.map { error =>
+        <div class="help-block">@error</div>
+    }
+</div>

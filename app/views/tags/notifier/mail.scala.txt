@@ -1,0 +1,6 @@
+@()
+
+Nothning here
+
+It's just a hack because we import tags._ in every views in build.sbt
+But we don't have tags for txt format yet and the compiler don't like to import empty pkg tags._

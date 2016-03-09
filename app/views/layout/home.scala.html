@@ -1,0 +1,24 @@
+@(title       :String       = "product.title"
+, description :String       = "product.description"
+, keyword     :String       = "Comic reader bande dessiné"
+)(content: Html)(implicit request: RequestHeader, lang:Lang)
+
+
+@moreStyles = {
+    @css("home.css")
+}
+
+@main(title, description, keyword, moreStyles) {
+
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                @content
+            </div>
+        </div>
+    </div>
+    <footer class="template container">
+        <div class="inner">&copy; @m("footer.copyrigth") &reg;</div>
+    </footer>
+
+}

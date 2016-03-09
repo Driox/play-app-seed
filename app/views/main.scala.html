@@ -1,0 +1,56 @@
+@(title       :String       = "product.title"
+, description :String       = "product.description"
+, keyword     :String       = "Comic reader bande dessiné"
+, styles      :Html         = Html("")
+, scripts     :Html         = Html("")
+, url         :String       = "http://logr.us/books"
+, name        :String       = "product.name"
+, shareImg    :String       = "/assets/images/share-image.png"
+)(content: Html)(implicit lang: Lang)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>@m(title)</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="@m(description)">
+        <meta name="keywords" content="@keyword">
+
+        <link rel="canonical" href="@url">
+@*
+        <link rel="icon" type="image/png" href="@img.url("images/favicons/favicon-16x16.png")" sizes="16x16">
+        <link rel="icon" type="image/png" href="@img.url("images/favicons/favicon-32x32.png")" sizes="32x32">
+        <link rel="icon" type="image/png" href="@img.url("images/favicons/favicon-96x96.png")" sizes="96x96">
+*@
+        @social(title, description, url, m(name), shareImg)
+@*
+        <link rel="apple-touch-icon-precomposed" href="touch-icon-iphone.png">
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="@img.url("images/favicons/apple-touch-icon-60x60.png")">
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="@img.url("images/favicons/apple-touch-icon-76x76.png")">
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="@img.url("images/favicons/apple-touch-icon-120x120.png")">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="@img.url("images/favicons/apple-touch-icon-152x152.png")">
+*@
+        @* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> *@
+        @css("libs/bootstrap.css")
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/basic.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicons/favicon.png")">
+
+        <meta name="thumbnail" content="@shareImg" />
+
+        <script src="//cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.fr,Intl.~locale.en"></script>
+        @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+        @js("libs/jquery-1.11.3.min.js")
+        @styles
+    </head>
+    <body>
+        @content
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        @scripts
+        @analytics()
+    </body>
+</html>

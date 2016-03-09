@@ -1,0 +1,9 @@
+@(user:User)(implicit request: RequestHeader, lang:Lang)
+
+Bonjour @{user.first_name},
+
+Blabla
+
+Confirme ton compte : @routes.AuthenticationController.validate(user.uuid).absoluteURL()
+
+Comme d'habitude, si tu ne veux plus recevoir d'email tu peux te désinscrire ( @routes.Application.unsubscribe(user.uuid).absoluteURL() ) ou changer la fréquence des notifications mails ( @routes.Application.index().absoluteURL() )

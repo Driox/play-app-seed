@@ -1,0 +1,27 @@
+@()(implicit flash: Flash, request: RequestHeader, lang:Lang)
+
+@layout.home() {
+
+    <div class="masthead clearfix">
+        <div class="inner">
+            <h3 class="masthead-brand">@m("product.name")</h3>
+            <nav>
+                <ul class="nav masthead-nav">
+                    <li><a href="#">@m("home.menu.features")</a></li>
+                    <li><a href="#">@m("home.menu.contact")</a></li>
+                    <li><a href="@routes.AuthenticationController.login">@m("home.menu.login")</a></li>
+                    <li><a href="@routes.AuthenticationController.signin">@m("home.menu.signin")</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="inner cover">
+        <h1 class="cover-heading">@m("home.title")</h1>
+        <h2 class="lead">@m("home.subtitle")</h2>
+        <p class="lead">
+            <a href="@routes.AuthenticationController.signin" class="btn btn-lg btn-default">@m("home.action")</a>
+        </p>
+    </div>
+
+}

@@ -1,0 +1,9 @@
+@(user:User)(implicit request: RequestHeader, lang:Lang)<br>
+<br>
+Hey @{user.first_name},<br>
+<br>
+Some blabla
+<br>
+<a href="@routes.AuthenticationController.validate(user.uuid).absoluteURL()">Click on this link to confirm your account</a><br>
+<br>
+As always, if you'd rather not get emails like this, you can <a href="@routes.Application.unsubscribe(user.uuid).absoluteURL()">unsubscribe</a> or <a href="@routes.Application.index().absoluteURL()">change your email settings</a>.<br>

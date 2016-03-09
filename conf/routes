@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET    /                                                         controllers.Application.index
+GET    /ping                                                     controllers.Application.ping
+GET    /unsubscribe/:uuid                                        controllers.Application.unsubscribe(uuid)
+
+GET    /sitemap.xml                                              controllers.Assets.at(path="/public", file = "sitemap.xml")
+GET    /robots.txt                                               controllers.Assets.at(path="/public", file = "robots.txt")
+
+# Security
+GET    /login                                                    controllers.AuthenticationController.login
+POST   /login                                                    controllers.AuthenticationController.authenticate
+GET    /logout                                                   controllers.AuthenticationController.logout
+GET    /signin                                                   controllers.AuthenticationController.signin
+POST   /signin                                                   controllers.AuthenticationController.register
+GET    /validate-signin/:uuid                                    controllers.AuthenticationController.validate(uuid)
+GET    /forgotten-password                                       controllers.AuthenticationController.forgottenPassword
+
+
+# An example controller showing how to use dependency injection
+GET     /count                                                   controllers.CountController.count
+
+# An example controller showing how to write asynchronous code
+GET     /message                                                 controllers.AsyncController.message
+
+# Assets
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                                            controllers.Assets.versioned(path="/public", file: Asset)
