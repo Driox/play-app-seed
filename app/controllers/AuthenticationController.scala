@@ -63,7 +63,7 @@ class AuthenticationController extends BaseController with MonadicActions with D
   def validate(uuid: String) = Action.async { implicit request =>
     for {
       user <- userDao.findByUuid(uuid) ?| NotFound
-      // do something with your user like 
+      // do something with your user like
       // _ <- userDao.update(user.copy(confirmed = true)) ?| NotFound
     } yield {
       Redirect(controllers.routes.Application.index).withSession(

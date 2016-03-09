@@ -31,7 +31,7 @@ class Application @Inject() extends BaseController with MonadicActions with DaoA
   def unsubscribe(uuid: String) = Action.async { implicit request =>
     for {
       user <- userDao.findByUuid(uuid) ?| NotFound
-      // Do something with your user like 
+      // Do something with your user like
       // userReloaded <- userDao.update(user.copy(allow_email = false)) ?| NotFound
     } yield {
       Redirect(controllers.routes.Application.index).withSession(

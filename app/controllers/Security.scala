@@ -12,14 +12,16 @@ import scala.concurrent.Future
  */
 class AuthRequest[A](val user: User, request: Request[A]) extends WrappedRequest[A](request)
 
-private[controllers] trait AuthController extends Controller with DaoAware {
+private[controllers] trait Security extends Controller with DaoAware {
 
-  object AuthAction extends ActionBuilder[AuthRequest] with ActionRefiner[Request, AuthRequest] {
+  def secureAction() = new ActionRefiner[Request, AuthRequest] {
     def refine[A](request: Request[A]): Future[Either[Result, AuthRequest[A]]] = reqToUser(request) map {
       case Some(user) => Right(new AuthRequest(user, request))
       case None       => Left(Forbidden("error.login.required"))
     }
   }
+
+  val AuthAction = Action andThen SecureAction
 
   private def reqToUser(request: RequestHeader): Future[Option[User]] = {
     request.session.get("userEmail").map { email =>
