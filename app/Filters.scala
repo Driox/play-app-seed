@@ -16,7 +16,6 @@ import play.filters.csrf.CSRFFilter
  * from a different class by adding a `play.http.filters` setting to
  * the `application.conf` configuration file.
  *
- * @param env Basic environment settings for the current application.
  * @param exampleFilter A demonstration filter that adds a header to
  * each response.
  */

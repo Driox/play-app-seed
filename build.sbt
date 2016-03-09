@@ -59,15 +59,15 @@ coverageExcludedPackages := "<empty>;Reverse.*;.*AuthService.*;models\\.data\\..
 
 // sbt and compiler option
 scalacOptions ++= Seq(
-    "-deprecation",
-    //"-feature",
-    "-unchecked",
-    //"-Xfatal-warnings",
-    "-Xlint",
-    "-Ywarn-dead-code",
-    //"-Ywarn-unused",
-    //"-Ywarn-unused-import",
-    "-Ywarn-value-discard" //when non-Unit expression results are unused 
+  "-deprecation",
+  //"-feature",
+  "-unchecked",
+  //"-Xfatal-warnings",
+  "-Xlint",
+  "-Ywarn-dead-code",
+  //"-Ywarn-unused",
+  //"-Ywarn-unused-import",
+  "-Ywarn-value-discard" //when non-Unit expression results are unused 
 )
 
 incOptions := incOptions.value.withNameHashing(true)
