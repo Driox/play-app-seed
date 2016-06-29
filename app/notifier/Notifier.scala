@@ -82,7 +82,6 @@ trait Notifier {
   }(mail_execution_context)
 
   private def setUpConfig(mail: Email) {
-    val conf = Play.configuration
     mail.setHostName(SMTP_HOST)
     mail.setSmtpPort(SMTP_PORT)
     mail.setSSLOnConnect(true)

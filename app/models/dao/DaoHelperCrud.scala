@@ -3,7 +3,7 @@ package models.dao
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import slick.driver.JdbcProfile
 import play.api.Play
-import com.github.tototoshi.slick.JdbcJodaSupport._
+import models.dao.PortableJodaSupport._
 import driver.api._
 import scala.concurrent.Future
 import slick.lifted.AppliedCompiledFunction
@@ -18,11 +18,11 @@ trait DaoHelperCrud[T <: Table[E] with TableHelper, E <: Entity[E]] extends DaoH
   //----------------
 
   private implicit class QueryExtensions[C](val q: Query[T, T#TableElementType, Seq]) {
-    def byId(id: Rep[Long]): Query[T, T#TableElementType, Seq] = q.filter(_.id === id)
-    def byIds(ids: Traversable[Long]): Query[T, T#TableElementType, Seq] = q.filter(_.id inSet ids)
+    def byId(id: Rep[String]): Query[T, T#TableElementType, Seq] = q.filter(_.id === id)
+    def byIds(ids: Traversable[String]): Query[T, T#TableElementType, Seq] = q.filter(_.id inSet ids)
   }
 
-  protected val byId = Compiled { id: Rep[Long] => basic.filter(_.id === id) }
+  protected val byId = Compiled { id: Rep[String] => basic.filter(_.id === id) }
 
   //---------------
   //Methods
@@ -32,7 +32,7 @@ trait DaoHelperCrud[T <: Table[E] with TableHelper, E <: Entity[E]] extends DaoH
     db.run(tables.result)
   }
 
-  def findById(id: Long): Future[Option[E]] = {
+  def findById(id: String): Future[Option[E]] = {
     db.run(byId(id).result.headOption)
   }
 
@@ -48,7 +48,7 @@ trait DaoHelperCrud[T <: Table[E] with TableHelper, E <: Entity[E]] extends DaoH
     entity.id.map(id => update(id, entity)).getOrElse(Future.successful(None))
   }
 
-  protected def update(id: Long, entity: E): Future[Option[E]] = {
+  protected def update(id: String, entity: E): Future[Option[E]] = {
     val action = (for {
       _ <- byId(id).update(entity)
       result <- byId(id).result.headOption
@@ -56,11 +56,11 @@ trait DaoHelperCrud[T <: Table[E] with TableHelper, E <: Entity[E]] extends DaoH
     db.run(action)
   }
 
-  def delete(id: Long): Future[Int] = {
+  def delete(id: String): Future[Int] = {
     delete(Seq(id))
   }
 
-  def delete(ids: Seq[Long]): Future[Int] = {
+  def delete(ids: Seq[String]): Future[Int] = {
     db.run(basic.byIds(ids).delete)
   }
 

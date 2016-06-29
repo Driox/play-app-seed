@@ -20,4 +20,8 @@ object StringUtils {
       case e: Exception => None
     }
   }
+
+  def generateUuid(): String = {
+    java.util.UUID.randomUUID().toString
+  }
 }

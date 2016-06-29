@@ -4,17 +4,17 @@ import play.api.db.slick.DatabaseConfigProvider
 import play.api.db.slick.HasDatabaseConfig
 import slick.driver.JdbcProfile
 import play.api.Play
-import com.github.tototoshi.slick.JdbcJodaSupport._
+import models.dao.PortableJodaSupport._
 import driver.api._
 
 // Entity with id
 trait Entity[E] {
-  def id: Option[Long]
-  def copyWithId(id: Option[Long]): E
+  def id: Option[String]
+  def copyWithId(id: Option[String]): E
 }
 
 trait TableHelper {
-  def id: Rep[Option[Long]]
+  def id: Rep[Option[String]]
 }
 
 // DaoHelper generic for model with id

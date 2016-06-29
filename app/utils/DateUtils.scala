@@ -4,7 +4,7 @@ import java.util.Date
 import java.text.SimpleDateFormat
 import java.util.TimeZone
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.DateTime
+import org.joda.time.{Days, DateTime}
 import play.api.libs.json._
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
@@ -77,5 +77,9 @@ object DateUtils {
   def iso8601ToDate(input: String): DateTime = {
     val df = org.joda.time.format.ISODateTimeFormat.dateTimeNoMillis()
     DateTime.parse(input, df)
+  }
+
+  def date2remainingDays(value: DateTime): Int = {
+    Days.daysBetween(DateTime.now, value).getDays() + 1
   }
 }

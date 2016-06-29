@@ -1,6 +1,6 @@
 package models
 
-import com.github.tototoshi.slick.JdbcJodaSupport._
+import models.dao.PortableJodaSupport._
 import play.api.Play
 import play.api.db.slick.DatabaseConfigProvider
 
@@ -8,6 +8,7 @@ import driver.api._
 import org.joda.time.DateTime
 import slick.lifted._
 import slick.driver.JdbcProfile
+import utils.StringUtils
 
 import scala.concurrent.{ExecutionContext, Future}
 import models.dao._
@@ -20,8 +21,8 @@ import models.dao._
  *  user.authenticate(credentials)
  */
 case class User(
-    id:         Option[Long]     = None,
-    uuid:       String           = java.util.UUID.randomUUID.toString,
+    id:         Option[String]   = Some(StringUtils.generateUuid),
+    uuid:       String           = StringUtils.generateUuid,
     created_at: Option[DateTime] = Some(DateTime.now),
     email:      String,
     password:   String,
@@ -33,7 +34,7 @@ case class User(
     language:   Option[String]   = None,
     visible:    Option[Boolean]  = None
 ) extends UserAuth with Entity[User] {
-  def copyWithId(id: Option[Long]) = this.copy(id = id)
+  def copyWithId(id: Option[String]) = this.copy(id = id)
 }
 
 case class Credentials(email: String, password: String)
@@ -50,7 +51,7 @@ trait UserAuth {
 
 class UserTable(tag: Tag) extends Table[User](tag, "users") with TableHelper {
 
-  val id = column[Option[Long]]("id", O.AutoInc, O.PrimaryKey)
+  val id = column[Option[String]]("id", O.PrimaryKey)
   val uuid = column[String]("uuid")
   val created_at = column[Option[DateTime]]("created_at")
   val email = column[String]("email")

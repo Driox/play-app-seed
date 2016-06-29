@@ -33,10 +33,13 @@ libraryDependencies ++= Seq(
   "org.postgresql"       %  "postgresql"            % "9.4-1201-jdbc41" withSources(),
   "mysql"                %  "mysql-connector-java"  % "5.1.37"          withSources(),
   "org.joda"             %  "joda-convert"          % "1.7"             withSources(),
-  "com.github.tototoshi" %% "slick-joda-mapper"     % "2.0.0"           withSources(),
-  "com.typesafe.play"    %% "play-slick"            % "1.0.1"           withSources(),
-  "com.typesafe.play"    %% "play-slick-evolutions" % "1.0.0"           withSources(),
-  "com.typesafe.slick"   %% "slick-codegen"         % "3.0.0"           withSources(),
+  "com.typesafe.play"    %% "play-slick"            % "1.1.1"           withSources(),
+  "com.typesafe.play"    %% "play-slick-evolutions" % "1.1.1"           withSources(),
+  "com.typesafe.slick"   %% "slick-codegen"         % "3.1.1"           withSources(),
+  "com.github.tminglei"  %% "slick-pg"              % "0.14.1"          withSources(),
+  "com.github.tminglei"  %% "slick-pg_joda-time"    % "0.14.1"          withSources(),
+  "com.github.tminglei"  %% "slick-pg_play-json"    % "0.14.1"          withSources(),
+  "com.github.tototoshi" %% "slick-joda-mapper"     % "2.1.0"           withSources(),
   "net.kaliber"          %% "play-s3"               % "7.0.0"           withSources()
 )
 
@@ -45,14 +48,27 @@ libraryDependencies ++= Seq(
   "com.github.driox" %% "sorus"  % "1.0.0"
 )
 
+// ~~~~~~~~~~~~~~~~~
+// Framework config
+
 // use DI
 routesGenerator := InjectedRoutesGenerator
 
+Concat.groups := Seq(
+  "main.js" -> group(baseDirectory.value / "app" / "assets" / "js" ** "*.js")
+)
+
 // Public assets pipeline
-pipelineStages := Seq(rjs, digest, gzip)
+pipelineStages := Seq(rjs, concat, digest, gzip)
+
+// Public assets pipeline in dev mode
+(pipelineStages in Assets) := Seq(concat)
 
 // Template config
-TwirlKeys.templateImports ++= Seq("helpers._", "tags._", "utils._", "views.html.tags._", "views.html.tags.html._")
+TwirlKeys.templateImports ++= Seq("helpers._", "helpers.CustomTag._", "tags._", "utils._", "views.html.tags._", "views.html.tags.html._")
+
+// ~~~~~~~~~~~~~~~~~
+// Compiler config
 
 // code coverage
 coverageExcludedPackages := "<empty>;Reverse.*;.*AuthService.*;models\\.data\\..*;views.html.*"
@@ -72,7 +88,7 @@ scalacOptions ++= Seq(
 
 incOptions := incOptions.value.withNameHashing(true)
 
-//updateOptions := updateOptions.value.withCachedResolution(true)
+updateOptions := updateOptions.value.withCachedResolution(true)
 
 
 // ~~~~~~~~~~~~~~~~~

@@ -2,9 +2,9 @@
  
 # --- !Ups
 CREATE TABLE users (
-    id bigserial primary key,
-    uuid varchar(255) NOT NULL,
-    created_at timestamp NOT NULL,
+    id varchar(36) primary key,
+    uuid varchar(36) NOT NULL,
+    created_at timestampz NOT NULL,
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     first_name varchar(255) DEFAULT NULL,
