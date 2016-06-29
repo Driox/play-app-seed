@@ -41,8 +41,8 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "api-lib" % "api-lib" % "1.5.8",
-  "driox"   % "sorus"   % "1.0.0"
+  "api-lib"          % "api-lib" % "1.5.8",
+  "com.github.driox" %% "sorus"  % "1.0.0"
 )
 
 // use DI

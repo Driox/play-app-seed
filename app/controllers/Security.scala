@@ -21,7 +21,7 @@ private[controllers] trait Security extends Controller with DaoAware {
     }
   }
 
-  val AuthAction = Action andThen SecureAction
+  val AuthAction = Action andThen secureAction
 
   private def reqToUser(request: RequestHeader): Future[Option[User]] = {
     request.session.get("userEmail").map { email =>
