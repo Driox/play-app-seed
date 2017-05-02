@@ -4,7 +4,7 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 resolvers += "bitbucket-release" at "https://bitbucket.org/Adrien/particeep-repository/raw/master/repository/"
 
@@ -44,7 +44,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "api-lib"          % "api-lib" % "1.5.8",
+  "api-lib"          % "api-lib" % "1.6.4",
   "com.github.driox" %% "sorus"  % "1.0.0"
 )
 
@@ -101,4 +101,5 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(scalariform.formatter.preferences.AlignParameters, true)
   .setPreference(scalariform.formatter.preferences.DoubleIndentClassDeclaration, true)
   .setPreference(scalariform.formatter.preferences.PreserveDanglingCloseParenthesis, true)
+
   

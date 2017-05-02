@@ -4,9 +4,9 @@ This is a seed application for Play project
 TODO : 
 
 * change application secret in application.conf
+* change name (play-app-seed) in build.sbt and in application.conf
 * set DB name in evolutions
 * set db config in application.conf
 * set meta info in messages.conf
 * update logger file for prod mode
-* update newrelic file
-* change the google analytics id in views/tags/analytics.scala.html
+* change the google analytics / mixpanel id in views/tags/analytics.scala.html

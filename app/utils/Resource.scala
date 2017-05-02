@@ -12,7 +12,7 @@ import com.typesafe.config._
  */
 private[utils] final class Resource(resource: String) {
 
-  private val cfg = ConfigFactory.parseFile(new File("conf/" + resource))
+  private[this] val cfg = ConfigFactory.parseFile(new File("conf/" + resource))
     .resolve(ConfigResolveOptions.noSystem)
 
   def apply(key: String) = if (has(key)) Some(cfg.getString(key)) else None

@@ -6,6 +6,7 @@ import play.api.db.slick.DatabaseConfigProvider
 
 import driver.api._
 import org.joda.time.DateTime
+import utils.DateUtils
 import slick.lifted._
 import slick.driver.JdbcProfile
 import utils.StringUtils
@@ -21,9 +22,10 @@ import models.dao._
  *  user.authenticate(credentials)
  */
 case class User(
-    id:         Option[String]   = Some(StringUtils.generateUuid),
+    id:         String           = StringUtils.generateUuid,
     uuid:       String           = StringUtils.generateUuid,
-    created_at: Option[DateTime] = Some(DateTime.now),
+    created_at: Option[DateTime] = Some(DateUtils.now),
+    deleted_at: Option[DateTime] = None,
     email:      String,
     password:   String,
     first_name: Option[String]   = None,
@@ -34,7 +36,7 @@ case class User(
     language:   Option[String]   = None,
     visible:    Option[Boolean]  = None
 ) extends UserAuth with Entity[User] {
-  def copyWithId(id: Option[String]) = this.copy(id = id)
+  def copyWithId(id: String) = this.copy(id = id)
 }
 
 case class Credentials(email: String, password: String)
@@ -51,9 +53,10 @@ trait UserAuth {
 
 class UserTable(tag: Tag) extends Table[User](tag, "users") with TableHelper {
 
-  val id = column[Option[String]]("id", O.PrimaryKey)
+  val id = column[String]("id", O.PrimaryKey)
   val uuid = column[String]("uuid")
   val created_at = column[Option[DateTime]]("created_at")
+  val deleted_at = column[Option[DateTime]]("deleted_at")
   val email = column[String]("email")
   val password = column[String]("password")
   val first_name = column[Option[String]]("first_name")
@@ -64,7 +67,7 @@ class UserTable(tag: Tag) extends Table[User](tag, "users") with TableHelper {
   val language = column[Option[String]]("language")
   val visible = column[Option[Boolean]]("visible")
 
-  def * = (id, uuid, created_at, email, password, first_name, last_name, avatar_url, birthday, phone, language, visible) <> (User.tupled, User.unapply _)
+  def * = (id, uuid, created_at, deleted_at, email, password, first_name, last_name, avatar_url, birthday, phone, language, visible) <> (User.tupled, User.unapply _)
 }
 
 class Users extends DaoHelperCrud[UserTable, User] {

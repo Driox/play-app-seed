@@ -10,7 +10,7 @@ object ConverterUtils {
     scala.util.Try(DateUtils.stringToDate(s, pattern)).toOption
   }
 
-  def stringToIng(s: String): Option[Int] = {
+  def stringToInt(s: String): Option[Int] = {
     if (s == "inf") {
       Some(Integer.MAX_VALUE)
     } else {

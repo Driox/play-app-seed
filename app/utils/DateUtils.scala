@@ -4,7 +4,7 @@ import java.util.Date
 import java.text.SimpleDateFormat
 import java.util.TimeZone
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.{Days, DateTime}
+import org.joda.time.{Days, DateTime, DateTimeZone}
 import play.api.libs.json._
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat
@@ -82,4 +82,6 @@ object DateUtils {
   def date2remainingDays(value: DateTime): Int = {
     Days.daysBetween(DateTime.now, value).getDays() + 1
   }
+
+  def now(): DateTime = DateTime.now(DateTimeZone.UTC)
 }

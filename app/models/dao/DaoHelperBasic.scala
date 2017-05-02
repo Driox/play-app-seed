@@ -9,12 +9,12 @@ import driver.api._
 
 // Entity with id
 trait Entity[E] {
-  def id: Option[String]
-  def copyWithId(id: Option[String]): E
+  def id: String
+  def copyWithId(id: String): E
 }
 
 trait TableHelper {
-  def id: Rep[Option[String]]
+  def id: Rep[String]
 }
 
 // DaoHelper generic for model with id

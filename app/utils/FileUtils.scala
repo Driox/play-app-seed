@@ -4,7 +4,7 @@ import java.io._
 
 class FileUtils(file: File) {
 
-  private def using[A <: { def close(): Unit }, B](param: A)(f: A => B): B = try { f(param) } finally { param.close() }
+  private[this] def using[A <: { def close(): Unit }, B](param: A)(f: A => B): B = try { f(param) } finally { param.close() }
 
   def read(): String = read(0)
 

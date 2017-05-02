@@ -2,6 +2,8 @@ resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releas
 
 resolvers += "Typesafe repository plugin" at "https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/"
 
+resolvers += "jBCrypt Repository" at "http://repo1.maven.org/maven2/org/"
+
 resolvers += "sonatype-releases" at "https://oss.sonatype.org/content/repositories/releases/"
 
 resolvers += "scalaz-bintray" at "https://de.bintray.com/scalaz/releases/"
@@ -11,7 +13,7 @@ resolvers += "bitbucket-release" at "https://bitbucket.org/Adrien/particeep-repo
 resolvers += Classpaths.sbtPluginReleases
 
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.0")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.14")
 
 // use to display dependencies graph
 // https://github.com/jrudolph/sbt-dependency-graph
@@ -43,10 +45,10 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-uglify" % "1.0.3")
 
 // code plugins
 
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.7.0" excludeAll(
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0" excludeAll(
   ExclusionRule(organization = "com.danieltrinh")))
 
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.3")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")
 
 // scala lint tool : https://github.com/puffnfresh/wartremover
 addSbtPlugin("org.brianmckenna" % "sbt-wartremover" % "0.13")
@@ -57,3 +59,5 @@ addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.8")
 addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")
 
 libraryDependencies += "org.scalariform" %% "scalariform" % "0.1.7"
+
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC1")

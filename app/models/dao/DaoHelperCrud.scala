@@ -45,7 +45,7 @@ trait DaoHelperCrud[T <: Table[E] with TableHelper, E <: Entity[E]] extends DaoH
   }
 
   def update(entity: E): Future[Option[E]] = {
-    entity.id.map(id => update(id, entity)).getOrElse(Future.successful(None))
+    update(entity.id, entity)
   }
 
   protected def update(id: String, entity: E): Future[Option[E]] = {
