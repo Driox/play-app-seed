@@ -26,7 +26,8 @@ libraryDependencies ++= Seq(
   //"io.kanaka"              %% "play-monadic-actions" % "1.0.1"          withSources(),
   "joda-time"              %  "joda-time"            % "2.8.1"          withSources(),
   "com.ibm.icu"            %  "icu4j"                % "56.1"           withSources(),
-  "org.apache.commons"     %  "commons-email"        % "1.3"            withSources()
+  "org.apache.commons"     %  "commons-email"        % "1.3"            withSources(),
+  "commons-validator"      %  "commons-validator"    % "1.5.0"          withSources()
 )
 
 libraryDependencies ++= Seq(

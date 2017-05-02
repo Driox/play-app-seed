@@ -16,11 +16,11 @@ var request = (function(){
                     on_error(self.handle_error(jqXHR, textStatus));
                 }
         });
-    }
+    };
 
     self.get = function(url, data, on_success, on_error) {
         return self.ajax(url, 'GET', data, 'json', on_success, on_error);
-    }
+    };
 
     self.post = function(url, data, on_success, on_error) {
         return self.ajax(url, 'POST', data, 'json', on_success, on_error);
@@ -50,24 +50,24 @@ var request = (function(){
 
         console.log(err_msg);
         return err_msg;
-    }
+    };
 
     // Serialize form & JSON values
     self.serializeData = function(nodes) {
-		if (nodes.constructor === Object) { // Serialize JSON data
-		    return JSON.stringify(nodes);
-		} else { // Serialize jquery selector
-		    return $(nodes).serialize();
-		}
-	}
+        if (nodes.constructor === Object) { // Serialize JSON data
+            return JSON.stringify(nodes);
+        } else { // Serialize jquery selector
+            return $(nodes).serialize();
+        }
+    };
 
-	self.contentType = function(obj_to_send) {
-	    if (obj_to_send.constructor === Object) { // Serialize JSON data
-		    return 'application/json; charset=utf-8';
-		} else { // Serialize jquery selector
-		    return 'application/x-www-form-urlencoded; charset=utf-8';
-		}
-	}
+    self.contentType = function(obj_to_send) {
+        if (obj_to_send.constructor === Object) { // Serialize JSON data
+            return 'application/json; charset=utf-8';
+        } else { // Serialize jquery selector
+            return 'application/x-www-form-urlencoded; charset=utf-8';
+        }
+    };
 
     return self;
 })();
