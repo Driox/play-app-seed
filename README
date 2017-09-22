@@ -5,6 +5,7 @@ TODO :
 
 * change application secret in application.conf
 * change name (play-app-seed) in build.sbt and in application.conf
+* change app name in prod-logger
 * set DB name in evolutions
 * set db config in application.conf
 * set meta info in messages.conf

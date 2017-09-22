@@ -1,4 +1,5 @@
 import javax.inject._
+import filters._
 import play.api._
 import play.api.http.HttpFilters
 import play.api.mvc._
@@ -21,12 +22,13 @@ import play.filters.csrf.CSRFFilter
  */
 @Singleton
 class Filters @Inject() (
-    env:  Environment,
-    gzip: GzipFilter,
-    cors: CORSFilter,
-    csrf: CSRFFilter
+    env:   Environment,
+    gzip:  GzipFilter,
+    cors:  CORSFilter,
+    csrf:  CSRFFilter,
+    https: HttpsFilter
 ) extends HttpFilters {
 
-  override val filters = Seq(cors, csrf, gzip)
+  override val filters = Seq(https, cors, csrf, gzip)
 
 }
