@@ -6,4 +6,4 @@ blabla
 
 Click on this link to confirm your account : @routes.AuthenticationController.validate(user.uuid).absoluteURL()
 
-As always, if you'd rather not get emails like this, you can unsubscribe (@routes.Application.unsubscribe(user.uuid).absoluteURL()) or change your email settings (@routes.Application.index().absoluteURL())
+As always, if you'd rather not get emails like this, you can unsubscribe (@routes.Application.unsubscribe(user.uuid).absoluteURL()) or change your email settings (@routes.Application.home().absoluteURL())

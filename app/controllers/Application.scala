@@ -1,18 +1,14 @@
 package controllers
 
 import javax.inject._
-import play.api._
-import play.api.mvc._
-import models._
 import models.dao.DaoAware
-import api.controllers.ActionDSL._
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class Application @Inject() extends BaseController with MonadicActions with DaoAware {
+class Application @Inject() extends BaseController with DaoAware {
 
   /**
    * Create an Action to render an HTML page with a welcome message.
@@ -20,7 +16,7 @@ class Application @Inject() extends BaseController with MonadicActions with DaoA
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index = Action { implicit request =>
+  def home = Action { implicit request =>
     Ok(views.html.index())
   }
 
@@ -34,7 +30,7 @@ class Application @Inject() extends BaseController with MonadicActions with DaoA
       // Do something with your user like
       // userReloaded <- userDao.update(user.copy(allow_email = false)) ?| NotFound
     } yield {
-      Redirect(controllers.routes.Application.index).withSession(
+      Redirect(routes.Application.home).withSession(
         "userEmail" -> user.email
       )
     }

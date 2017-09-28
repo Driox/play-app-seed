@@ -6,4 +6,4 @@ Blabla
 
 Confirme ton compte : @routes.AuthenticationController.validate(user.uuid).absoluteURL()
 
-Comme d'habitude, si tu ne veux plus recevoir d'email tu peux te désinscrire ( @routes.Application.unsubscribe(user.uuid).absoluteURL() ) ou changer la fréquence des notifications mails ( @routes.Application.index().absoluteURL() )
+Comme d'habitude, si tu ne veux plus recevoir d'email tu peux te désinscrire ( @routes.Application.unsubscribe(user.uuid).absoluteURL() ) ou changer la fréquence des notifications mails ( @routes.Application.home().absoluteURL() )

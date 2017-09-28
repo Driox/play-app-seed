@@ -3,7 +3,7 @@ package models.dao
 import com.github.tminglei.slickpg.PgJsonSupport
 import com.github.tminglei.slickpg._
 
-trait EnhancedPostgresDriver extends ExPostgresDriver
+trait EnhancedPostgresDriver extends ExPostgresProfile
     with PgArraySupport
     with PgDateSupportJoda
     with PgJsonSupport

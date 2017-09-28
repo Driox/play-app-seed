@@ -1,21 +1,23 @@
 package notifier
 
+import javax.inject._
+
+import akka.actor.ActorSystem
 import models.User
-import play.api.mvc.RequestHeader
+
 import scala.util.Try
 import scala.concurrent.Future
-
-import play.api.{Logger, Play, Application}
-import play.api.Play.current
+import play.api.{Application, Configuration}
 import play.api.i18n.Lang
 import utils.m
 
 /**
  * @author Grignou
  */
-object WelcomeNotifier extends Notifier {
+@Singleton
+class WelcomeNotifier @Inject() (val configuration: Configuration, val system: ActorSystem) extends Notifier {
 
-  def notify(user: User)(implicit app: Application, lang: Lang): Future[Try[String]] = {
+  def notify(user: User)(implicit lang: Lang): Future[Try[String]] = {
     sendMail(
       from = FROM,
       to = Seq(user.email),
@@ -31,6 +33,7 @@ object WelcomeNotifier extends Notifier {
       case ("fr", true)  => views.html.notifier.welcome_fr.render(user, request, lang).toString()
       case ("en", false) => views.txt.notifier.welcome_en.render(user, request, lang).toString()
       case ("en", true)  => views.html.notifier.welcome_en.render(user, request, lang).toString()
+      case _             => views.html.notifier.welcome_en.render(user, request, lang).toString()
     }
   }
 }

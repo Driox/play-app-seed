@@ -13,7 +13,7 @@ resolvers += "bitbucket-release" at "https://bitbucket.org/Adrien/particeep-repo
 resolvers += Classpaths.sbtPluginReleases
 
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.14")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.5")
 
 // use to display dependencies graph
 // https://github.com/jrudolph/sbt-dependency-graph
