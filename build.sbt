@@ -19,8 +19,6 @@ libraryDependencies ++= Seq(
   ehcache,
   ws,
   "com.typesafe.play"      %% "play-json"            % "2.6.0"          withSources(),
-  "org.scalatest"          %% "scalatest"            % "2.2.1"    % "test" withSources(),
-  "org.scalatestplus"      %% "play"                 % "1.4.0-M4" % "test" withSources(),
   "com.h2database"         %  "h2"                   % "1.4.194"        withSources(),
   "com.papertrailapp"      %  "logback-syslog4j"     % "1.0.0"          withSources(),
   "com.github.nscala-time" %% "nscala-time"          % "2.4.0"          withSources(),
@@ -29,6 +27,13 @@ libraryDependencies ++= Seq(
   "com.ibm.icu"            %  "icu4j"                % "56.1"           withSources(),
   "org.apache.commons"     %  "commons-email"        % "1.3"            withSources(),
   "commons-validator"      %  "commons-validator"    % "1.5.0"          withSources()
+)
+
+libraryDependencies ++= Seq(
+  "org.mockito"            % "mockito-core"          % "1.9.5"    % "test" withSources(),
+  "org.scalatestplus.play" %% "scalatestplus-play"   % "3.1.2"    % "test" withSources(),
+  "org.scalatestplus"      %% "play"                 % "1.4.0-M4" % "test" withSources()
+
 )
 
 val slick_pg_version = "0.15.3"

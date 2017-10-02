@@ -30,11 +30,13 @@ trait CrudRepository[E <: Entity[E], J <: JdbcProfile] { self: HasDatabaseConfig
   }
 
   def create(entity: E)(implicit ec: ExecutionContext): Future[E] = {
-    db.run((tables returning tables.map(_.id) into ((Entity, id) => Entity.copyWithId(id))) += entity)
+    val id = entity.id
+    db.run(tables += entity).flatMap(_ => findById(id).map(_.get))
   }
 
-  def create(entities: Seq[E])(implicit ec: ExecutionContext): Future[Seq[E]] = {
-    db.run((tables returning tables.map(_.id) into ((Entity, id) => Entity.copyWithId(id))) ++= entities)
+  def create(entities: Seq[E])(implicit ec: ExecutionContext): Future[List[E]] = {
+    val ids = entities.map(_.id)
+    db.run(tables ++= entities).flatMap(_ => findByIds(ids))
   }
 
   def update(entity: E)(implicit ec: ExecutionContext): Future[Option[E]] = {

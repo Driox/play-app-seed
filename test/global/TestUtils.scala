@@ -1,11 +1,8 @@
 package global
 
 import play.api.libs.json.Json
-import utils.StringUtils
-import play.api.libs.json.JsObject
 import play.api.libs.json.JsValue
 import utils.JsonUtils
-import scala.util.matching.Regex
 import java.io.File
 import java.nio.file.Files
 
@@ -16,7 +13,7 @@ trait TestUtils { self: ApiSpecServer =>
     val expected = Json.parse(resultMustBe)
     val orExpected = Json.parse(orMustBe)
 
-    actual == expected || actual == orExpected mustBe true
+    (actual == expected || actual == orExpected) mustBe true
   }
 
   def checkResultInJsonIsGood(result: String, resultMustBe: String) {

@@ -2,6 +2,7 @@ package models
 
 import javax.inject._
 
+import models.dao.DbDriver.DbProfile
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import org.joda.time.DateTime
 import utils.DateUtils
@@ -20,7 +21,7 @@ import models.dao._
 case class User(
     id:         String           = StringUtils.generateUuid,
     uuid:       String           = StringUtils.generateUuid,
-    created_at: Option[DateTime] = Some(DateUtils.now),
+    created_at: DateTime         = DateUtils.now,
     deleted_at: Option[DateTime] = None,
     email:      String,
     password:   String,
@@ -48,9 +49,9 @@ trait UserAuth {
 
 @Singleton
 class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)
-    extends HasDatabaseConfigProvider[EnhancedPostgresDriver]
-    with CrudRepository[User, EnhancedPostgresDriver]
-    with EntityWithTableLifecycle[EnhancedPostgresDriver]
+    extends HasDatabaseConfigProvider[DbProfile]
+    with CrudRepository[User, DbProfile]
+    with EntityWithTableLifecycle[DbProfile]
     with UserComponent {
 
   import profile.api._
@@ -62,11 +63,13 @@ class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)
     db.run(tables.filter(_.email === email).result.headOption)
   }
 
-  def findByUuid(uuid: String): Future[Option[User]] = {
+  def findByUuid(uuid: String)(implicit executionCtx: ExecutionContext): Future[Option[User]] = {
     val q = tables.filter(_.uuid === uuid)
     db.run(q.result.headOption)
   }
 
-  def create(email: String, password: String): Future[Option[User]] = ???
+  def create(email: String, password: String)(implicit executionCtx: ExecutionContext): Future[User] = {
+    create(User(email = email, password = password))
+  }
 
 }

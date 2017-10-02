@@ -5,6 +5,7 @@ import play.api.mvc.RequestHeader
 
 import scala.concurrent.{ExecutionContext, Future}
 import org.apache.commons.mail._
+import play.api.mvc.request.RemoteConnection
 import play.api.{Configuration, Logger}
 
 import scala.util.Try
@@ -21,7 +22,7 @@ trait Notifier {
     def version = ???
     def method = ???
     def attrs = ???
-    def connection = ???
+    def connection = RemoteConnection("127.0.0.1", true, None)
     def target = ???
   }
 

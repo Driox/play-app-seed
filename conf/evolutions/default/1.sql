@@ -4,8 +4,8 @@
 CREATE TABLE users (
     id varchar(36) primary key,
     uuid varchar(36) NOT NULL,
-    created_at timestampz NOT NULL,
-    deleted_at timestampz DEFAULT NULL,
+    created_at timestamptz NOT NULL,
+    deleted_at timestamptz DEFAULT NULL,
     email text NOT NULL,
     password text NOT NULL,
     first_name text DEFAULT NULL,

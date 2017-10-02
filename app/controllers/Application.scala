@@ -4,12 +4,14 @@ import javax.inject._
 
 import models.Users
 
+import scala.concurrent.ExecutionContext
+
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class Application @Inject() (val userDao: Users) extends BaseController {
+class Application @Inject() (val userDao: Users)(implicit ec: ExecutionContext) extends BaseController {
 
   /**
    * Create an Action to render an HTML page with a welcome message.

@@ -1,24 +1,25 @@
 package models
 
+import models.dao.DbDriver.DbProfile
 import org.joda.time.DateTime
-import models.dao.{EnhancedPostgresDriver, TableHelper}
+import models.dao.{TableHelper, TableMapping}
 import play.api.db.slick.HasDatabaseConfigProvider
 
-trait UserComponent {
-  self: HasDatabaseConfigProvider[EnhancedPostgresDriver] =>
+trait UserComponent extends TableMapping {
+  self: HasDatabaseConfigProvider[DbProfile] =>
 
   import profile.api._
 
-  class UserTable(tag: Tag) extends EnhancedPostgresDriver.Table[User](tag, "users") with TableHelper {
+  class UserTable(tag: Tag) extends Table[User](tag, "users") with TableHelper {
 
     val id = column[String]("id", O.PrimaryKey)
     val uuid = column[String]("uuid")
-    val created_at = column[Option[DateTime]]("created_at")
+    val created_at = column[DateTime]("created_at")
     val deleted_at = column[Option[DateTime]]("deleted_at")
     val email = column[String]("email")
     val password = column[String]("password")
     val first_name = column[Option[String]]("first_name")
-    val last_name = column[Option[String]]("last_,ame")
+    val last_name = column[Option[String]]("last_name")
     val avatar_url = column[Option[String]]("avatar_url")
     val birthday = column[Option[DateTime]]("birthday")
     val phone = column[Option[String]]("phone")
