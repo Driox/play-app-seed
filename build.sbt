@@ -38,7 +38,7 @@ libraryDependencies ++= Seq(
   "org.joda"             %  "joda-convert"          % "1.7"             withSources(),
   "com.typesafe.play"    %% "play-slick"            % "3.0.2"           withSources(),
   "com.typesafe.play"    %% "play-slick-evolutions" % "3.0.2"           withSources(),
-  "com.typesafe.slick"   %% "slick-codegen"         % "3.1.1"           withSources(),
+  "com.typesafe.slick"   %% "slick-codegen"         % "3.2.0"           withSources(),
   "com.github.tminglei"  %% "slick-pg"              % slick_pg_version  withSources(),
   "com.github.tminglei"  %% "slick-pg_joda-time"    % slick_pg_version  withSources(),
   "com.github.tminglei"  %% "slick-pg_play-json"    % slick_pg_version  withSources(),
@@ -105,4 +105,17 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(scalariform.formatter.preferences.DoubleIndentClassDeclaration, true)
   .setPreference(scalariform.formatter.preferences.PreserveDanglingCloseParenthesis, true)
 
-  
+// ~~~~~~~~~~~~~~~~~
+// code generation task
+slick <<= slickCodeGenTask
+lazy val slick = TaskKey[Seq[File]]("gen-tables")
+lazy val slickCodeGenTask = (sourceManaged, dependencyClasspath in Compile, runner in Compile, streams) map { (dir, cp, r, s) =>
+  val outputDir = (dir / "slick").getPath // place generated files in sbt's managed sources folder
+  val url = "jdbc:h2:mem:test" // connection info for a pre-populated throw-away, in-memory db for this demo, which is freshly initialized on every run
+  val jdbcDriver = "org.postgresql.Driver"
+  val slickDriver = "slick.jdbc.PostgresProfile"
+  val pkg = "demo"
+  toError(r.run("slick.codegen.SourceCodeGenerator", cp.files, Array(slickDriver, jdbcDriver, url, outputDir, pkg), s.log))
+  val fname = outputDir + "/demo/Tables.scala"
+  Seq(file(fname))
+}

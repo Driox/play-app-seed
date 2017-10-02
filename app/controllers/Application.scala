@@ -1,14 +1,15 @@
 package controllers
 
 import javax.inject._
-import models.dao.DaoAware
+
+import models.Users
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class Application @Inject() extends BaseController with DaoAware {
+class Application @Inject() (val userDao: Users) extends BaseController {
 
   /**
    * Create an Action to render an HTML page with a welcome message.

@@ -1,7 +1,6 @@
 package controllers
 
 import models._
-import models.dao.DaoAware
 import play.api.mvc._
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -11,7 +10,9 @@ import scala.concurrent.{ExecutionContext, Future}
  */
 class AuthRequest[A](val user: User, request: Request[A]) extends WrappedRequest[A](request)
 
-private[controllers] trait Security extends DaoAware { self: BaseController =>
+private[controllers] trait Security { self: BaseController =>
+
+  def userDao: Users
 
   def secureAction()(implicit ec: ExecutionContext) = new ActionRefiner[Request, AuthRequest] {
     def executionContext = ec

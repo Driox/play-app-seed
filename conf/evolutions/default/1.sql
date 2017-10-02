@@ -5,15 +5,15 @@ CREATE TABLE users (
     id varchar(36) primary key,
     uuid varchar(36) NOT NULL,
     created_at timestampz NOT NULL,
-    email varchar(255) NOT NULL,
-    password varchar(255) NOT NULL,
-    first_name varchar(255) DEFAULT NULL,
-    last_name varchar(255) DEFAULT NULL,
-    avatar_url varchar(255) DEFAULT NULL,
-    phone varchar(255) DEFAULT NULL,
+    deleted_at timestampz DEFAULT NULL,
+    email text NOT NULL,
+    password text NOT NULL,
+    first_name text DEFAULT NULL,
+    last_name text DEFAULT NULL,
+    avatar_url text DEFAULT NULL,
+    phone text DEFAULT NULL,
     language varchar(5) DEFAULT 'fr',
-    birthday date DEFAULT NULL,
-    visible boolean DEFAULT true
+    birthday date DEFAULT NULL
 );
 
 # --- !Downs

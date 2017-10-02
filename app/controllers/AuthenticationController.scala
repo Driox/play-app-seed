@@ -6,12 +6,11 @@ import notifier.WelcomeNotifier
 import play.api.data._
 import play.api.data.Forms._
 import models._
-import models.dao.DaoAware
 
 import scala.concurrent.ExecutionContext
 
 @Singleton
-class AuthenticationController @Inject() (welcomeNotifier: WelcomeNotifier)(implicit ec: ExecutionContext) extends BaseController with DaoAware {
+class AuthenticationController @Inject() (welcomeNotifier: WelcomeNotifier, val userDao: Users)(implicit ec: ExecutionContext) extends BaseController {
 
   val credentialsForm = Form(
     mapping(
