@@ -1,6 +1,5 @@
 package global
 
-import models.dao.EnhancedH2Driver
 import org.scalatest.TestData
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
 import org.scalatestplus.play._
@@ -8,7 +7,6 @@ import org.scalatestplus.play.guice.GuiceOneAppPerTest
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.Results
 import test.fixture.FixtureModule
-import play.api.inject.bind
 
 abstract class ApiSpecServer extends PlaySpec with GuiceOneAppPerTest with Results with ScalaFutures with IntegrationPatience {
 
@@ -19,7 +17,7 @@ abstract class ApiSpecServer extends PlaySpec with GuiceOneAppPerTest with Resul
   override def newAppForTest(td: TestData) = new GuiceApplicationBuilder()
     .configure(
       Map(
-        "slick.dbs.default.profile" -> "models.dao.EnhancedH2Driver$",
+        "slick.dbs.default.profile" -> "slick.jdbc.H2Profile$",
         "slick.dbs.default.db.driver" -> "org.h2.Driver",
         "slick.dbs.default.db.url" -> "jdbc:h2:mem:play;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=FALSE",
         "slick.dbs.default.db.user" -> "sa",
@@ -35,6 +33,5 @@ abstract class ApiSpecServer extends PlaySpec with GuiceOneAppPerTest with Resul
       )
     )
     .bindings(new FixtureModule)
-    //.overrides(Seq(bind[DbProfile].toInstance(EnhancedH2Driver)))
     .build()
 }
