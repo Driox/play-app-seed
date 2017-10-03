@@ -1,7 +1,7 @@
 package models.dao
 
 import com.github.tototoshi.slick.GenericJodaSupport
-import play.api.db.slick.HasDatabaseConfigProvider
+import play.api.db.slick.HasDatabaseConfig
 import slick.jdbc.JdbcProfile
 import slick.lifted._
 
@@ -28,7 +28,7 @@ trait TableHelper {
   def id: Rep[String]
 }
 
-trait EntityWithTableLifecycle[J <: JdbcProfile] { self: HasDatabaseConfigProvider[J] =>
+trait EntityWithTableLifecycle[J <: JdbcProfile] { self: HasDatabaseConfig[J] =>
 
   import profile.api._
 

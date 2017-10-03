@@ -2,14 +2,15 @@ package models
 
 import javax.inject._
 
-import models.dao.DbDriver.DbProfile
-import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
+import play.api.db.slick._
 import org.joda.time.DateTime
 import utils.DateUtils
 import utils.StringUtils
 
 import scala.concurrent.{ExecutionContext, Future}
 import models.dao._
+import play.api.libs.json.JsValue
+import slick.jdbc.JdbcProfile
 
 /**
  * easy to mock :
@@ -31,6 +32,7 @@ case class User(
     birthday:   Option[DateTime] = None,
     phone:      Option[String]   = None,
     language:   Option[String]   = None
+//, custom:     Option[JsValue]  = None
 ) extends UserAuth with Entity[User] {
   def copyWithId(id: String) = this.copy(id = id)
 }
@@ -49,9 +51,9 @@ trait UserAuth {
 
 @Singleton
 class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)
-    extends HasDatabaseConfigProvider[DbProfile]
-    with CrudRepository[User, DbProfile]
-    with EntityWithTableLifecycle[DbProfile]
+    extends HasDatabaseConfigProvider[JdbcProfile]
+    with CrudRepository[User, JdbcProfile]
+    with EntityWithTableLifecycle[JdbcProfile]
     with UserComponent {
 
   import profile.api._

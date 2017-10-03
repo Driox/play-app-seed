@@ -1,9 +1,11 @@
 package models.dao
 
 import com.github.tminglei.slickpg._
-import play.api.libs.json.{JsValue, Json}
+import com.github.tminglei.slickpg.utils.PlainSQLUtils
+import com.github.tototoshi.slick.GenericJodaSupport
+import play.api.libs.json.{JsNull, JsValue, Json}
 import slick.basic.Capability
-import slick.jdbc.JdbcCapabilities
+import slick.jdbc.{JdbcCapabilities, PostgresProfile}
 
 trait EnhancedPostgresDriver extends ExPostgresProfile
     with PgArraySupport
@@ -44,3 +46,14 @@ trait EnhancedPostgresDriver extends ExPostgresProfile
 }
 
 object EnhancedPostgresDriver extends EnhancedPostgresDriver
+
+object PostgreSqlDriver
+    extends GenericJodaSupport(PostgresProfile)
+    with JsonSupport
+    with EnhancedPostgresDriver
+    with CollectionSupport {
+
+  implicit def jsonToStringMapper = EnhancedPostgresDriver.api.playJsonTypeMapper
+  implicit def GetJsValue = PlainSQLUtils.mkGetResult(_.nextStringOption().map(Json.parse).getOrElse(JsNull))
+  implicit def GetJsValueOption = PlainSQLUtils.mkGetResult(_.nextStringOption().map(Json.parse))
+}

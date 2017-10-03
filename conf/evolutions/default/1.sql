@@ -13,7 +13,8 @@ CREATE TABLE users (
     avatar_url text DEFAULT NULL,
     phone text DEFAULT NULL,
     language varchar(5) DEFAULT 'fr',
-    birthday date DEFAULT NULL
+    birthday date DEFAULT NULL,
+    custom text DEFAULT NULL
 );
 
 # --- !Downs

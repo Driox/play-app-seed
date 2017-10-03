@@ -9,6 +9,7 @@ import play.api.mvc._
 import play.api.test._
 import play.api.test.Helpers._
 import test.global.CtrlHelper
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * This is a unit test of a ctrl, no db involved
