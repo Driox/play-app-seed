@@ -2,6 +2,7 @@ package models.dao
 
 import com.github.tototoshi.slick.GenericJodaSupport
 import play.api.db.slick.HasDatabaseConfig
+import play.api.libs.json.JsValue
 import slick.jdbc.JdbcProfile
 import slick.lifted._
 
@@ -15,6 +16,12 @@ trait TableMapping {
 
   protected def profile(): JdbcProfile
 
+  protected val jsonTypeMapper = new JsonMapping(profile)
+
+  implicit val jsonToStringMapper: JdbcProfile#BaseColumnType[JsValue] = jsonTypeMapper.jsonToStringMapper
+  implicit val getJsValue = jsonTypeMapper.GetJsValue
+  implicit val getJsValueOption = jsonTypeMapper.GetJsValueOption
+
   protected val joda_mapping = new GenericJodaSupport(profile)
 
   implicit val datetimeTypeMapper = joda_mapping.datetimeTypeMapper
@@ -22,6 +29,7 @@ trait TableMapping {
   implicit val getDatetimeOptionResult = joda_mapping.getDatetimeOptionResult
   implicit val setDatetimeParameter = joda_mapping.setDatetimeParameter
   implicit val setDatetimeOptionParameter = joda_mapping.setDatetimeOptionParameter
+
 }
 
 trait TableHelper {

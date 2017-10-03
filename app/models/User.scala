@@ -9,7 +9,7 @@ import utils.StringUtils
 
 import scala.concurrent.{ExecutionContext, Future}
 import models.dao._
-import play.api.libs.json.JsValue
+import play.api.libs.json.{JsValue, Json}
 import slick.jdbc.JdbcProfile
 
 /**
@@ -31,8 +31,8 @@ case class User(
     avatar_url: Option[String]   = None,
     birthday:   Option[DateTime] = None,
     phone:      Option[String]   = None,
-    language:   Option[String]   = None
-//, custom:     Option[JsValue]  = None
+    language:   Option[String]   = None,
+    custom:     Option[JsValue]  = None
 ) extends UserAuth with Entity[User] {
   def copyWithId(id: String) = this.copy(id = id)
 }

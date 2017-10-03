@@ -25,9 +25,9 @@ trait UserComponent extends TableMapping {
     val birthday = column[Option[DateTime]]("birthday")
     val phone = column[Option[String]]("phone")
     val language = column[Option[String]]("language")
-    //    val custom = column[Option[JsValue]]("custom")
+    val custom = column[Option[JsValue]]("custom")
 
-    def * = (id, uuid, created_at, deleted_at, email, password, first_name, last_name, avatar_url, birthday, phone, language /*, custom*/ ) <> (User.tupled, User.unapply _)
+    def * = (id, uuid, created_at, deleted_at, email, password, first_name, last_name, avatar_url, birthday, phone, language, custom) <> (User.tupled, User.unapply _)
   }
 
 }

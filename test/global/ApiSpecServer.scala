@@ -1,7 +1,6 @@
 package global
 
 import models.dao.EnhancedH2Driver
-import models.dao.MetaProfile.DbProfile
 import org.scalatest.TestData
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
 import org.scalatestplus.play._
@@ -36,6 +35,6 @@ abstract class ApiSpecServer extends PlaySpec with GuiceOneAppPerTest with Resul
       )
     )
     .bindings(new FixtureModule)
-    .overrides(Seq(bind[DbProfile].toInstance(EnhancedH2Driver)))
+    //.overrides(Seq(bind[DbProfile].toInstance(EnhancedH2Driver)))
     .build()
 }
