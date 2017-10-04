@@ -1,6 +1,9 @@
 package notifier
 
-import play.api.Play
+import javax.inject._
+
+import akka.actor.ActorSystem
+import play.api.Configuration
 
 import scala.util.Try
 import scala.concurrent.Future
@@ -8,7 +11,8 @@ import scala.concurrent.Future
 /**
  * @author Grignou
  */
-object ContactNotifier extends Notifier {
+@Singleton
+class ContactNotifier @Inject() (val configuration: Configuration, val system: ActorSystem) extends Notifier {
 
   def notify(firstName: String, lastName: String, email: String, message: String): Future[Try[String]] = {
     val contactMail = "adrien.crovetto@gmail.com" //FROM._1

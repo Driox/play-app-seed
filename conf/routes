@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET    /                                                         controllers.Application.index
+GET    /                                                         controllers.Application.home
 GET    /ping                                                     controllers.Application.ping
 GET    /unsubscribe/:uuid                                        controllers.Application.unsubscribe(uuid)
 
@@ -18,13 +18,6 @@ GET    /signin                                                   controllers.Aut
 POST   /signin                                                   controllers.AuthenticationController.register
 GET    /validate-signin/:uuid                                    controllers.AuthenticationController.validate(uuid)
 GET    /forgotten-password                                       controllers.AuthenticationController.forgottenPassword
-
-
-# An example controller showing how to use dependency injection
-GET     /count                                                   controllers.CountController.count
-
-# An example controller showing how to write asynchronous code
-GET     /message                                                 controllers.AsyncController.message
 
 # Assets
 # Map static resources from the /public folder to the /assets URL path

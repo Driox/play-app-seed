@@ -1,31 +1,29 @@
 package utils
 
-import play.api.data.validation._
-import play.api.i18n.Messages.Implicits._
-import play.api.i18n.Messages
-import play.api.Play.current
 import play.api.libs.json._
-import play.api.Play
 import org.apache.commons.validator.routines.UrlValidator
+import helpers.Config
 
 object JsonUtils {
 
-  def validUrls: Reads[Seq[String]] = Reads.seq[String].filter(ValidationError(Messages("error.url.malformatted")))(urls => {
-    val urlValidator = if (Play.isDev(Play.current)) new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS) else new UrlValidator();
+  private implicit val lang = Config.default_lang
+
+  def validUrls: Reads[Seq[String]] = Reads.seq[String].filter(JsonValidationError(m("error.url.malformatted")))(urls => {
+    val urlValidator = if (Config.isDev()) new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS) else new UrlValidator();
     urls.filter(!urlValidator.isValid(_)).isEmpty
   })
 
-  def validEmail: Reads[String] = Reads.StringReads.filter(ValidationError(Messages("error.email.malformatted")))(StringUtils.isEmail(_))
+  def validEmail: Reads[String] = Reads.StringReads.filter(JsonValidationError(m("error.email.malformatted")))(StringUtils.isEmail(_))
 
-  def validePrecision(precision: Int): Reads[Double] = Reads.DoubleReads.filter(ValidationError(
-    Messages("error.wallettransferoption.amount.precision")
+  def validePrecision(precision: Int): Reads[Double] = Reads.DoubleReads.filter(JsonValidationError(
+    m("error.wallettransferoption.amount.precision")
   ))(NumberUtils.validePrecision(_, precision))
 
-  def validateRegex(regex: String, errorMsg: String): Reads[String] = Reads.StringReads.filter(ValidationError(Messages(errorMsg)))(value => value.matches(regex))
+  def validateRegex(regex: String, errorMsg: String): Reads[String] = Reads.StringReads.filter(JsonValidationError(m(errorMsg)))(value => value.matches(regex))
 
-  def validUuid: Reads[String] = Reads.StringReads.filter(ValidationError(Messages("error.uuid.malformatted")))(StringUtils.isUuid(_))
+  def validUuid: Reads[String] = Reads.StringReads.filter(JsonValidationError(m("error.uuid.malformatted")))(StringUtils.isUuid(_))
 
-  def validIp: Reads[String] = Reads.StringReads.filter(ValidationError(Messages("error.ip.malformatted")))(StringUtils.isIp(_))
+  def validIp: Reads[String] = Reads.StringReads.filter(JsonValidationError(m("error.ip.malformatted")))(StringUtils.isIp(_))
 
   def removeElementInJson(json: JsValue, removeKeys: Seq[String]): JsValue = {
     val jsArrayOpt = json.asOpt[JsArray].map(v => {

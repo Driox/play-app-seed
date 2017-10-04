@@ -1,38 +1,37 @@
 package notifier
 
+import akka.actor.ActorSystem
 import play.api.mvc.RequestHeader
-import play.libs.Akka
+
 import scala.concurrent.{ExecutionContext, Future}
 import org.apache.commons.mail._
-import play.api.Play
-import play.api.Play.current
+import play.api.mvc.request.RemoteConnection
+import play.api.{Configuration, Logger}
+
 import scala.util.Try
-import play.api.Logger
 
 trait Notifier {
 
-  protected val FROM = (Play.configuration.getString("mail.contact.email").getOrElse("do.not.reply@mon-app.com"), "Contact team")
+  def configuration: Configuration
+  def system: ActorSystem
+
+  protected val FROM = (configuration.get[String]("mail.contact.email"), "Contact team")
   implicit protected val request: RequestHeader = new RequestHeader() {
-    override lazy val host = Play.configuration.getString("application.baseurl").getOrElse("http://mon-app.com")
-    def remoteAddress = ???
+    override lazy val host = configuration.get[String]("application.baseurl")
     def headers = ???
-    def queryString = ???
     def version = ???
     def method = ???
-    def path = ???
-    def uri = ???
-    def tags = ???
-    def id = ???
-    def secure = false
-    def clientCertificateChain = ???
+    def attrs = ???
+    def connection = RemoteConnection("127.0.0.1", true, None)
+    def target = ???
   }
 
-  private val SMTP_HOST = Play.configuration.getString("mail.smtp.host").getOrElse("mock")
-  private val SMTP_PORT = Play.configuration.getInt("mail.smtp.port").getOrElse(80)
-  private val SMTP_USER = Play.configuration.getString("mail.smtp.user").getOrElse("")
-  private val SMTP_PASSWORD = Play.configuration.getString("mail.smtp.password").getOrElse("")
-  private val SMTP_TRANSACTION_IP = Play.configuration.getString("mail.smtp.ip.transaction").getOrElse("127.0.0.1")
-  private val mail_execution_context: ExecutionContext = Akka.system.dispatchers.lookup("contexts.mail_execution_context")
+  private val SMTP_HOST = configuration.get[String]("mail.smtp.host")
+  private val SMTP_PORT = configuration.get[Int]("mail.smtp.port")
+  private val SMTP_USER = configuration.get[String]("mail.smtp.user")
+  private val SMTP_PASSWORD = configuration.get[String]("mail.smtp.password")
+  private val SMTP_TRANSACTION_IP = configuration.get[String]("mail.smtp.ip.transaction")
+  private val mail_execution_context: ExecutionContext = system.dispatchers.lookup("contexts.mail_execution_context")
 
   /**
    *  Sends an email

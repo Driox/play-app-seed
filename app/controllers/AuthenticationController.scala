@@ -1,22 +1,16 @@
 package controllers
 
-import api.controllers.ActionDSL._
+import javax.inject._
+
 import notifier.WelcomeNotifier
-import play.api._
-import play.api.Play.current
-import play.api.mvc._
 import play.api.data._
-import play.api.data.validation._
 import play.api.data.Forms._
-import play.api.libs.json._
-
 import models._
-import models.dao.DaoAware
 
-import api.controllers.{ApiAction, ApiController}
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import scala.concurrent.ExecutionContext
 
-class AuthenticationController extends BaseController with MonadicActions with DaoAware {
+@Singleton
+class AuthenticationController @Inject() (welcomeNotifier: WelcomeNotifier, val userDao: Users)(implicit ec: ExecutionContext) extends BaseController {
 
   val credentialsForm = Form(
     mapping(
@@ -32,10 +26,10 @@ class AuthenticationController extends BaseController with MonadicActions with D
   def register = Action.async { implicit request =>
     for {
       form <- credentialsForm.bindFromRequest ?| (formWithErrors => Ok(views.html.security.signin(formWithErrors)))
-      user <- userDao.create(form.email, form.password) ?| (err => Redirect(controllers.routes.AuthenticationController.signin()).flashing("error" -> "error.email.exist"))
+      user <- userDao.create(form.email, form.password) ?| (err => Redirect(routes.AuthenticationController.signin()).flashing("error" -> "error.email.exist"))
     } yield {
-      WelcomeNotifier.notify(user)
-      Redirect(controllers.routes.Application.index).withSession(
+      welcomeNotifier.notify(user)
+      Redirect(routes.Application.home).withSession(
         "userEmail" -> user.email
       )
     }
@@ -48,16 +42,16 @@ class AuthenticationController extends BaseController with MonadicActions with D
   def authenticate = Action.async { implicit request =>
     for {
       form <- credentialsForm.bindFromRequest ?| (formWithErrors => Ok(views.html.security.login(formWithErrors)))
-      user <- userDao.findByEmail(form.email) ?| (err => Redirect(controllers.routes.AuthenticationController.login()).flashing("error" -> "error.account.authenticate.email"))
+      user <- userDao.findByEmail(form.email) ?| (err => Redirect(routes.AuthenticationController.login()).flashing("error" -> "error.account.authenticate.email"))
     } yield {
-      Redirect(controllers.routes.Application.index).withSession(
+      Redirect(routes.Application.home).withSession(
         "userEmail" -> user.email
       )
     }
   }
 
   def logout = Action { implicit request =>
-    Redirect(controllers.routes.Application.index()).withNewSession
+    Redirect(routes.Application.home()).withNewSession
   }
 
   def validate(uuid: String) = Action.async { implicit request =>
@@ -66,7 +60,7 @@ class AuthenticationController extends BaseController with MonadicActions with D
       // do something with your user like
       // _ <- userDao.update(user.copy(confirmed = true)) ?| NotFound
     } yield {
-      Redirect(controllers.routes.Application.index).withSession(
+      Redirect(routes.Application.home).withSession(
         "userEmail" -> user.email
       )
     }

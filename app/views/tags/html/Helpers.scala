@@ -4,7 +4,7 @@ import scala.language.implicitConversions
 
 import scala.collection.JavaConverters._
 
-import utils.m
+import _root_.utils.m
 import play.api.i18n.Lang
 
 package views.html.tags.html {
@@ -17,8 +17,8 @@ package views.html.tags.html {
           case Some(false) => false
           case _           => true
         }) {
-          field.constraints.map(c => m(c._1, c._2: _*)) ++
-            field.format.map(f => m(f._1, f._2: _*))
+          field.constraints.map(c => m(c._1, c._2: _*)(lang)) ++
+            field.format.map(f => m(f._1, f._2: _*)(lang))
         } else Nil)
       }
     }
@@ -48,18 +48,18 @@ package views.html.tags.html {
     def hasLabel: Boolean = args.get('_label).isDefined
 
     def label: Any = {
-      args.get('_label).getOrElse(m(field.label))
+      args.get('_label).getOrElse(m(field.label)(lang))
     }
 
     def hasName: Boolean = args.get('_name).isDefined
 
     def name: Any = {
-      args.get('_name).getOrElse(m(field.label))
+      args.get('_name).getOrElse(m(field.label)(lang))
     }
 
   }
 
-  trait FieldConstructor extends NotNull {
+  trait FieldConstructor {
     def apply(elts: FieldElements): Html
   }
 

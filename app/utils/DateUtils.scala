@@ -31,9 +31,9 @@ object DateUtils {
       case JsNumber(d) => JsSuccess(new DateTime(d.toLong))
       case JsString(s) => parseDate(s) match {
         case Some(d) => JsSuccess(d)
-        case None    => JsError(Seq(JsPath() -> Seq(ValidationError("validate.error.expected.date.isoformat", "ISO8601"))))
+        case None    => JsError(Seq(JsPath() -> Seq(JsonValidationError("validate.error.expected.date.isoformat", "ISO8601"))))
       }
-      case _ => JsError(Seq(JsPath() -> Seq(ValidationError("validate.error.expected.date"))))
+      case _ => JsError(Seq(JsPath() -> Seq(JsonValidationError("validate.error.expected.date"))))
     }
 
     private def parseDate(input: String): Option[DateTime] = scala.util.control.Exception.allCatch[DateTime] opt (DateTime.parse(input, df))

@@ -5,8 +5,6 @@ import org.joda.time.format.DateTimeFormat
 import org.joda.time.{DateTime, Days}
 import org.joda.time.Minutes
 import org.joda.time.Hours
-import play.api.Play
-import play.api.Play.current
 import play.api.i18n.Lang
 import play.twirl.api.Html
 import utils.DateUtils
@@ -37,7 +35,7 @@ object CustomTag {
   /**
    * format the date to display a delay e.g. 2 days ago or a date if too old
    */
-  def date2delay(d: DateTime)(implicit request: WrappedRequest[_]): String = {
+  def date2delay(d: DateTime)(implicit request: WrappedRequest[_], lang: Lang): String = {
     val d_minus_seven_days = DateUtils.now.minusDays(7)
     val d_minus_one_days = DateUtils.now.minusDays(1)
     val d_minus_one_hours = DateUtils.now.minusHours(1)
@@ -60,7 +58,7 @@ object CustomTag {
 
   def date_format(date: DateTime, format: Option[String] = None)(implicit lang: Lang): String = {
     val pattern = format
-      .orElse(Play.configuration.getString(s"date.i18n.date.format.${lang.language}"))
+      .orElse(Config.getString(s"date.i18n.date.format.${lang.language}"))
       .getOrElse("dd/MM/yyyy")
     val locale = lang.toLocale
 

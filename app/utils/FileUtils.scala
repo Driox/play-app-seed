@@ -36,8 +36,8 @@ class FileUtils(file: File) {
     finally { br.close }
   }
 
-  def deleteAll(): Unit = {
-    def deleteFile(dfile: File): Unit = {
+  def deleteAll(): Boolean = {
+    def deleteFile(dfile: File): Boolean = {
       if (dfile.isDirectory) {
         dfile.listFiles.foreach { f => deleteFile(f) }
       }

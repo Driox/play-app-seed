@@ -1,19 +1,23 @@
 package global
 
+import org.scalatest.TestData
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
 import org.scalatestplus.play._
-import play.api.GlobalSettings
+import org.scalatestplus.play.guice.GuiceOneAppPerTest
+import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.Results
-import play.api.test._
+import test.fixture.FixtureModule
 
-abstract class ApiSpecServer extends PlaySpec with OneServerPerTest with Results with ScalaFutures with IntegrationPatience {
+abstract class ApiSpecServer extends PlaySpec with GuiceOneAppPerTest with Results with ScalaFutures with IntegrationPatience {
 
   val currentVersion = 1
 
-  protected def getFakeApp(global: GlobalSettings): FakeApplication = {
-    FakeApplication(
-      additionalConfiguration = Map(
-        "slick.dbs.default.driver" -> "slick.driver.H2Driver$",
+  // Override newAppForTest if you need an Application with other than
+  // default parameters.
+  override def newAppForTest(td: TestData) = new GuiceApplicationBuilder()
+    .configure(
+      Map(
+        "slick.dbs.default.profile" -> "slick.jdbc.H2Profile$",
         "slick.dbs.default.db.driver" -> "org.h2.Driver",
         "slick.dbs.default.db.url" -> "jdbc:h2:mem:play;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=FALSE",
         "slick.dbs.default.db.user" -> "sa",
@@ -23,9 +27,11 @@ abstract class ApiSpecServer extends PlaySpec with OneServerPerTest with Results
 
         "play.evolutions.enabled" -> "false",
         "play.evolutions.autoApply" -> "false",
-        "play.evolutions.autocommit" -> "false"
-      ),
-      withGlobal = Some(global)
+        "play.evolutions.autocommit" -> "false",
+
+        "ehcacheplugin" -> "disabled"
+      )
     )
-  }
+    .bindings(new FixtureModule)
+    .build()
 }

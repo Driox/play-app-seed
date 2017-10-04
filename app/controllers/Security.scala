@@ -1,29 +1,30 @@
 package controllers
 
 import models._
-import models.dao.DaoAware
 import play.api.mvc._
-import play.api.mvc.Results._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.concurrent.Future
+
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
  * Created by Grignou on 30/10/2015.
  */
 class AuthRequest[A](val user: User, request: Request[A]) extends WrappedRequest[A](request)
 
-private[controllers] trait Security extends Controller with DaoAware {
+private[controllers] trait Security { self: BaseController =>
 
-  def secureAction() = new ActionRefiner[Request, AuthRequest] {
+  def userDao: Users
+
+  def secureAction()(implicit ec: ExecutionContext) = new ActionRefiner[Request, AuthRequest] {
+    def executionContext = ec
     def refine[A](request: Request[A]): Future[Either[Result, AuthRequest[A]]] = reqToUser(request) map {
       case Some(user) => Right(new AuthRequest(user, request))
       case None       => Left(Forbidden("error.login.required"))
     }
   }
 
-  val AuthAction = Action andThen secureAction
+  def AuthAction()(implicit ec: ExecutionContext): ActionBuilder[AuthRequest, AnyContent] = Action andThen secureAction
 
-  private def reqToUser(request: RequestHeader): Future[Option[User]] = {
+  private def reqToUser(request: RequestHeader)(implicit ec: ExecutionContext): Future[Option[User]] = {
     request.session.get("userEmail").map { email =>
       userDao.findByEmail(email)
     }.getOrElse(Future.successful(None))
