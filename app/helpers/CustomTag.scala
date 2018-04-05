@@ -2,7 +2,7 @@ package helpers
 
 import models._
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.{DateTime, Days}
+import org.joda.time.{ DateTime, Days }
 import org.joda.time.Minutes
 import org.joda.time.Hours
 import play.api.i18n.Lang

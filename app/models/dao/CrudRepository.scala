@@ -4,7 +4,7 @@ import play.api.db.slick.HasDatabaseConfig
 import slick.jdbc.JdbcProfile
 import slick.relational.RelationalProfile
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import slick.lifted._
 
 trait CrudRepository[E <: Entity[E], J <: JdbcProfile] { self: HasDatabaseConfig[J] =>

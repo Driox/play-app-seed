@@ -9,7 +9,7 @@ object JsonUtils {
   private implicit val lang = Config.default_lang
 
   def validUrls: Reads[Seq[String]] = Reads.seq[String].filter(JsonValidationError(m("error.url.malformatted")))(urls => {
-    val urlValidator = if (Config.isDev()) new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS) else new UrlValidator();
+    val urlValidator = if (Config.isDev()) new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS) else new UrlValidator()
     urls.filter(!urlValidator.isValid(_)).isEmpty
   })
 

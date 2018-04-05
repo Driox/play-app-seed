@@ -3,10 +3,10 @@ package notifier
 import akka.actor.ActorSystem
 import play.api.mvc.RequestHeader
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import org.apache.commons.mail._
 import play.api.mvc.request.RemoteConnection
-import play.api.{Configuration, Logger}
+import play.api.{ Configuration, Logger }
 
 import scala.util.Try
 

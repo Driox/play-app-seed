@@ -4,7 +4,7 @@ import java.util.Date
 import java.text.SimpleDateFormat
 import java.util.TimeZone
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.{Days, DateTime, DateTimeZone}
+import org.joda.time.{ Days, DateTime, DateTimeZone }
 import play.api.libs.json._
 import org.joda.time.format.DateTimeFormatter
 import org.joda.time.format.ISODateTimeFormat

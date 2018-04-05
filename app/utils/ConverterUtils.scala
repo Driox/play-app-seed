@@ -1,6 +1,6 @@
 package utils
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import scala.xml.NodeSeq
 import org.joda.time.DateTime
 

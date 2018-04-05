@@ -7,9 +7,9 @@ import org.joda.time.DateTime
 import utils.DateUtils
 import utils.StringUtils
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import models.dao._
-import play.api.libs.json.{JsValue, Json}
+import play.api.libs.json.{ JsValue, Json }
 import slick.jdbc.JdbcProfile
 
 /**
@@ -20,19 +20,19 @@ import slick.jdbc.JdbcProfile
  *  user.authenticate(credentials)
  */
 case class User(
-    id:         String           = StringUtils.generateUuid,
-    uuid:       String           = StringUtils.generateUuid,
-    created_at: DateTime         = DateUtils.now,
-    deleted_at: Option[DateTime] = None,
-    email:      String,
-    password:   String,
-    first_name: Option[String]   = None,
-    last_name:  Option[String]   = None,
-    avatar_url: Option[String]   = None,
-    birthday:   Option[DateTime] = None,
-    phone:      Option[String]   = None,
-    language:   Option[String]   = None,
-    custom:     Option[JsValue]  = None
+  id:         String           = StringUtils.generateUuid,
+  uuid:       String           = StringUtils.generateUuid,
+  created_at: DateTime         = DateUtils.now,
+  deleted_at: Option[DateTime] = None,
+  email:      String,
+  password:   String,
+  first_name: Option[String]   = None,
+  last_name:  Option[String]   = None,
+  avatar_url: Option[String]   = None,
+  birthday:   Option[DateTime] = None,
+  phone:      Option[String]   = None,
+  language:   Option[String]   = None,
+  custom:     Option[JsValue]  = None
 ) extends UserAuth with Entity[User] {
   def copyWithId(id: String) = this.copy(id = id)
 }
