@@ -1,18 +1,16 @@
 package models
 
-import models.dao.PortableJodaSupport._
-import play.api.Play
-import play.api.db.slick.DatabaseConfigProvider
+import javax.inject._
 
-import driver.api._
+import play.api.db.slick._
 import org.joda.time.DateTime
 import utils.DateUtils
-import slick.lifted._
-import slick.driver.JdbcProfile
 import utils.StringUtils
 
 import scala.concurrent.{ExecutionContext, Future}
 import models.dao._
+import play.api.libs.json.{JsValue, Json}
+import slick.jdbc.JdbcProfile
 
 /**
  * easy to mock :
@@ -24,7 +22,7 @@ import models.dao._
 case class User(
     id:         String           = StringUtils.generateUuid,
     uuid:       String           = StringUtils.generateUuid,
-    created_at: Option[DateTime] = Some(DateUtils.now),
+    created_at: DateTime         = DateUtils.now,
     deleted_at: Option[DateTime] = None,
     email:      String,
     password:   String,
@@ -34,7 +32,7 @@ case class User(
     birthday:   Option[DateTime] = None,
     phone:      Option[String]   = None,
     language:   Option[String]   = None,
-    visible:    Option[Boolean]  = None
+    custom:     Option[JsValue]  = None
 ) extends UserAuth with Entity[User] {
   def copyWithId(id: String) = this.copy(id = id)
 }
@@ -51,41 +49,29 @@ trait UserAuth {
   def isAuthorized(): Boolean = ???
 }
 
-class UserTable(tag: Tag) extends Table[User](tag, "users") with TableHelper {
+@Singleton
+class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)
+    extends HasDatabaseConfigProvider[JdbcProfile]
+    with CrudRepository[User, JdbcProfile]
+    with EntityWithTableLifecycle[JdbcProfile]
+    with UserComponent {
 
-  val id = column[String]("id", O.PrimaryKey)
-  val uuid = column[String]("uuid")
-  val created_at = column[Option[DateTime]]("created_at")
-  val deleted_at = column[Option[DateTime]]("deleted_at")
-  val email = column[String]("email")
-  val password = column[String]("password")
-  val first_name = column[Option[String]]("first_name")
-  val last_name = column[Option[String]]("last_,ame")
-  val avatar_url = column[Option[String]]("avatar_url")
-  val birthday = column[Option[DateTime]]("birthday")
-  val phone = column[Option[String]]("phone")
-  val language = column[Option[String]]("language")
-  val visible = column[Option[Boolean]]("visible")
+  import profile.api._
 
-  def * = (id, uuid, created_at, deleted_at, email, password, first_name, last_name, avatar_url, birthday, phone, language, visible) <> (User.tupled, User.unapply _)
-}
-
-class Users extends DaoHelperCrud[UserTable, User] {
-
-  protected override val dbConfig = DatabaseConfigProvider.get[JdbcProfile](Play.current)
-  import driver.api._
-
-  override val tables = TableQuery[UserTable]
+  val tables = TableQuery[UserTable]
+  type TableType = UserTable
 
   def findByEmail(email: String)(implicit executionCtx: ExecutionContext): Future[Option[User]] = {
     db.run(tables.filter(_.email === email).result.headOption)
   }
 
-  def findByUuid(uuid: String): Future[Option[User]] = {
+  def findByUuid(uuid: String)(implicit executionCtx: ExecutionContext): Future[Option[User]] = {
     val q = tables.filter(_.uuid === uuid)
     db.run(q.result.headOption)
   }
 
-  def create(email: String, password: String): Future[Option[User]] = ???
+  def create(email: String, password: String)(implicit executionCtx: ExecutionContext): Future[User] = {
+    create(User(email = email, password = password))
+  }
 
 }

@@ -1,12 +1,12 @@
 package filters
 
 import javax.inject.Inject
+
 import akka.stream.Materializer
-import scala.concurrent.Future
+
+import scala.concurrent.{ExecutionContext, Future}
 import play.api.mvc._
-import play.api.Play
-import play.api.Play.current
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.Configuration
 
 /**
  * @author Grignou
@@ -21,10 +21,10 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
  * <p>api.secure=true</p>
  *
  */
-class HttpsFilter @Inject() (implicit val mat: Materializer) extends Filter {
+class HttpsFilter @Inject() (implicit val mat: Materializer, configuration: Configuration, ec: ExecutionContext) extends Filter {
 
   def apply(nextFilter: (RequestHeader) => Future[Result])(requestHeader: RequestHeader): Future[Result] = {
-    val isEnable = Play.configuration.getBoolean("application.is.secure").getOrElse(true)
+    val isEnable = configuration.get[Boolean]("application.is.secure")
 
     if (!isEnable) {
       nextFilter(requestHeader)
