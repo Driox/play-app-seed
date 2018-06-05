@@ -3,7 +3,7 @@ package controllers
 import models._
 import play.api.mvc._
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * Created by Grignou on 30/10/2015.

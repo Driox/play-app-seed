@@ -7,7 +7,7 @@ import models.User
 
 import scala.util.Try
 import scala.concurrent.Future
-import play.api.{Application, Configuration}
+import play.api.{ Application, Configuration }
 import play.api.i18n.Lang
 import utils.m
 

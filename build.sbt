@@ -62,15 +62,15 @@ libraryDependencies ++= Seq(
 // use DI
 routesGenerator := InjectedRoutesGenerator
 
-Concat.groups := Seq(
-  "main.js" -> group(baseDirectory.value / "app" / "assets" / "js" ** "*.js")
-)
+//Concat.groups := Seq(
+//  "main.js" -> group(baseDirectory.value / "app" / "assets" / "js" ** "*.js")
+//)
 
 // Public assets pipeline
-pipelineStages := Seq(rjs, concat, digest, gzip)
+pipelineStages := Seq(rjs, /*concat,*/ digest, gzip)
 
 // Public assets pipeline in dev mode
-(pipelineStages in Assets) := Seq(concat)
+//(pipelineStages in Assets) := Seq(concat)
 
 // Template config
 TwirlKeys.templateImports ++= Seq("helpers._", "helpers.CustomTag._", "tags._", "_root_.utils._", "views.html.tags._", "views.html.tags.html._")
@@ -94,33 +94,37 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard" //when non-Unit expression results are unused 
 )
 
-incOptions := incOptions.value.withNameHashing(true)
-
 updateOptions := updateOptions.value.withCachedResolution(true)
 
 
 // ~~~~~~~~~~~~~~~~~
 //Scalariform config
 
-scalariformSettings
+import scalariform.formatter.preferences._
 
-ScalariformKeys.preferences := ScalariformKeys.preferences.value
-  .setPreference(scalariform.formatter.preferences.AlignSingleLineCaseStatements, true)
-  .setPreference(scalariform.formatter.preferences.AlignParameters, true)
-  .setPreference(scalariform.formatter.preferences.DoubleIndentClassDeclaration, true)
-  .setPreference(scalariform.formatter.preferences.PreserveDanglingCloseParenthesis, true)
+scalariformPreferences := scalariformPreferences.value
+    .setPreference(AlignSingleLineCaseStatements, true)
+    .setPreference(AlignParameters, true)
+    .setPreference(DoubleIndentClassDeclaration, true)
+    .setPreference(DanglingCloseParenthesis, Preserve)
 
 // ~~~~~~~~~~~~~~~~~
 // code generation task
-slick <<= slickCodeGenTask
-lazy val slick = TaskKey[Seq[File]]("gen-tables")
-lazy val slickCodeGenTask = (sourceManaged, dependencyClasspath in Compile, runner in Compile, streams) map { (dir, cp, r, s) =>
-  val outputDir = (dir / "slick").getPath // place generated files in sbt's managed sources folder
-  val url = "jdbc:h2:mem:test" // connection info for a pre-populated throw-away, in-memory db for this demo, which is freshly initialized on every run
-  val jdbcDriver = "org.postgresql.Driver"
-  val slickDriver = "slick.jdbc.PostgresProfile"
-  val pkg = "demo"
-  toError(r.run("slick.codegen.SourceCodeGenerator", cp.files, Array(slickDriver, jdbcDriver, url, outputDir, pkg), s.log))
-  val fname = outputDir + "/demo/Tables.scala"
-  Seq(file(fname))
-}
+
+//lazy val slick = TaskKey[Seq[File]]("gen-tables")
+//slick := { //(sourceManaged, dependencyClasspath in Compile, runner in Compile, streams) map { (dir, cp, r, s) =>
+//  val dir = sourceManaged.value
+//  val cp = (dependencyClasspath in Compile).value
+//  val r = (runner in Compile).value
+//  val s = streams.value
+//
+//  val outputDir = (dir / "slick").getPath // place generated files in sbt's managed sources folder
+//  val url = "jdbc:h2:mem:test" // connection info for a pre-populated throw-away, in-memory db for this demo, which is freshly initialized on every run
+//  val jdbcDriver = "org.postgresql.Driver"
+//  val slickDriver = "slick.jdbc.PostgresProfile"
+//  val pkg = "demo"
+//  (r.run("slick.codegen.SourceCodeGenerator", cp.files, Array(slickDriver, jdbcDriver, url, outputDir, pkg), s.log))
+//
+//  val fname = outputDir + "/demo/Tables.scala"
+//  Seq(file(fname))
+//}

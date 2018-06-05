@@ -1,7 +1,7 @@
 package models.dao
 
-import play.api.libs.json.{JsValue, Json}
-import slick.jdbc.{GetResult, JdbcProfile}
+import play.api.libs.json.{ JsValue, Json }
+import slick.jdbc.{ GetResult, JdbcProfile }
 
 class JsonMapping(val driver: JdbcProfile) {
 

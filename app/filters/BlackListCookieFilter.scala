@@ -1,6 +1,6 @@
 package filters
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 import play.api.mvc._
 import play.api.mvc.Results.Redirect
 import javax.inject._

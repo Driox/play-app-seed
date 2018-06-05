@@ -1,7 +1,7 @@
 package controllers
 
-import helpers.sorus.{FormatErrorResult, SorusPlay}
-import play.api.i18n.{I18nSupport, Lang}
+import helpers.sorus.{ FormatErrorResult, SorusPlay }
+import play.api.i18n.{ I18nSupport, Lang }
 import play.api.mvc._
 
 trait BaseController extends InjectedController
