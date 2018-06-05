@@ -13,7 +13,7 @@ resolvers += "bitbucket-release" at "https://bitbucket.org/Adrien/particeep-repo
 resolvers += Classpaths.sbtPluginReleases
 
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.12")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.15")
 
 // use to display dependencies graph
 // https://github.com/jrudolph/sbt-dependency-graph
@@ -31,11 +31,11 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.2")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-rjs" % "1.0.10")
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.3")
+addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.4")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.1.2")
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.1.1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.4.3")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-uglify" % "2.0.0")
 
@@ -53,4 +53,4 @@ addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.2")
 
 //libraryDependencies += "org.scalariform" %% "scalariform" % "0.1.7"
 
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.1")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.3")
