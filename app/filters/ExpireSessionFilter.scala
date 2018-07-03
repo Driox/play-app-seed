@@ -9,7 +9,6 @@ import play.api.mvc.Results.Redirect
 import javax.inject._
 
 import akka.stream.Materializer
-import play.api.routing.Router.Routes
 
 import scala.util.Try
 
@@ -19,7 +18,7 @@ import scala.util.Try
  * negative value of play.application.inactivity.seconds_allowed disable the filter
  */
 @Singleton
-class ExpireSessionFilter @Inject() (val mat: Materializer, config: Configuration, routes: Routes) extends Filter {
+class ExpireSessionFilter @Inject() (val mat: Materializer, config: Configuration) extends Filter {
 
   def apply(nextFilter: (RequestHeader) => Future[Result])(requestHeader: RequestHeader): Future[Result] = {
     if (isEnable(requestHeader) && isTokenExpired(requestHeader)) {

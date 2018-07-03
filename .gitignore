@@ -30,3 +30,4 @@ activator*
 node_modules
 npm-debug.log
 .DS_Store
+/public/react

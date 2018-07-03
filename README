@@ -11,3 +11,28 @@ TODO :
 * set meta info in messages.conf
 * update logger file for prod mode
 * change the google analytics / mixpanel id in views/tags/analytics.scala.html
+
+
+# React app
+
+run in dev
+```
+npm start
+```
+
+build for prod
+```
+npm run build
+```
+
+run test
+```
+npm test
+npm test -- --coverage
+```
+
+on jenkins, CI env variable must be used
+```
+CI=true npm run build
+CI=true npm test
+```
