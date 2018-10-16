@@ -1,0 +1,11 @@
+{
+    "profile" : {
+        "lng" : "Language"
+    },
+    "global" : {
+        "lng" : {
+            "en" : "English",
+            "fr" : "French"
+        }
+    }
+}

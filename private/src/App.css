@@ -1,0 +1,68 @@
+:root {
+  --main_color: #aaffaa;
+}
+
+.App {
+  text-align: center;
+  color: #ddd;
+}
+
+.App-logo {
+  animation: img-spin infinite 20s linear;
+  float: left;
+  color: var(--main_color);
+}
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes img-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.errors {
+  display: block;
+  position: absolute;
+  bottom: 60px;
+  left: 10px;
+  background-color: #de4545;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.errors i, .errors b {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.errors i {
+  padding-left: 12px;
+  cursor: pointer;
+}

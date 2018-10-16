@@ -10,6 +10,15 @@ GET    /unsubscribe/:uuid                                        controllers.App
 GET    /sitemap.xml                                              controllers.Assets.at(path="/public", file = "sitemap.xml")
 GET    /robots.txt                                               controllers.Assets.at(path="/public", file = "robots.txt")
 
+# React App
+GET    /app                                                      controllers.FrontEndApplication.redirectToApp
+GET    /app/                                                     controllers.FrontEndApplication.app(path = "")
+GET    /app/static/*file                                         controllers.Assets.at(path="/public/react/static", file: String)
+GET    /app/*path                                                controllers.FrontEndApplication.app(path)
+
+POST   /users/:id/lng/:lng                                       controllers.UserController.changeLang(id, lng)
+
+
 # Security
 GET    /login                                                    controllers.AuthenticationController.login
 POST   /login                                                    controllers.AuthenticationController.authenticate
