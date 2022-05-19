@@ -1,4 +1,4 @@
-package helpers
+package security
 
 import javax.crypto._
 import javax.crypto.spec.{ IvParameterSpec, SecretKeySpec }

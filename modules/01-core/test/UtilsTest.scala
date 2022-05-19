@@ -35,7 +35,7 @@ class UtilsTest extends PlaySpec {
     }
 
     "print a date in iso format" in {
-      val date = TimeUtils.now()
+      val date = TimeUtils.now
         .withHour(14)
         .withMinute(23)
         .withSecond(5)

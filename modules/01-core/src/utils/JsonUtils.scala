@@ -4,7 +4,6 @@ import play.api.i18n.Lang
 import play.api.libs.json._
 
 import scala.annotation.tailrec
-
 import org.apache.commons.validator.routines.UrlValidator
 
 object JsonUtils {
@@ -15,6 +14,11 @@ object JsonUtils {
     case JsObject(fields) => JsObject(fields.toSeq.sortBy(_._1).map { case (key, value) => (key, sort_fields(value)) })
     case JsArray(array)   => JsArray(array.map(e => sort_fields(e)))
     case other            => other
+  }
+
+  def hash(input: JsValue): String = {
+    val sorted_data = sort_fields(input).toString()
+    HashUtils.sha512Hash(sorted_data)
   }
 
   def formatJsonError(errors: scala.collection.Seq[(JsPath, scala.collection.Seq[JsonValidationError])]): String = {

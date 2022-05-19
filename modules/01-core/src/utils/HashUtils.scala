@@ -2,6 +2,8 @@ package utils
 
 import java.nio.charset.StandardCharsets
 
+import scala.util.Try
+
 import org.mindrot.jbcrypt.BCrypt
 
 object HashUtils {
@@ -17,9 +19,9 @@ object HashUtils {
    * Method to check if entered user password is the same as the one that is
    * stored (encrypted) in the database.
    */
-  def checkPassword(candidate: String, encryptedPassword: String): Boolean = {
+  def checkPassword(candidate: String, encryptedPassword: String): Boolean = Try {
     BCrypt.checkpw(candidate, encryptedPassword)
-  }
+  }.getOrElse(false)
 
   /**
    * doc for %02x : https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
