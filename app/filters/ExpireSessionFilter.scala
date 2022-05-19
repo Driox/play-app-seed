@@ -1,7 +1,5 @@
 package filters
 
-import org.joda.time.{ DateTime, DateTimeZone }
-
 import scala.concurrent.Future
 import play.api.Configuration
 import play.api.mvc._
@@ -9,7 +7,7 @@ import play.api.mvc.Results.Redirect
 import javax.inject._
 
 import akka.stream.Materializer
-
+import utils.TimeUtils
 import scala.util.Try
 
 /**
@@ -21,7 +19,7 @@ import scala.util.Try
 class ExpireSessionFilter @Inject() (val mat: Materializer, config: Configuration) extends Filter {
 
   def apply(nextFilter: (RequestHeader) => Future[Result])(requestHeader: RequestHeader): Future[Result] = {
-    if (isEnable(requestHeader) && isTokenExpired(requestHeader)) {
+    if(isEnable(requestHeader) && isTokenExpired(requestHeader)) {
       Future.successful(Redirect(controllers.routes.Application.home()).withNewSession)
     } else {
       nextFilter(requestHeader)
@@ -39,7 +37,7 @@ class ExpireSessionFilter @Inject() (val mat: Materializer, config: Configuratio
     }).getOrElse(false)
   }
 
-  private[this] def timestamp(): Long = DateTime.now(DateTimeZone.UTC).getMillis
+  private[this] def timestamp(): Long = TimeUtils.now.toEpochSecond()
 
   private[this] val apiPath = "^/v[0-9]*/.*"
   private[this] def isEnable(header: RequestHeader): Boolean = !header.path.matches(apiPath)

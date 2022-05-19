@@ -2,7 +2,7 @@ package test.global
 
 import play.api.Logger
 
-import scala.concurrent.{Await, Future}
+import scala.concurrent.{ Await, Future }
 import scala.concurrent.duration._
 import play.api.mvc.InjectedController
 import play.api.test.Helpers
@@ -14,7 +14,7 @@ trait TestLogger {
 }
 
 trait TestGlobal extends TestLogger {
-  def await[A](f: Future[A]): A = Await.result(f, 10 seconds)
+  def await[A](f: Future[A]): A           = Await.result(f, 10 seconds)
   def await[A](f: Seq[Future[A]]): Seq[A] = await(Future.sequence(f))
 }
 

@@ -5,7 +5,6 @@ import play.twirl.api.Html
 
 /**
  * Static resources convenience handlers
- *
  */
 private[helpers] sealed trait asset {
   protected val ext = "" //." + folder
@@ -13,9 +12,10 @@ private[helpers] sealed trait asset {
 
   protected def toArgs(args: (Symbol, Any)*) = PlayMagic.toHtmlArgs(args.toMap).body
 
-  protected def opt(t: String, r: => String) = if (t == null || t.trim == "") "" else r
+  protected def opt(t: String, r: => String) = if(t == null || t.trim == "") "" else r
 
-  def url(resource: String, absolute: Boolean = false) = controllers.routes.Assets.versioned(folder + "/" + resource + ext).url
+  def url(resource: String, absolute: Boolean = false) =
+    controllers.routes.Assets.versioned(folder + "/" + resource + ext).url
 }
 
 object css extends asset {
@@ -29,7 +29,7 @@ object css extends asset {
 
 object img extends asset {
   override protected val ext = ""
-  protected def folder = "images"
+  protected def folder       = "images"
 
   def apply(resource: String, args: (Symbol, Any)*): Html = apply(resource, "", args: _*)
 

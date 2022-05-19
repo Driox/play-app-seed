@@ -1,0 +1,1239 @@
+2022.05.19 17:17:11 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/adrien/Dev/scala/play-app-seed/.metals/lsp.trace.json or /Users/adrien/Library/Caches/org.scalameta.metals/lsp.trace.json
+2022.05.19 17:17:11 INFO  logging to file /Users/adrien/Dev/scala/play-app-seed/.metals/metals.log
+2022.05.19 17:17:11 INFO  Started: Metals version 0.11.5 in workspace '/Users/adrien/Dev/scala/play-app-seed' for client Visual Studio Code 1.67.1.
+2022.05.19 17:17:14 INFO  time: initialize in 2.46s
+2022.05.19 17:17:14 WARN  Flyway upgrade recommended: H2 2.1.212 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.1.210.
+2022.05.19 17:17:14 WARN  Build server is not auto-connectable.
+2022.05.19 17:17:19 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:17:23 INFO  no build target found for /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt. Using presentation compiler with project's scala-library version: 3.1.2
+2022.05.19 17:17:24 INFO  time: code lens generation in 4.8s
+2022.05.19 17:17:39 INFO  skipping build import with status 'Dismissed'
+2022.05.19 17:17:47 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:17:47 INFO  skipping build import with status 'Dismissed'
+2022.05.19 17:17:56 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:17:56 INFO  skipping build import with status 'Dismissed'
+2022.05.19 17:20:18 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:20:26 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:20:26 INFO  skipping build import with status 'Dismissed'
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.4.3/scalafmt-core_2.13-3.4.3.pom
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.4.3/scalafmt-core_2.13-3.4.3.pom
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.4.3/scalafmt-config_2.13-3.4.3.pom
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-sysops_2.13/3.4.3/scalafmt-sysops_2.13-3.4.3.pom
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.4.3/scalafmt-config_2.13-3.4.3.pom
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-sysops_2.13/3.4.3/scalafmt-sysops_2.13-3.4.3.pom
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-sysops_2.13/3.4.3/scalafmt-sysops_2.13-3.4.3.jar
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.4.3/scalafmt-core_2.13-3.4.3.jar
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.4.3/scalafmt-config_2.13-3.4.3.jar
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-sysops_2.13/3.4.3/scalafmt-sysops_2.13-3.4.3.jar
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.4.3/scalafmt-config_2.13-3.4.3.jar
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.4.3/scalafmt-core_2.13-3.4.3.jar
+2022.05.19 17:20:33 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:20:33 INFO  skipping build import with status 'Dismissed'
+2022.05.19 17:20:37 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/plugins.sbt
+2022.05.19 17:20:37 INFO  skipping build import with status 'Dismissed'
+2022.05.19 17:21:50 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:22:19 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:22:19 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:22:19 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:22:29 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:22:29 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:22:29 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:22:55 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:22:55 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:23:10 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:23:10 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:23:14 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:23:14 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:23:14 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:23:15 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:23:15 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:23:15 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:25:43 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:25:43 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:25:52 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:25:52 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:25:52 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:06 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:06 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:06 INFO  skipping build import with status 'Dismissed'
+2022.05.19 17:26:08 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:18 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:18 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:18 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:25 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:25 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:25 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:28 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:28 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:28 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:29 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:29 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:29 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:39 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:39 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:39 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:26:41 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:26:41 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:26:41 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:27:27 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:27:27 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:27:27 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:27:35 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:27:35 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:27:35 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:28:12 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:28:12 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:28:14 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:28:14 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:28:14 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:28:15 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:28:15 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:28:15 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:28:52 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:28:52 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:28:52 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:28:54 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:28:54 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:28:54 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:29:33 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:29:33 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:29:33 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:29:33 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:29:33 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:29:34 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:29:44 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:29:44 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:29:44 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:31:32 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:31:32 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:31:59 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:31:59 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:31:59 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:32:01 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:32:01 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:32:01 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:32:39 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:32:39 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:32:39 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:32:45 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:32:45 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:32:45 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:33:06 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:33:06 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:33:06 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:33:08 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:33:08 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:33:08 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:34:28 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:34:28 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:34:31 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:34:31 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:34:31 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:34:55 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:34:55 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:34:55 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:34:58 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:34:58 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:34:58 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:34:59 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:34:59 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:34:59 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:35:21 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:35:21 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:35:21 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:35:29 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:35:29 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:35:29 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:35:44 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:35:44 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:35:44 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:35:45 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:35:45 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:35:45 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:36:05 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:36:05 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:36:05 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:38:16 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:38:16 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:38:25 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:38:25 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:38:25 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:38:40 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:38:40 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:38:40 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:46:01 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:46:01 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:48:11 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:48:11 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:48:58 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:48:58 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:48:58 INFO  skipping build import with status 'Dismissed'
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:51:24 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:51:24 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 17:52:21 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/build.sbt
+'align.tokens.add' is deprecated; use align.tokens."+" instead.
+2022.05.19 17:52:22 ERROR scalafmt: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf: Invalid config: /Users/adrien/Dev/scala/play-app-seed/.scalafmt.conf:11:0 error: Type mismatch;
+  found    : String (value: "JavaDoc")
+  expected : Object
+docstrings = JavaDoc
+^
+
+2022.05.19 17:52:22 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/build.sbt
+2022.05.19 17:53:00 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/DateUtils.scala
+2022.05.19 17:59:46 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/StringUtil.scala
+2022.05.19 17:59:50 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/Resource.scala
+2022.05.19 17:59:55 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/package.scala
+2022.05.19 17:59:56 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/NumberUtils.scala
+2022.05.19 17:59:57 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/JsonUtils.scala
+2022.05.19 17:59:57 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/i18n.scala
+2022.05.19 17:59:59 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/FileUtils.scala
+2022.05.19 18:00:00 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/ConverterUtils.scala
+2022.05.19 18:00:02 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/DateUtils.scala
+2022.05.19 18:01:03 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:01:06 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/StringUtil.scala
+2022.05.19 18:01:08 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/NumberUtils.scala
+2022.05.19 18:01:09 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/package.scala
+2022.05.19 18:01:12 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/package.scala
+2022.05.19 18:01:14 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/utils/package.scala
+2022.05.19 18:01:33 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/assets.scala
+2022.05.19 18:04:41 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/HashUtils.scala
+2022.05.19 18:04:42 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/FileUtils.scala
+2022.05.19 18:04:43 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/HashUtils.scala
+2022.05.19 18:04:56 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/i18n.scala
+2022.05.19 18:05:05 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/JsonUtils.scala
+2022.05.19 18:05:18 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/JsonUtils.scala
+2022.05.19 18:05:19 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/test/HmacSecurityTest.scala
+2022.05.19 18:05:33 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:06:02 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+Exception in thread "pool-3-thread-1" java.lang.AssertionError: NoDenotation.owner
+	at dotty.tools.dotc.core.SymDenotations$NoDenotation$.owner(SymDenotations.scala:2495)
+	at scala.meta.internal.pc.SemanticdbSymbols$.addSymName(SemanticdbSymbols.scala:136)
+	at scala.meta.internal.pc.SemanticdbSymbols$.symbolName(SemanticdbSymbols.scala:79)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted$$anonfun$1(PcDefinitionProvider.scala:106)
+	at scala.collection.immutable.List.map(List.scala:246)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted(PcDefinitionProvider.scala:106)
+	at scala.meta.internal.pc.PcDefinitionProvider.findDefinitions(PcDefinitionProvider.scala:82)
+	at scala.meta.internal.pc.PcDefinitionProvider.definitions(PcDefinitionProvider.scala:51)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.definition$$anonfun$1(ScalaPresentationCompiler.scala:113)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:137)
+	at scala.meta.internal.pc.CompilerAccess.withNonInterruptableCompiler$$anonfun$1(CompilerAccess.scala:125)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:197)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2022.05.19 18:06:23 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/helpers/Crypto.scala
+2022.05.19 18:06:42 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:06:42 INFO  skipping build import with status 'Dismissed'
+Exception in thread "pool-3-thread-2" java.lang.AssertionError: NoDenotation.owner
+	at dotty.tools.dotc.core.SymDenotations$NoDenotation$.owner(SymDenotations.scala:2495)
+	at scala.meta.internal.pc.SemanticdbSymbols$.addSymName(SemanticdbSymbols.scala:136)
+	at scala.meta.internal.pc.SemanticdbSymbols$.symbolName(SemanticdbSymbols.scala:79)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted$$anonfun$1(PcDefinitionProvider.scala:106)
+	at scala.collection.immutable.List.map(List.scala:246)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted(PcDefinitionProvider.scala:106)
+	at scala.meta.internal.pc.PcDefinitionProvider.findDefinitions(PcDefinitionProvider.scala:82)
+	at scala.meta.internal.pc.PcDefinitionProvider.definitions(PcDefinitionProvider.scala:51)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.definition$$anonfun$1(ScalaPresentationCompiler.scala:113)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:137)
+	at scala.meta.internal.pc.CompilerAccess.withNonInterruptableCompiler$$anonfun$1(CompilerAccess.scala:125)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:197)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2022.05.19 18:07:37 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/helpers/assets.scala
+2022.05.19 18:08:02 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/effect/Fail.scala
+2022.05.19 18:08:19 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/helpers/sorus/Fail.scala
+2022.05.19 18:08:56 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/effect/zio/PlatformAppSpecific.scala
+2022.05.19 18:09:00 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/effect/zio/sorus/package.scala
+2022.05.19 18:09:03 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/effect/zio/sorus/ZioSorus.scala
+2022.05.19 18:09:04 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/effect/zio/sorus/ZioExtension.scala
+2022.05.19 18:09:18 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:09:25 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:12:21 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:12:32 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:12:44 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/Config.scala
+2022.05.19 18:12:49 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/Config.scala
+2022.05.19 18:12:58 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:13:17 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:14:07 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:14:29 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:14:30 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:14:30 INFO  skipping build import with status 'Dismissed'
+2022.05.19 18:15:30 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:15:37 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:15:49 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:15:56 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:16:00 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:16:22 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:16:41 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:16:42 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:16:47 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:16:58 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:17:27 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:17:27 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:17:29 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:17:36 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:17:39 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:17:40 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/UserRepository.scala
+2022.05.19 18:17:46 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/UserRepository.scala
+2022.05.19 18:17:49 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/UserRepository.scala
+2022.05.19 18:17:53 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:17:55 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/dao/EntityWithTableLifecycle.scala
+2022.05.19 18:18:11 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/dao/EntityWithTableLifecycle.scala
+2022.05.19 18:18:27 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/dao/EntityWithTableLifecycle.scala
+2022.05.19 18:19:04 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomApplicationLoader.scala
+2022.05.19 18:19:11 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomApplicationLoader.scala
+2022.05.19 18:19:33 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomApplicationLoader.scala
+2022.05.19 18:19:35 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:19:50 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/test/global/TestGlobal.scala
+2022.05.19 18:19:58 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/test/global/Fixtures.scala
+2022.05.19 18:20:05 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/LoggerUtils.scala
+2022.05.19 18:20:22 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/LoggerUtils.scala
+2022.05.19 18:21:04 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:21:04 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:21:07 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:21:11 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:21:18 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:21:23 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/notifier/Notifier.scala
+2022.05.19 18:22:26 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:22:34 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:22:36 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:22:42 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:22:42 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/User.scala
+2022.05.19 18:22:54 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/test/UtilsTest.scala
+2022.05.19 18:22:57 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+Exception in thread "pool-3-thread-3" java.lang.AssertionError: NoDenotation.owner
+	at dotty.tools.dotc.core.SymDenotations$NoDenotation$.owner(SymDenotations.scala:2495)
+	at scala.meta.internal.pc.SemanticdbSymbols$.addSymName(SemanticdbSymbols.scala:136)
+	at scala.meta.internal.pc.SemanticdbSymbols$.symbolName(SemanticdbSymbols.scala:79)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted$$anonfun$1(PcDefinitionProvider.scala:106)
+	at scala.collection.immutable.List.map(List.scala:246)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted(PcDefinitionProvider.scala:106)
+	at scala.meta.internal.pc.PcDefinitionProvider.findDefinitions(PcDefinitionProvider.scala:82)
+	at scala.meta.internal.pc.PcDefinitionProvider.definitions(PcDefinitionProvider.scala:51)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.definition$$anonfun$1(ScalaPresentationCompiler.scala:113)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:137)
+	at scala.meta.internal.pc.CompilerAccess.withNonInterruptableCompiler$$anonfun$1(CompilerAccess.scala:125)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:197)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Exception in thread "pool-3-thread-4" java.lang.AssertionError: NoDenotation.owner
+	at dotty.tools.dotc.core.SymDenotations$NoDenotation$.owner(SymDenotations.scala:2495)
+	at scala.meta.internal.pc.SemanticdbSymbols$.addSymName(SemanticdbSymbols.scala:136)
+	at scala.meta.internal.pc.SemanticdbSymbols$.symbolName(SemanticdbSymbols.scala:79)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted$$anonfun$1(PcDefinitionProvider.scala:106)
+	at scala.collection.immutable.List.map(List.scala:246)
+	at scala.meta.internal.pc.PcDefinitionProvider.semanticSymbolsSorted(PcDefinitionProvider.scala:106)
+	at scala.meta.internal.pc.PcDefinitionProvider.findDefinitions(PcDefinitionProvider.scala:82)
+	at scala.meta.internal.pc.PcDefinitionProvider.definitions(PcDefinitionProvider.scala:51)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.definition$$anonfun$1(ScalaPresentationCompiler.scala:113)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:137)
+	at scala.meta.internal.pc.CompilerAccess.withNonInterruptableCompiler$$anonfun$1(CompilerAccess.scala:125)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:197)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:139)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2022.05.19 18:23:03 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:23:10 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:23:26 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:23:45 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:23:47 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:24:13 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:24:26 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:24:30 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:25:21 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/dao/EnhancedPostgresDriver.scala
+2022.05.19 18:25:40 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/dao/EnhancedPostgresDriver.scala
+2022.05.19 18:25:43 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/models/dao/EnhancedPostgresDriver.scala
+2022.05.19 18:25:57 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:26:05 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:26:16 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:26:24 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala
+2022.05.19 18:26:29 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:26:36 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala
+2022.05.19 18:26:40 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala
+2022.05.19 18:26:47 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala
+2022.05.19 18:26:50 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/Application.scala
+2022.05.19 18:26:52 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/Application.scala
+2022.05.19 18:26:58 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/FrontEndApplication.scala
+2022.05.19 18:27:01 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/Security.scala
+2022.05.19 18:27:05 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/UserController.scala
+2022.05.19 18:27:07 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/BaseController.scala
+2022.05.19 18:27:31 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:27:43 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/helpers/CustomTag.scala
+2022.05.19 18:27:57 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala
+2022.05.19 18:28:39 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:28:42 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:28:43 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:29:17 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:29:20 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/build.sbt
+2022.05.19 18:31:57 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:32:10 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:34:07 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/modules/01-core/src/utils/TimeUtils.scala
+2022.05.19 18:36:30 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:36:39 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/app/filters/ExpireSessionFilter.scala
+2022.05.19 18:38:38 INFO  running '/usr/local/Cellar/openjdk@11/11.0.12/libexec/openjdk.jdk/Contents/Home/bin/java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar /var/folders/zy/wxfn932s41jb0p9c7dx_hnm00000gn/T/metals10978632910491499713/sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2022.05.19 18:38:38 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/metals.sbt
+2022.05.19 18:38:38 WARN  no build target for: /Users/adrien/Dev/scala/play-app-seed/project/project/metals.sbt
+2022.05.19 18:38:38 INFO  skipping build import with status 'Started'
+2022.05.19 18:38:39 INFO  [info] welcome to sbt 1.6.2 (Homebrew Java 11.0.12)
+2022.05.19 18:38:40 INFO  [info] loading global plugins from /Users/adrien/.sbt/1.0/plugins/project
+2022.05.19 18:38:40 INFO  [info] loading settings for project global-plugins from gpg.sbt,idea.sbt ...
+2022.05.19 18:38:40 INFO  [info] loading global plugins from /Users/adrien/.sbt/1.0/plugins
+2022.05.19 18:38:42 INFO  [info] loading settings for project play-app-seed-build-build-build from metals.sbt ...
+2022.05.19 18:38:42 INFO  [info] loading project definition from /Users/adrien/Dev/scala/play-app-seed/project/project/project
+2022.05.19 18:38:44 INFO  [info] loading settings for project play-app-seed-build-build from metals.sbt ...
+2022.05.19 18:38:44 INFO  [info] loading project definition from /Users/adrien/Dev/scala/play-app-seed/project/project
+2022.05.19 18:38:45 INFO  [success] Generated .bloop/play-app-seed-build-build.json
+2022.05.19 18:38:45 INFO  [success] Total time: 1 s, completed 19 mai 2022 à 18:38:45
+2022.05.19 18:38:47 INFO  [info] loading settings for project play-app-seed-build from metals.sbt,plugins.sbt ...
+2022.05.19 18:38:47 INFO  [info] loading project definition from /Users/adrien/Dev/scala/play-app-seed/project
+2022.05.19 18:38:49 INFO  [success] Generated .bloop/play-app-seed-build.json
+2022.05.19 18:38:49 INFO  [success] Total time: 2 s, completed 19 mai 2022 à 18:38:49
+2022.05.19 18:38:51 INFO  [info] loading settings for project root from build.sbt ...
+2022.05.19 18:38:51 ERROR /Users/adrien/Dev/scala/play-app-seed/modules/01-core/build.sbt:1: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+2022.05.19 18:38:51 ERROR scalaSource in Test := { (baseDirectory in Test)(_ / "test") }.value
+2022.05.19 18:38:51 ERROR             ^
+2022.05.19 18:38:51 ERROR /Users/adrien/Dev/scala/play-app-seed/modules/01-core/build.sbt:1: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+2022.05.19 18:38:51 ERROR scalaSource in Test := { (baseDirectory in Test)(_ / "test") }.value
+2022.05.19 18:38:51 ERROR                                         ^
+2022.05.19 18:38:51 ERROR /Users/adrien/Dev/scala/play-app-seed/modules/01-core/build.sbt:3: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+2022.05.19 18:38:51 ERROR scalaSource in Compile := { (baseDirectory in Compile)(_ / "src") }.value
+2022.05.19 18:38:51 ERROR             ^
+2022.05.19 18:38:51 ERROR /Users/adrien/Dev/scala/play-app-seed/modules/01-core/build.sbt:3: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+2022.05.19 18:38:51 ERROR scalaSource in Compile := { (baseDirectory in Compile)(_ / "src") }.value
+2022.05.19 18:38:51 ERROR                                            ^
+2022.05.19 18:38:51 INFO  [info] loading settings for project core from build.sbt ...
+2022.05.19 18:38:53 INFO  [info]   __              __
+2022.05.19 18:38:53 INFO  [info]   \ \     ____   / /____ _ __  __
+2022.05.19 18:38:53 INFO  [info]    \ \   / __ \ / // __ `// / / /
+2022.05.19 18:38:53 INFO  [info]    / /  / /_/ // // /_/ // /_/ /
+2022.05.19 18:38:53 INFO  [info]   /_/  / .___//_/ \__,_/ \__, /
+2022.05.19 18:38:53 INFO  [info]       /_/               /____/
+2022.05.19 18:38:53 INFO  [info] 
+2022.05.19 18:38:53 INFO  [info] Version 2.8.13 running Java 11.0.12
+2022.05.19 18:38:53 INFO  [info] 
+2022.05.19 18:38:53 INFO  [info] Play is run entirely by the community. If you want to keep using it please consider donating:
+2022.05.19 18:38:53 INFO  [info] https://www.playframework.com/sponsors
+2022.05.19 18:38:53 INFO  [info] 
+2022.05.19 18:38:53 INFO  [warn] there are 2 keys that are not used by any other settings/tasks:
+2022.05.19 18:38:53 INFO  [warn]  
+2022.05.19 18:38:53 INFO  [warn] * core / playRoutesGenerator
+2022.05.19 18:38:53 INFO  [warn]   +- /Users/adrien/Dev/scala/play-app-seed/build.sbt:14
+2022.05.19 18:38:53 INFO  [warn] * domain / playRoutesGenerator
+2022.05.19 18:38:53 INFO  [warn]   +- /Users/adrien/Dev/scala/play-app-seed/build.sbt:14
+2022.05.19 18:38:53 INFO  [warn]  
+2022.05.19 18:38:53 INFO  [warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+2022.05.19 18:38:53 INFO  [warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+2022.05.19 18:38:56 INFO  [success] Generated .bloop/core.json
+2022.05.19 18:38:56 INFO  [success] Generated .bloop/core-test.json
+2022.05.19 18:38:57 INFO  [success] Generated .bloop/root.json
+2022.05.19 18:38:57 INFO  [success] Generated .bloop/root-test.json
+2022.05.19 18:38:57 INFO  [success] Generated .bloop/domain.json
+2022.05.19 18:38:57 INFO  [success] Generated .bloop/domain-test.json
+2022.05.19 18:38:57 INFO  [success] Total time: 4 s, completed 19 mai 2022 à 18:38:58
+2022.05.19 18:38:58 INFO  time: ran 'sbt bloopInstall' in 19s
+2022.05.19 18:38:58 INFO  Attempting to connect to the build server...
+2022.05.19 18:38:58 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/adrien/Dev/scala/play-app-seed/.metals/bsp.trace.json or /Users/adrien/Library/Caches/org.scalameta.metals/bsp.trace.json
+2022.05.19 18:38:58 INFO  Attempting to connect to the build server...
+2022.05.19 18:38:58 INFO  Attempting to connect to the build server...
+2022.05.19 18:38:58 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/adrien/Dev/scala/play-app-seed/project/project/.metals/bsp.trace.json or /Users/adrien/Library/Caches/org.scalameta.metals/bsp.trace.json
+2022.05.19 18:38:58 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/adrien/Dev/scala/play-app-seed/project/.metals/bsp.trace.json or /Users/adrien/Library/Caches/org.scalameta.metals/bsp.trace.json
+2022.05.19 18:38:58 INFO  time: Connected to build server in 0.72s
+2022.05.19 18:38:58 INFO  Connected to Build server: Bloop v1.5.0
+2022.05.19 18:38:58 INFO  time: Imported build in 0.15s
+2022.05.19 18:39:07 INFO  time: indexed workspace in 8.75s
+mai 19, 2022 6:39:09 PM scala.meta.internal.pc.ScalaPresentationCompiler newCompiler
+AVERTISSEMENT: Unknown compiler options: utf-8
+2022.05.19 18:39:47 INFO  compiling core (42 scala sources)
+2022.05.19 18:39:47 ERROR Missing required plugin: semanticdb
+2022.05.19 18:39:47 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:39:47 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:39:47 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:39:47 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:39:47 INFO  time: compiled core in 0.59s
+2022.05.19 18:39:57 INFO  compiling core (42 scala sources)
+2022.05.19 18:39:57 ERROR Missing required plugin: semanticdb
+2022.05.19 18:39:57 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:39:57 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:39:57 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:39:57 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:39:57 INFO  time: compiled core in 0.15s
+2022.05.19 18:39:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:39:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:39:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:39:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:39:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:39:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:39:58 INFO  time: compiled core in 0.14s
+2022.05.19 18:42:59 INFO  compiling core (42 scala sources)
+2022.05.19 18:42:59 ERROR Missing required plugin: semanticdb
+2022.05.19 18:42:59 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:42:59 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:42:59 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:42:59 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:42:59 INFO  time: compiled core in 0.31s
+2022.05.19 18:43:03 INFO  compiling core (42 scala sources)
+2022.05.19 18:43:03 ERROR Missing required plugin: semanticdb
+2022.05.19 18:43:03 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:43:03 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:43:03 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:43:03 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:43:03 INFO  time: compiled core in 0.2s
+2022.05.19 18:43:11 INFO  compiling core (42 scala sources)
+2022.05.19 18:43:11 ERROR Missing required plugin: semanticdb
+2022.05.19 18:43:11 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:43:11 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:43:11 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:43:11 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:43:11 INFO  time: compiled core in 0.18s
+2022.05.19 18:45:34 INFO  compiling core (42 scala sources)
+2022.05.19 18:45:34 ERROR Missing required plugin: semanticdb
+2022.05.19 18:45:34 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:45:34 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:45:34 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:45:34 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:45:34 INFO  time: compiled core in 0.45s
+2022.05.19 18:47:03 INFO  compiling core (42 scala sources)
+2022.05.19 18:47:03 ERROR Missing required plugin: semanticdb
+2022.05.19 18:47:03 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:47:03 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:47:03 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:47:03 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:47:03 INFO  time: compiled core in 0.51s
+2022.05.19 18:48:23 INFO  compiling core (42 scala sources)
+2022.05.19 18:48:23 ERROR Missing required plugin: semanticdb
+2022.05.19 18:48:23 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:48:23 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:48:23 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:48:23 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:48:23 INFO  time: compiled core in 0.35s
+2022.05.19 18:49:00 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:00 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:00 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:00 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:00 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:00 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:00 INFO  time: compiled core in 82ms
+2022.05.19 18:49:08 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:08 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:08 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:08 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:08 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:08 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:08 INFO  time: compiled core in 57ms
+2022.05.19 18:49:18 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:18 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:18 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:18 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:18 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:18 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:18 INFO  time: compiled core in 0.12s
+2022.05.19 18:49:24 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:24 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:24 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:24 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:24 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:24 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:24 INFO  time: compiled core in 66ms
+2022.05.19 18:49:43 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:43 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:43 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:43 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:43 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:43 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:43 INFO  time: compiled core in 68ms
+2022.05.19 18:49:45 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:45 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:45 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:45 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:45 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:45 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:45 INFO  time: compiled core in 60ms
+2022.05.19 18:49:55 INFO  compiling core (42 scala sources)
+2022.05.19 18:49:55 ERROR Missing required plugin: semanticdb
+2022.05.19 18:49:55 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:49:55 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:49:55 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:49:55 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:49:55 INFO  time: compiled core in 76ms
+mai 19, 2022 6:50:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+AVERTISSEMENT: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "private:/Users/adrien/Dev/scala/play-app-seed/app/controllers/Application.scala?%7B%22scheme%22%3A%22file%22%7D#replacePreview"
+  ]
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor20.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.FileSystemNotFoundException: Provider "private" not installed
+	at java.base/java.nio.file.Path.of(Path.java:212)
+	at java.base/java.nio.file.Paths.get(Paths.java:97)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionURIMtags.toAbsolutePath(MtagsEnrichments.scala:115)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:141)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:617)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:614)
+	at scala.meta.internal.metals.MetalsLanguageServer.didFocus(MetalsLanguageServer.scala:1125)
+	... 15 more
+
+2022.05.19 18:50:06 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:06 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:06 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:06 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:06 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:06 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:06 INFO  time: compiled core in 61ms
+mai 19, 2022 6:50:09 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+AVERTISSEMENT: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "private:/Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala?%7B%22scheme%22%3A%22file%22%7D#replacePreview"
+  ]
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor20.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.FileSystemNotFoundException: Provider "private" not installed
+	at java.base/java.nio.file.Path.of(Path.java:212)
+	at java.base/java.nio.file.Paths.get(Paths.java:97)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionURIMtags.toAbsolutePath(MtagsEnrichments.scala:115)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:141)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:617)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:614)
+	at scala.meta.internal.metals.MetalsLanguageServer.didFocus(MetalsLanguageServer.scala:1125)
+	... 15 more
+
+2022.05.19 18:50:09 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:09 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:09 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:09 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:09 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:09 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:09 INFO  time: compiled core in 46ms
+mai 19, 2022 6:50:16 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+AVERTISSEMENT: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "private:/Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala?%7B%22scheme%22%3A%22file%22%7D#replacePreview"
+  ]
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor20.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.FileSystemNotFoundException: Provider "private" not installed
+	at java.base/java.nio.file.Path.of(Path.java:212)
+	at java.base/java.nio.file.Paths.get(Paths.java:97)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionURIMtags.toAbsolutePath(MtagsEnrichments.scala:115)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:141)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:617)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:614)
+	at scala.meta.internal.metals.MetalsLanguageServer.didFocus(MetalsLanguageServer.scala:1125)
+	... 15 more
+
+2022.05.19 18:50:20 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:20 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:20 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:20 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:20 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:20 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:20 INFO  time: compiled core in 46ms
+mai 19, 2022 6:50:20 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+AVERTISSEMENT: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "private:/Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala?%7B%22scheme%22%3A%22file%22%7D#replacePreview"
+  ]
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor20.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.FileSystemNotFoundException: Provider "private" not installed
+	at java.base/java.nio.file.Path.of(Path.java:212)
+	at java.base/java.nio.file.Paths.get(Paths.java:97)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionURIMtags.toAbsolutePath(MtagsEnrichments.scala:115)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:141)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:617)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:614)
+	at scala.meta.internal.metals.MetalsLanguageServer.didFocus(MetalsLanguageServer.scala:1125)
+	... 15 more
+
+2022.05.19 18:50:28 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:28 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:28 INFO  time: compiled core in 97ms
+2022.05.19 18:50:28 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:28 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:28 INFO  time: compiled core in 31ms
+2022.05.19 18:50:28 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:28 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:28 INFO  time: compiled core in 62ms
+2022.05.19 18:50:28 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:28 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:28 INFO  time: compiled core in 62ms
+2022.05.19 18:50:28 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:28 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:28 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:28 INFO  time: compiled core in 58ms
+mai 19, 2022 6:50:35 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+AVERTISSEMENT: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "private:/Users/adrien/Dev/scala/play-app-seed/app/filters/BlackListCookieFilter.scala?%7B%22scheme%22%3A%22file%22%7D#replacePreview"
+  ]
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor20.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.FileSystemNotFoundException: Provider "private" not installed
+	at java.base/java.nio.file.Path.of(Path.java:212)
+	at java.base/java.nio.file.Paths.get(Paths.java:97)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionURIMtags.toAbsolutePath(MtagsEnrichments.scala:115)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:141)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:617)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:614)
+	at scala.meta.internal.metals.MetalsLanguageServer.didFocus(MetalsLanguageServer.scala:1125)
+	... 15 more
+
+2022.05.19 18:50:35 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:35 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:35 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:35 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:35 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:35 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:35 INFO  time: compiled core in 61ms
+2022.05.19 18:50:38 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:38 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:38 INFO  time: compiled core in 70ms
+2022.05.19 18:50:38 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:38 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:38 INFO  time: compiled core in 59ms
+2022.05.19 18:50:38 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:38 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:38 INFO  time: compiled core in 43ms
+2022.05.19 18:50:38 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:38 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:38 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:38 INFO  time: compiled core in 36ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 97ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 44ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 63ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 74ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 48ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 42ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 55ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 41ms
+2022.05.19 18:50:58 INFO  compiling core (42 scala sources)
+2022.05.19 18:50:58 ERROR Missing required plugin: semanticdb
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:50:58 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:50:58 INFO  time: compiled core in 42ms
+2022.05.19 18:51:04 ERROR code navigation does not work for the file '/Users/adrien/Dev/scala/play-app-seed/app/controllers/AuthenticationController.scala' because the SemanticDB file '/Users/adrien/Dev/scala/play-app-seed/target/scala-2.13/meta/META-INF/semanticdb/app/controllers/AuthenticationController.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.05.19 18:51:05 INFO  compiling core (42 scala sources)
+2022.05.19 18:51:05 ERROR Missing required plugin: semanticdb
+2022.05.19 18:51:05 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:51:05 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:51:05 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:51:05 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:51:05 INFO  time: compiled core in 57ms
+2022.05.19 18:51:11 INFO  compiling core (42 scala sources)
+2022.05.19 18:51:11 ERROR Missing required plugin: semanticdb
+2022.05.19 18:51:11 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:51:11 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:51:11 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:51:11 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:51:11 INFO  time: compiled core in 51ms
+2022.05.19 18:51:22 INFO  compiling core (42 scala sources)
+2022.05.19 18:51:22 ERROR Missing required plugin: semanticdb
+2022.05.19 18:51:22 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:51:22 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:51:22 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:51:22 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:51:22 INFO  time: compiled core in 80ms
+2022.05.19 18:51:30 INFO  compiling core (42 scala sources)
+2022.05.19 18:51:30 ERROR Missing required plugin: semanticdb
+2022.05.19 18:51:30 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:51:30 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:51:30 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:51:30 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:51:30 INFO  time: compiled core in 53ms
+2022.05.19 18:51:39 INFO  compiling core (42 scala sources)
+2022.05.19 18:51:39 ERROR Missing required plugin: semanticdb
+2022.05.19 18:51:39 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:51:39 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:51:39 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:51:39 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:51:39 INFO  time: compiled core in 51ms
+2022.05.19 18:51:50 INFO  compiling core (42 scala sources)
+2022.05.19 18:51:50 ERROR Missing required plugin: semanticdb
+2022.05.19 18:51:50 ERROR bad option: -P:semanticdb:sourceroot:/Users/adrien/Dev/scala/play-app-seed
+2022.05.19 18:51:50 ERROR bad option: -P:semanticdb:targetroot:/Users/adrien/Dev/scala/play-app-seed/modules/01-core/target/scala-2.13/meta
+2022.05.19 18:51:50 ERROR bad option: -P:semanticdb:failures:warning
+2022.05.19 18:51:50 ERROR bad option: -P:semanticdb:synthetics:on
+2022.05.19 18:51:50 INFO  time: compiled core in 47ms

@@ -1,6 +1,6 @@
 package test.user
 
-import global.{ApiSpecServer, TestUtils}
+import global.{ ApiSpecServer, TestUtils }
 import models.Users
 import notifier.WelcomeNotifier
 
@@ -21,10 +21,10 @@ class UserTest extends ApiSpecServer with TestUtils with MockitoSugar with CtrlH
 
     "return a 303 with email in session for a logged user" in {
       val welcomeNotifier = mock[WelcomeNotifier]
-      val userDao: Users = app.injector.instanceOf(classOf[Users])
+      val userDao: Users  = app.injector.instanceOf(classOf[Users])
 
-      val email = "jean.dupont@gmail.com"
-      val req = FakeRequest().withFormUrlEncodedBody("email" -> email, "password" -> "12345678")
+      val email                  = "jean.dupont@gmail.com"
+      val req                    = FakeRequest().withFormUrlEncodedBody("email" -> email, "password" -> "12345678")
       val result: Future[Result] = stubify(new controllers.AuthenticationController(welcomeNotifier, userDao))
         .authenticate()
         .apply(req)

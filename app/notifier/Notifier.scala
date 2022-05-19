@@ -6,31 +6,31 @@ import play.api.mvc.RequestHeader
 import scala.concurrent.{ ExecutionContext, Future }
 import org.apache.commons.mail._
 import play.api.mvc.request.RemoteConnection
-import play.api.{ Configuration, Logger }
+import play.api.{ Configuration, Logging }
 
 import scala.util.Try
 
-trait Notifier {
+trait Notifier extends Logging {
 
   def configuration: Configuration
   def system: ActorSystem
 
-  protected val FROM = (configuration.get[String]("mail.contact.email"), "Contact team")
+  protected val FROM                            = (configuration.get[String]("mail.contact.email"), "Contact team")
   implicit protected val request: RequestHeader = new RequestHeader() {
     override lazy val host = configuration.get[String]("application.baseurl")
-    def headers = ???
-    def version = ???
-    def method = ???
-    def attrs = ???
-    def connection = RemoteConnection("127.0.0.1", true, None)
-    def target = ???
+    def headers            = ???
+    def version            = ???
+    def method             = ???
+    def attrs              = ???
+    def connection         = RemoteConnection("127.0.0.1", true, None)
+    def target             = ???
   }
 
-  private val SMTP_HOST = configuration.get[String]("mail.smtp.host")
-  private val SMTP_PORT = configuration.get[Int]("mail.smtp.port")
-  private val SMTP_USER = configuration.get[String]("mail.smtp.user")
-  private val SMTP_PASSWORD = configuration.get[String]("mail.smtp.password")
-  private val SMTP_TRANSACTION_IP = configuration.get[String]("mail.smtp.ip.transaction")
+  private val SMTP_HOST                                = configuration.get[String]("mail.smtp.host")
+  private val SMTP_PORT                                = configuration.get[Int]("mail.smtp.port")
+  private val SMTP_USER                                = configuration.get[String]("mail.smtp.user")
+  private val SMTP_PASSWORD                            = configuration.get[String]("mail.smtp.password")
+  private val SMTP_TRANSACTION_IP                      = configuration.get[String]("mail.smtp.ip.transaction")
   private val mail_execution_context: ExecutionContext = system.dispatchers.lookup("contexts.mail_execution_context")
 
   /**
@@ -40,11 +40,11 @@ trait Notifier {
   def sendMail(
     from:        (String, String),
     to:          Seq[String],
-    cc:          Seq[String]      = Seq.empty,
-    bcc:         Seq[String]      = Seq.empty,
+    cc:          Seq[String]    = Seq.empty,
+    bcc:         Seq[String]    = Seq.empty,
     subject:     String,
     message:     String,
-    richMessage: Option[String]   = None
+    richMessage: Option[String] = None
   ): Future[Try[String]] = {
     SMTP_HOST match {
       case "mock" => sendMockMail(from, to, cc, bcc, subject, message, richMessage)
@@ -55,11 +55,11 @@ trait Notifier {
   private def sendRealMail(
     from:        (String, String),
     to:          Seq[String],
-    cc:          Seq[String]      = Seq.empty,
-    bcc:         Seq[String]      = Seq.empty,
+    cc:          Seq[String]    = Seq.empty,
+    bcc:         Seq[String]    = Seq.empty,
     subject:     String,
     message:     String,
-    richMessage: Option[String]   = None
+    richMessage: Option[String] = None
   ) = Future {
 
     val commonsMail: Email = richMessage.isDefined match {
@@ -72,15 +72,13 @@ trait Notifier {
     to.foreach(commonsMail.addTo(_))
     cc.foreach(commonsMail.addCc(_))
     bcc.foreach(commonsMail.addBcc(_))
-    val preparedMail = commonsMail.
-      setFrom(from._1, from._2).
-      setSubject(subject)
+    val preparedMail = commonsMail.setFrom(from._1, from._2).setSubject(subject)
 
     // Send the email and check for exceptions
     Try(preparedMail.send)
   }(mail_execution_context)
 
-  private def setUpConfig(mail: Email) {
+  private def setUpConfig(mail: Email) = {
     mail.setHostName(SMTP_HOST)
     mail.setSmtpPort(SMTP_PORT)
     mail.setSSLOnConnect(true)
@@ -96,11 +94,11 @@ trait Notifier {
   private def sendMockMail(
     from:        (String, String),
     to:          Seq[String],
-    cc:          Seq[String]      = Seq.empty,
-    bcc:         Seq[String]      = Seq.empty,
+    cc:          Seq[String]    = Seq.empty,
+    bcc:         Seq[String]    = Seq.empty,
     subject:     String,
     message:     String,
-    richMessage: Option[String]   = None
+    richMessage: Option[String] = None
   ) = {
 
     val mailing = s"""
@@ -117,7 +115,7 @@ $message
 
 $richMessage
 """
-    Logger.info(mailing)
+    logger.info(mailing)
     Future.successful(Try(mailing))
   }
 }

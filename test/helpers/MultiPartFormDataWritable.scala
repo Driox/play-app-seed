@@ -1,12 +1,12 @@
 package helpers
 
-import java.nio.file.{Files, Paths}
+import java.nio.file.{ Files, Paths }
 
-import play.api.http.{HeaderNames, Writeable}
+import play.api.http.{ HeaderNames, Writeable }
 import play.api.libs.Files.TemporaryFile
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.mvc.MultipartFormData.FilePart
-import play.api.mvc.{AnyContentAsMultipartFormData, Codec, MultipartFormData}
+import play.api.mvc.{ AnyContentAsMultipartFormData, Codec, MultipartFormData }
 
 //Check -> http://tech.fongmun.com/post/125479939452/test-multipartformdata-in-play
 
@@ -25,23 +25,25 @@ object MultipartFormDataWritable {
   }
 
   def filePartHeader(file: FilePart[TemporaryFile]) = {
-    val name = s""""${file.key}""""
-    val filename = s""""${file.filename}""""
+    val name        = s""""${file.key}""""
+    val filename    = s""""${file.filename}""""
     val contentType = file.contentType.map { ct =>
       s"${HeaderNames.CONTENT_TYPE}: $ct\r\n"
     }.getOrElse("")
-    Codec.utf_8.encode(s"--$boundary\r\n${HeaderNames.CONTENT_DISPOSITION}: form-data; name=$name; filename=$filename\r\n$contentType\r\n")
+    Codec.utf_8.encode(
+      s"--$boundary\r\n${HeaderNames.CONTENT_DISPOSITION}: form-data; name=$name; filename=$filename\r\n$contentType\r\n"
+    )
   }
 
   val singleton = Writeable[MultipartFormData[TemporaryFile]](
-    transform = { form: MultipartFormData[TemporaryFile] =>
-    formatDataParts(form.dataParts) ++
-      form.files.flatMap { file =>
-        val fileBytes = Files.readAllBytes(Paths.get(file.ref.getAbsolutePath))
-        filePartHeader(file) ++ fileBytes ++ Codec.utf_8.encode("\r\n")
-      } ++
-      Codec.utf_8.encode(s"--$boundary--")
-  },
+    transform   = { form: MultipartFormData[TemporaryFile] =>
+      formatDataParts(form.dataParts) ++
+        form.files.flatMap { file =>
+          val fileBytes = Files.readAllBytes(Paths.get(file.ref.getAbsolutePath))
+          filePartHeader(file) ++ fileBytes ++ Codec.utf_8.encode("\r\n")
+        } ++
+        Codec.utf_8.encode(s"--$boundary--")
+    },
     contentType = Some(s"multipart/form-data; boundary=$boundary")
   )
 

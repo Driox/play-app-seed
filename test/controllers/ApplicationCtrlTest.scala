@@ -21,9 +21,9 @@ class ApplicationCtrlTest extends PlaySpec with Results with MockitoSugar with C
 
       val userRepository = mock[Users]
 
-      val controller = stubify(new Application(userRepository))
+      val controller             = stubify(new Application(userRepository))
       val result: Future[Result] = controller.ping().apply(FakeRequest())
-      val bodyText: String = contentAsString(result)
+      val bodyText: String       = contentAsString(result)
       bodyText mustBe "Ok"
     }
   }

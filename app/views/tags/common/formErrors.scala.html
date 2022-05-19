@@ -1,0 +1,20 @@
+@(form:Form[_]
+, error_filter: (String) => Boolean = _ => true
+)(implicit request: RequestHeader, lang:Lang)
+
+
+@defining( 
+  form
+    .errors
+    .filter(error => error_filter(error.key))
+    .map(elem => s"<span>${m(elem.message, elem.args: _*)}</span>")
+    .mkString("<br>")
+){error_msg => 
+  @if(!error_msg.isEmpty){
+  <div class="flashMsgWrapper">
+    <div id="flashErrorMsg" class="alert alert-danger">
+      @Html(error_msg)
+    </div>
+  </div>
+  }
+}

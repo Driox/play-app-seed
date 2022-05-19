@@ -1,15 +1,13 @@
 package modules
 
-import play.api.ApplicationLoader
-import play.api.Configuration
-import play.api.inject._
-import play.api.inject.guice._
 import play.api.ApplicationLoader.Context
-import com.typesafe.config.ConfigFactory
 import play.api.Mode._
-import play.Logger
+import play.api.inject.guice._
+import play.api.{ Configuration, Logging }
 
-class CustomApplicationLoader extends GuiceApplicationLoader {
+import com.typesafe.config.ConfigFactory
+
+class CustomApplicationLoader extends GuiceApplicationLoader with Logging {
 
   override protected def builder(context: Context): GuiceApplicationBuilder = {
     val builder = initialBuilder.in(context.environment).overrides(overrides(context): _*)
@@ -17,19 +15,19 @@ class CustomApplicationLoader extends GuiceApplicationLoader {
       case Prod => {
         // start mode
         val prodConf = Configuration(ConfigFactory.load("prod.conf"))
-        builder.loadConfig(prodConf ++ context.initialConfiguration)
+        builder.loadConfig(prodConf withFallback context.initialConfiguration)
       }
-      case Dev => {
-        Logger.error("*** Custom Loader DEV****")
+      case Dev  => {
+        logger.error("*** Custom Loader DEV****")
         // run mode
         val devConf = Configuration(ConfigFactory.load("dev.conf"))
-        builder.loadConfig(devConf ++ context.initialConfiguration)
+        builder.loadConfig(devConf withFallback context.initialConfiguration)
       }
       case Test => {
-        Logger.error("*** Custom Loader TEST ****")
+        logger.error("*** Custom Loader TEST ****")
         // test mode
         val testConf = Configuration(ConfigFactory.load("test.conf"))
-        builder.loadConfig(testConf ++ context.initialConfiguration)
+        builder.loadConfig(testConf withFallback context.initialConfiguration)
       }
     }
   }

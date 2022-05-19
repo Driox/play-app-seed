@@ -19,7 +19,7 @@ class Application @Inject() (val userDao: Users)(implicit ec: ExecutionContext) 
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def home = Action { implicit request =>
+  def home() = Action { implicit request =>
     Ok(views.html.index())
   }
 
@@ -33,7 +33,7 @@ class Application @Inject() (val userDao: Users)(implicit ec: ExecutionContext) 
       // Do something with your user like
       // userReloaded <- userDao.update(user.copy(allow_email = false)) ?| NotFound
     } yield {
-      Redirect(routes.Application.home).withSession(
+      Redirect(routes.Application.home()).withSession(
         "userEmail" -> user.email
       )
     }

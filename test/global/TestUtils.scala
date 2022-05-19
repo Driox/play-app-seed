@@ -9,8 +9,8 @@ import java.nio.file.Files
 trait TestUtils { self: ApiSpecServer =>
 
   def checkResultInJsonIsGood(result: String, resultMustBe: String, orMustBe: String) {
-    val actual = JsonUtils.replaceElementInJson(Json.parse(result), Map("code" -> Json.toJson("#12345678")))
-    val expected = Json.parse(resultMustBe)
+    val actual     = JsonUtils.replaceElementInJson(Json.parse(result), Map("code" -> Json.toJson("#12345678")))
+    val expected   = Json.parse(resultMustBe)
     val orExpected = Json.parse(orMustBe)
 
     (actual == expected || actual == orExpected) mustBe true
@@ -21,7 +21,7 @@ trait TestUtils { self: ApiSpecServer =>
   }
 
   def checkResultInJsonMatch(result: String, resultMustBe: String, replacement: Map[String, JsValue]) {
-    val actual = JsonUtils.replaceElementInJson(Json.parse(result), replacement)
+    val actual   = JsonUtils.replaceElementInJson(Json.parse(result), replacement)
     val expected = Json.parse(resultMustBe)
 
     actual mustBe expected
@@ -34,7 +34,7 @@ trait TestUtils { self: ApiSpecServer =>
 
   def fileCopy(from: String, to: String) = {
     val f = new File(to)
-    if (f.exists) {
+    if(f.exists) {
       f.delete
     }
 

@@ -3,7 +3,7 @@
  *
  * Example:
  * {{{
- * @form(action = routes.Users.submit, args = 'class -> "myForm") {
+ * @form(action = routes.Users.submit, args = Symbol("class") -> "myForm") {
  *   ...
  * }
  * }}}
@@ -12,12 +12,12 @@
  * @param args Set of extra HTML attributes.
  * @param body The form body.
  *@
-@(action: play.api.mvc.Call, args: (Symbol,String)*)(body: => Html)(implicit request: RequestHeader) 
+@(action: play.api.mvc.Call, args: (Symbol,String)*)(body: => Html)(implicit request: RequestHeader)
 
 @formAction = @{ if(action.method.toString == "POST") {
         helper.CSRF(action).path
-    } else { 
-        action.path 
+    } else {
+        action.path
     }
  }
 

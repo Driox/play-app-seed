@@ -7,7 +7,7 @@ import models.User
 
 import scala.util.Try
 import scala.concurrent.Future
-import play.api.{ Application, Configuration }
+import play.api.Configuration
 import play.api.i18n.Lang
 import utils.m
 
@@ -19,10 +19,10 @@ class WelcomeNotifier @Inject() (val configuration: Configuration, val system: A
 
   def notify(user: User)(implicit lang: Lang): Future[Try[String]] = {
     sendMail(
-      from = FROM,
-      to = Seq(user.email),
-      subject = m("notifier.welcome.subject"),
-      message = message(user, false),
+      from        = FROM,
+      to          = Seq(user.email),
+      subject     = m("notifier.welcome.subject"),
+      message     = message(user, false),
       richMessage = Some(message(user, true))
     )
   }

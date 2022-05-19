@@ -19,14 +19,14 @@
             @form(action = routes.AuthenticationController.authenticate()) {
                 <div class="row">
                     <div class="col-md-12">
-                        @inputText(credentialsForm("email"), 'required -> true,
-                        'placeholder -> m("security.signin.mail.placeholder"))
+                        @inputText(credentialsForm("email"), Symbol("required") -> true,
+                        Symbol("placeholder") -> m("security.signin.mail.placeholder"))
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        @inputPassword(credentialsForm("password"), 'required -> true,
-                        'placeholder -> m("security.signin.password.placeholder"))
+                        @inputPassword(credentialsForm("password"), Symbol("required") -> true,
+                        Symbol("placeholder") -> m("security.signin.password.placeholder"))
                     </div>
                 </div>
                 <div class="row">

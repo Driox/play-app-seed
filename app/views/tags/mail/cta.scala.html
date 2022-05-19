@@ -1,0 +1,5 @@
+@(
+href:String,
+primary_color:Option[String] = None
+)(text:play.twirl.api.Html)
+<div style="text-align:center; margin: 40px 0;">@mail.btn(href, primary_color)(text)</div>
