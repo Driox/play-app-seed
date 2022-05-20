@@ -31,3 +31,9 @@ node_modules
 npm-debug.log
 .DS_Store
 /public/react
+.metals/
+.bloop/
+.ammonite/
+project/metals.sbt
+metals.sbt
+.bsp
