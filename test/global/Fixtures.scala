@@ -7,20 +7,20 @@ import models._
 import scala.concurrent.ExecutionContext.Implicits.global
 import test.global.TestGlobal
 import com.google.inject.AbstractModule
-import play.api.Logger
 
 import scala.concurrent.Future
 import play.api.inject.ApplicationLifecycle
+import play.api.Logging
 
 class FixtureModule() extends AbstractModule with TestGlobal {
 
-  def configure() = {
+  override def configure() = {
     bind(classOf[UserData]).asEagerSingleton()
   }
 }
 
 @Singleton
-class UserData @Inject() (userDao: Users, lifecycle: ApplicationLifecycle) extends TestGlobal {
+class UserData @Inject() (userDao: Users, lifecycle: ApplicationLifecycle) extends TestGlobal with Logging {
 
   await(setUp())
 
@@ -29,14 +29,14 @@ class UserData @Inject() (userDao: Users, lifecycle: ApplicationLifecycle) exten
   }
 
   def setUp(): Future[_] = {
-    Logger.debug(s"setup UserData")
+    logger.debug(s"setup UserData")
     userDao.createTable().flatMap { _ =>
       userDao.create(User(email = "jean.dupont@gmail.com", password = "12345678"))
     }
   }
 
   def tearDown(): Future[_] = {
-    Logger.debug(s"tearDown UserData")
+    logger.debug(s"tearDown UserData")
     userDao.dropTable()
   }
 }

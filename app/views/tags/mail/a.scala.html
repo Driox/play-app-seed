@@ -1,0 +1,6 @@
+@(
+    href:String,
+    color: Option[String] = None
+)(text:play.twirl.api.Html)
+
+<a href="@href" style="text-decoration: none; font-weight:bold; color: @{color.getOrElse("#f05e50")};" target="_blank">@text</a>

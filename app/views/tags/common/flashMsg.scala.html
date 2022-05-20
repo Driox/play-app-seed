@@ -1,46 +1,33 @@
 @()(implicit request: RequestHeader, lang:Lang, flash: Flash)
 
+@if(flash.get("error").isDefined ||
+    flash.get("success").isDefined ||
+    flash.get("info").isDefined ||
+    flash.get("warning").isDefined
+) {
 <div class="flashMsgWrapper">
-  
-  <div id="flashErrorMsg" class="alert alert-danger has-icon fade @flash.get("error").map( x => "in")">
-    <button type="button" class="close">&times;</button>
-    <i class="typcn typcn-cancel"></i>
-    <strong>@m("general.error")</strong>
-    <span>
-      @flash.get("error").map{ msg => 
-        @m(msg)
-      }
-    </span>
-  </div>
-  
-  <div id="flashSuccessMsg" class="alert alert-success has-icon fade @flash.get("success").map( x => "in")">
-    <button type="button" class="close">&times;</button>
-    <i class="typcn typcn-tick-outline"></i>
-    <span>
-      @flash.get("success").map{ msg => 
-        @m(msg)
-      }
-    </span>
-  </div>
-  
-  <div id="flashInfoMsg" class="alert alert-info has-icon fade @flash.get("info").map( x => "in")">
-    <button type="button" class="close">&times;</button>
-    <i class="typcn typcn-info-large"></i>
-    <span>
-      @flash.get("info").map{ msg => 
-        @m(msg)
-      }
-    </span>
-  </div>
-  
-  <div id="flashWarningMsg" class="alert alert-warning has-icon fade @flash.get("warning").map( x => "in")">
-    <button type="button" class="close">&times;</button>
-    <i class="typcn typcn-warning-outline"></i>
-    <span>
-      @flash.get("warning").map{ msg => 
-        @m(msg)
-      }
-    </span>
-  </div>
-</div>
 
+    @flash.get("error").map{ msg =>
+      <div id="flashErrorMsg" class="alert alert-danger">
+        <span>@if(msg.startsWith("error.")) { @m(msg) } else { @msg }</span>
+      </div>
+    }
+
+    @flash.get("success").map{ msg =>
+      <div id="flashSuccessMsg" class="alert alert-success">
+        <span>@m(msg)</span>
+      </div>
+    }
+    @flash.get("info").map{ msg =>
+      <div id="flashInfoMsg" class="alert alert-info">
+        <span>@m(msg)</span>
+      </div>
+    }
+
+    @flash.get("warning").map{ msg =>
+      <div id="flashWarningMsg" class="alert alert-warning">
+        <span>@m(msg)</span>
+      </div>
+    }
+</div>
+}

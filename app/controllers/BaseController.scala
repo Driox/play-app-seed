@@ -4,7 +4,8 @@ import helpers.sorus.{ FormatErrorResult, SorusPlay }
 import play.api.i18n.{ I18nSupport, Lang }
 import play.api.mvc._
 
-trait BaseController extends InjectedController
+trait BaseController
+  extends InjectedController
     with SorusPlay[Request[_]]
     with FormatErrorResult[Request[_]]
     with I18nSupport {

@@ -1,0 +1,26 @@
+@(
+    href:String,
+    primary_color:Option[String] = None
+)(text:play.twirl.api.Html)
+
+<a href="@href" style="
+    background: @{primary_color.getOrElse("#f05e50")};
+    color: #fff;
+    border-radius: 4px;
+    height: 36px;
+    margin: 0;
+    min-width: 64px;
+    padding: 2px 12px;
+    display: inline-block;
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    will-change: box-shadow;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
+    vertical-align: middle;"
+    target="_blank"
+>
+@text
+</a>

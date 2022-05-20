@@ -5,24 +5,24 @@
 *@
 @(elements: FieldElements)
 
-<div id="@elements.args.get('_id).getOrElse(elements.id + "_field")"
-     class="form-group @elements.args.get('_headClass) @if(elements.hasErrors) {has-error} @if(elements.isRequired) {is-required}">
+<div id="@elements.args.get(Symbol("_id")).getOrElse(elements.id + "_field")"
+     class="form-group @elements.args.get(Symbol("_headClass")) @if(elements.hasErrors) {has-error} @if(elements.isRequired) {is-required}">
 
     @if(elements.hasLabel) {
         <label for="@elements.id">@m(elements.label.toString)(elements.lang)</label>
     }
 
-    @if(elements.args.get('_suffix)) {
+    @if(elements.args.get(Symbol("_suffix"))) {
     <div class="input-group">
     }
 
     @elements.input
 
-    @if(elements.args.get('_suffix)) {
-        <span class="input-group-addon">@elements.args.get('_suffix)</span></div>
+    @if(elements.args.get(Symbol("_suffix"))) {
+        <span class="input-group-addon">@elements.args.get(Symbol("_suffix"))</span></div>
     }
 
-    @elements.args.get('_helpBlock).map { help =>
+    @elements.args.get(Symbol("_helpBlock")).map { help =>
         <div class="help-block">@help</div>
     }
 

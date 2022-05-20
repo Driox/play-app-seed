@@ -3,15 +3,15 @@
 # ~~~~
 
 # Home page
-GET    /                                                         controllers.Application.home
-GET    /ping                                                     controllers.Application.ping
+GET    /                                                         controllers.Application.home()
+GET    /ping                                                     controllers.Application.ping()
 GET    /unsubscribe/:uuid                                        controllers.Application.unsubscribe(uuid)
 
 GET    /sitemap.xml                                              controllers.Assets.at(path="/public", file = "sitemap.xml")
 GET    /robots.txt                                               controllers.Assets.at(path="/public", file = "robots.txt")
 
 # React App
-GET    /app                                                      controllers.FrontEndApplication.redirectToApp
+GET    /app                                                      controllers.FrontEndApplication.redirectToApp()
 GET    /app/                                                     controllers.FrontEndApplication.app(path = "")
 GET    /app/static/*file                                         controllers.Assets.at(path="/public/react/static", file: String)
 GET    /app/*path                                                controllers.FrontEndApplication.app(path)
@@ -20,13 +20,13 @@ POST   /users/:id/lng/:lng                                       controllers.Use
 
 
 # Security
-GET    /login                                                    controllers.AuthenticationController.login
-POST   /login                                                    controllers.AuthenticationController.authenticate
-GET    /logout                                                   controllers.AuthenticationController.logout
-GET    /signin                                                   controllers.AuthenticationController.signin
-POST   /signin                                                   controllers.AuthenticationController.register
+GET    /login                                                    controllers.AuthenticationController.login()
+POST   /login                                                    controllers.AuthenticationController.authenticate()
+GET    /logout                                                   controllers.AuthenticationController.logout()
+GET    /signin                                                   controllers.AuthenticationController.signin()
+POST   /signin                                                   controllers.AuthenticationController.register()
 GET    /validate-signin/:uuid                                    controllers.AuthenticationController.validate(uuid)
-GET    /forgotten-password                                       controllers.AuthenticationController.forgottenPassword
+GET    /forgotten-password                                       controllers.AuthenticationController.forgottenPassword()
 
 # Assets
 # Map static resources from the /public folder to the /assets URL path

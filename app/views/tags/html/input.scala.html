@@ -3,10 +3,10 @@
 *@
 @(field: play.api.data.Field, args: (Symbol, Any)* )(inputDef: (String, String, Option[String], Map[Symbol,Any]) => Html)(implicit handler: FieldConstructor, lang:Lang)
 
-@id = @{ args.toMap.get('id).map(_.toString).getOrElse(field.id) }
+@id = @{ args.toMap.get(Symbol("id")).map(_.toString).getOrElse(field.id) }
 
-@htmlArgs = @{ args.filter(arg => !arg._1.name.startsWith("_") && arg._1 != 'id).toMap }
-@htmlArgsWithDefaultValue = @{ htmlArgs.updated('class, htmlArgs.get('class).getOrElse("") + " form-control" )}
+@htmlArgs = @{ args.filter(arg => !arg._1.name.startsWith("_") && arg._1 != Symbol("id")).toMap }
+@htmlArgsWithDefaultValue = @{ htmlArgs.updated(Symbol("class"), htmlArgs.get(Symbol("class")).getOrElse("") + " form-control" )}
 
 @handler(
     FieldElements(

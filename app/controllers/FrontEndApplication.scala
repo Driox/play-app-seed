@@ -10,15 +10,16 @@ import scala.concurrent.ExecutionContext
 import utils.FileUtils._
 
 @Singleton
-class FrontEndApplication @Inject() (val userDao: Users, env: Environment)(implicit ec: ExecutionContext) extends BaseController {
+class FrontEndApplication @Inject() (val userDao: Users, env: Environment)(implicit ec: ExecutionContext)
+  extends BaseController {
 
   def redirectToApp() = Action {
     Redirect(routes.FrontEndApplication.app(""))
   }
 
   def app(path: String = "") = Action {
-    val html = env.getFile("public/react/index.html")
-    val headers = views.html.app.headers().toString
+    val html         = env.getFile("public/react/index.html")
+    val headers      = views.html.app.headers().toString
     val initial_data = Json.parse(
       s""" {
         "user" : { "email" : "jean.dupont@gmail.com", "id": "1234" },

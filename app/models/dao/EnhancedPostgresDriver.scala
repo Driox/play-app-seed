@@ -1,14 +1,15 @@
-package models.dao
+package database
 
-import com.github.tminglei.slickpg._
 import play.api.libs.json.{ JsValue, Json }
 import slick.basic.Capability
 import slick.jdbc.JdbcCapabilities
 
-trait EnhancedPostgresDriver extends ExPostgresProfile
+import com.github.tminglei.slickpg._
+
+trait EnhancedPostgresDriver
+  extends ExPostgresProfile
     with PgArraySupport
     with PgDate2Support
-    with PgDateSupportJoda
     with PgRangeSupport
     with PgHStoreSupport
     with PgPlayJsonSupport
@@ -24,7 +25,9 @@ trait EnhancedPostgresDriver extends ExPostgresProfile
 
   override val api = MyAPI
 
-  object MyAPI extends API with ArrayImplicits
+  object MyAPI
+    extends API
+      with ArrayImplicits
       with DateTimeImplicits
       with JsonImplicits
       with NetImplicits
@@ -33,7 +36,7 @@ trait EnhancedPostgresDriver extends ExPostgresProfile
       with HStoreImplicits
       with SearchImplicits
       with SearchAssistants {
-    implicit val strListTypeMapper = new SimpleArrayJdbcType[String]("text").to(_.toList)
+    implicit val strListTypeMapper       = new SimpleArrayJdbcType[String]("text").to(_.toList)
     implicit val playJsonArrayTypeMapper =
       new AdvancedArrayJdbcType[JsValue](
         pgjson,

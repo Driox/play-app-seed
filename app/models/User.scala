@@ -3,14 +3,13 @@ package models
 import javax.inject._
 
 import play.api.db.slick._
-import org.joda.time.DateTime
-import utils.DateUtils
-import utils.StringUtils
+import utils.{ StringUtils, TimeUtils }
 
 import scala.concurrent.{ ExecutionContext, Future }
 import models.dao._
-import play.api.libs.json.{ JsValue, Json }
+import play.api.libs.json.JsValue
 import slick.jdbc.JdbcProfile
+import java.time.OffsetDateTime
 
 /**
  * easy to mock :
@@ -20,20 +19,21 @@ import slick.jdbc.JdbcProfile
  *  user.authenticate(credentials)
  */
 case class User(
-  id:         String           = StringUtils.generateUuid,
-  uuid:       String           = StringUtils.generateUuid,
-  created_at: DateTime         = DateUtils.now,
-  deleted_at: Option[DateTime] = None,
+  id:         String                 = StringUtils.generateUuid(),
+  uuid:       String                 = StringUtils.generateUuid(),
+  created_at: OffsetDateTime         = TimeUtils.now,
+  deleted_at: Option[OffsetDateTime] = None,
   email:      String,
   password:   String,
-  first_name: Option[String]   = None,
-  last_name:  Option[String]   = None,
-  avatar_url: Option[String]   = None,
-  birthday:   Option[DateTime] = None,
-  phone:      Option[String]   = None,
-  language:   Option[String]   = None,
-  custom:     Option[JsValue]  = None
-) extends UserAuth with Entity[User] {
+  first_name: Option[String]         = None,
+  last_name:  Option[String]         = None,
+  avatar_url: Option[String]         = None,
+  birthday:   Option[OffsetDateTime] = None,
+  phone:      Option[String]         = None,
+  language:   Option[String]         = None,
+  custom:     Option[JsValue]        = None
+) extends UserAuth
+    with Entity[User] {
   def copyWithId(id: String) = this.copy(id = id)
 }
 
@@ -51,7 +51,7 @@ trait UserAuth {
 
 @Singleton
 class Users @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)
-    extends HasDatabaseConfigProvider[JdbcProfile]
+  extends HasDatabaseConfigProvider[JdbcProfile]
     with CrudRepository[User, JdbcProfile]
     with EntityWithTableLifecycle[JdbcProfile]
     with UserComponent {

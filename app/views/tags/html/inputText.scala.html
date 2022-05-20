@@ -12,8 +12,8 @@
 *@
 @(field: play.api.data.Field, args: (Symbol,Any)*)(implicit handler: FieldConstructor, lang:Lang)
 
-@inputType = @{ args.toMap.get('type).map(_.toString).getOrElse("text") }
+@inputType = @{ args.toMap.get(Symbol("type")).map(_.toString).getOrElse("text") }
 
-@input(field, args.filter(_._1 != 'type):_*) { (id, name, value, htmlArgs) =>
+@input(field, args.filter(_._1 != Symbol("type")):_*) { (id, name, value, htmlArgs) =>
   <input type="@inputType" id="@id" name="@name" value="@value" @toHtmlArgs(htmlArgs) >
 }
