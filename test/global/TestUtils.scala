@@ -8,7 +8,7 @@ import java.nio.file.Files
 
 trait TestUtils { self: ApiSpecServer =>
 
-  def checkResultInJsonIsGood(result: String, resultMustBe: String, orMustBe: String) {
+  def checkResultInJsonIsGood(result: String, resultMustBe: String, orMustBe: String): Unit = {
     val actual     = JsonUtils.replaceElementInJson(Json.parse(result), Map("code" -> Json.toJson("#12345678")))
     val expected   = Json.parse(resultMustBe)
     val orExpected = Json.parse(orMustBe)
@@ -16,11 +16,11 @@ trait TestUtils { self: ApiSpecServer =>
     (actual == expected || actual == orExpected) mustBe true
   }
 
-  def checkResultInJsonIsGood(result: String, resultMustBe: String) {
+  def checkResultInJsonIsGood(result: String, resultMustBe: String): Unit = {
     checkResultInJsonMatch(result, resultMustBe, Map("code" -> Json.toJson("#12345678")))
   }
 
-  def checkResultInJsonMatch(result: String, resultMustBe: String, replacement: Map[String, JsValue]) {
+  def checkResultInJsonMatch(result: String, resultMustBe: String, replacement: Map[String, JsValue]): Unit = {
     val actual   = JsonUtils.replaceElementInJson(Json.parse(result), replacement)
     val expected = Json.parse(resultMustBe)
 

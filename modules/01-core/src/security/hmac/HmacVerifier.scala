@@ -1,40 +1,32 @@
 package security.hmac
 
-import effect.Fail
+import helpers.sorus.Fail
 import javax.inject.{ Inject, Singleton }
 import play.api.Configuration
 import play.api.cache.AsyncCacheApi
 import play.api.mvc.RequestHeader
+import scalaz.Scalaz._
+import scalaz._
 import security.hmac.verifier.NonceVerifier
 
-import scala.concurrent.ExecutionContext
-
-import zio._
-import akka.actor.ActorSystem
+import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
-class HmacVerifier @Inject() (
-  configuration: Configuration,
-  cache:         AsyncCacheApi,
-  ec:            ExecutionContext,
-  system:        ActorSystem
-) {
-
-  private val cache_ec: ExecutionContext = system.dispatchers.lookup("contexts.cache_execution_context")
+class HmacVerifier @Inject() (configuration: Configuration, cache: AsyncCacheApi, ec: ExecutionContext) {
 
   lazy val config = HmacSecurity.parse_config(configuration)
 
-  val nonce_verifier = new NonceVerifier(cache)(cache_ec)
+  val nonce_verifier = new NonceVerifier(cache)(ec)
 
-  def verify(req: RequestHeader): ZIO[Any, Fail, Boolean] = {
+  def verify(req: RequestHeader)(implicit ec: ExecutionContext): EitherT[Future, Fail, Boolean] = {
     verify(req, config.key, config.secret)
   }
 
   def verify(
-    req:    RequestHeader,
-    key:    String,
-    secret: String
-  ): ZIO[Any, Fail, Boolean] = {
+    req:         RequestHeader,
+    key:         String,
+    secret:      String
+  )(implicit ec: ExecutionContext): EitherT[Future, Fail, Boolean] = {
     req.headers.get("Authorization")
       .map { auth =>
         val custom_headers = req.headers.toSimpleMap
@@ -43,8 +35,8 @@ class HmacVerifier @Inject() (
 
         new HmacCoreSecurity(config.copy(key = key, secret = secret))
           .withVerifier(nonce_verifier.verify)
-          .verify(auth, HmacSecurity.requestHeader2HmacRequest(req, custom_headers))(ec)
+          .verify(auth, HmacSecurity.requestHeader2HmacRequest(req, custom_headers))
       }
-      .getOrElse(ZIO.fail(Fail("Can't find Authorization header")))
+      .getOrElse(EitherT.pureLeft[Future, Fail, Boolean](Fail("Can't find Authorization header")))
   }
 }

@@ -1,5 +1,6 @@
 package security.hmac
 
+import javax.inject.{ Inject, Singleton }
 import play.api.Configuration
 import play.api.libs.ws.{ StandaloneWSRequest, WSRequestExecutor, WSRequestFilter }
 import play.shaded.ahc.org.asynchttpclient.BoundRequestBuilder
@@ -7,13 +8,14 @@ import utils.{ StringUtils, TimeUtils }
 
 import scala.jdk.CollectionConverters._
 
-class HmacSigner(configuration: Configuration) extends HmacSignerSecurity {
+@Singleton
+class HmacSigner @Inject() (configuration: Configuration) extends HmacSignerSecurity {
   override lazy val config = HmacSecurity.parse_config(configuration)
 }
 
 trait HmacSignerSecurity {
 
-  def config(): HmacSecurityConfig
+  def config: HmacSecurityConfig
 
   val filter: WSRequestFilter = WSRequestFilter { e =>
     WSRequestExecutor(r => e.apply(secure(r)))
@@ -28,12 +30,12 @@ trait HmacSignerSecurity {
     val req_with_header = req.addHttpHeaders(headers: _*)
 
     val custom_headers = req_with_header.headers
-      .filter(h => config().custom_headers.exists(_.equalsIgnoreCase(h._1)))
+      .filter(h => config.custom_headers.exists(_.equalsIgnoreCase(h._1)))
       .view.mapValues(_.mkString(","))
       .toList
 
     val hmac_req = HmacSecurity.wsRequest2HmacRequest(req_with_header, custom_headers)
-    val auth     = new HmacCoreSecurity(config()).authorization_header(hmac_req)
+    val auth     = new HmacCoreSecurity(config).authorization_header(hmac_req)
 
     req_with_header.addHttpHeaders("Authorization" -> auth)
   }
@@ -46,7 +48,7 @@ trait HmacSignerSecurity {
     val nonce       = StringUtils.randomAlphanumericString(40)
 
     val custom_headers = req.getHeaders().entries().asScala.map(x => (x.getKey, x.getValue))
-      .filter(h => config().custom_headers.exists(_.equalsIgnoreCase(h._1)))
+      .filter(h => config.custom_headers.exists(_.equalsIgnoreCase(h._1)))
       .toList :+ ("nonce" -> nonce)
 
     val req_with_header = builder
@@ -61,7 +63,7 @@ trait HmacSignerSecurity {
       nonce,
       custom_headers
     )
-    val auth     = new HmacCoreSecurity(config()).authorization_header(hmac_req)
+    val auth     = new HmacCoreSecurity(config).authorization_header(hmac_req)
 
     req_with_header.addHeader("Authorization", auth)
   }

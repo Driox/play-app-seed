@@ -22,7 +22,8 @@ private[controllers] trait Security { self: BaseController =>
     }
   }
 
-  def AuthAction()(implicit ec: ExecutionContext): ActionBuilder[AuthRequest, AnyContent] = Action andThen secureAction
+  def AuthAction()(implicit ec: ExecutionContext): ActionBuilder[AuthRequest, AnyContent] =
+    Action andThen secureAction()
 
   private def reqToUser(request: RequestHeader)(implicit ec: ExecutionContext): Future[Option[User]] = {
     request.session.get("userEmail").map { email =>

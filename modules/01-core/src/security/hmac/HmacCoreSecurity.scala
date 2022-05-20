@@ -1,31 +1,29 @@
 package security.hmac
 
-import effect.Fail
-import effect.zio.sorus.ZioSorus
-import play.api.Logging
-import security.Crypto
+import helpers.sorus.Fail
+import helpers.sorus.SorusDSL.Sorus
+import scalaz.{ -\/, \/, \/-, EitherT }
 import utils.{ StringUtils, TimeUtils }
 
 import java.nio.charset.StandardCharsets
 import java.time.OffsetDateTime
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ ExecutionContext, Future }
+import security.Crypto
 
 import org.slf4j.LoggerFactory
 
-import zio._
-
 final class HmacCoreSecurity(
   val config:    HmacSecurityConfig,
-  val verifiers: List[HmacSecurityRequest => ZIO[Any, Fail, Boolean]] = List()
-) extends ZioSorus
+  val verifiers: List[HmacSecurityRequest => Future[Boolean]] = List()
+) extends Sorus
     with HmacCanonizer
     with HmacSecuritySigner
     with HmacSecurityVerifier {
 
   protected lazy val log = LoggerFactory.getLogger(this.getClass)
 
-  def withVerifier(new_verifiers: (HmacSecurityRequest => ZIO[Any, Fail, Boolean])*): HmacCoreSecurity = {
+  def withVerifier(new_verifiers: (HmacSecurityRequest => Future[Boolean])*): HmacCoreSecurity = {
     new HmacCoreSecurity(config, verifiers ++ new_verifiers)
   }
 }
@@ -35,7 +33,7 @@ final class HmacCoreSecurity(
  *
  * cf. http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html
  */
-private[hmac] trait HmacSecuritySigner extends Logging { self: HmacCoreSecurity with HmacCanonizer =>
+private[hmac] trait HmacSecuritySigner { self: HmacCoreSecurity with HmacCanonizer =>
 
   def authorization_header(req: HmacSecurityRequest): String = {
     val canonize_str = canonize(req)
@@ -67,49 +65,40 @@ private[hmac] trait HmacSecurityVerifier { self: HmacCoreSecurity with HmacSecur
 
   def verify(authorization: String, req: HmacSecurityRequest)(implicit
     ec:                     ExecutionContext
-  ): ZIO[Any, Fail, Boolean] = {
+  ): EitherT[Future, Fail, Boolean] = {
+    val custom_result_f: Future[Boolean] = Future.sequence(
+      verifiers.map(f => f(req))
+    ).map {
+      case List() => true
+      case l      => l.reduce(_ && _)
+    }
+
     for {
       datetime      <- TimeUtils.parse(req.date)              ?| s"can't parse time ${req.date}"
       _             <- verify_date(datetime)                  ?| s"date ${req.date} is not in the timeframe ${config.time_windows} min"
       _             <- verify_auth_header(authorization, req) ?| s"wrong authorization header"
-      custom_result <- verify_verifiers(req)                  ?| "Can't compute Security Filter custom verifier"
+      custom_result <- custom_result_f                        ?| "Can't compute Security Filter custom verifier"
+      _             <- custom_result                          ?| "custom verify ko"
     } yield {
-      custom_result
+      true
     }
   }
 
-  private[this] def verify_verifiers(req: HmacSecurityRequest): ZIO[Any, Nothing, Boolean] = {
-    val partial_result = verifiers.map { f =>
-      f(req).either.map {
-        case Left(fail)    => {
-          logger.error(fail.userMessage())
-          false
-        }
-        case Right(result) => result
-      }
-    }
-
-    ZIO.collectAll(partial_result).map(_.reduceOption(_ && _).getOrElse(true))
-  }
-
-  private[this] def verify_date(date: OffsetDateTime): ZIO[Any, Boolean, Boolean] = {
+  private[this] def verify_date(date: OffsetDateTime): Boolean = {
     val past = TimeUtils.now.minusMinutes(config.time_windows.toLong)
     val next = TimeUtils.now.plusMinutes(config.time_windows.toLong)
 
-    past.isBefore(date) && next.isAfter(date) match {
-      case true  => ZIO.succeed(true)
-      case false => ZIO.fail(false)
-    }
+    past.isBefore(date) && next.isAfter(date)
   }
 
   private[this] def verify_auth_header(
     authorization: String,
     req:           HmacSecurityRequest
-  ): ZIO[Any, Fail, Boolean] = {
+  ): Fail \/ Boolean = {
     val auth_header = authorization_header(req)
     (auth_header == authorization) match {
-      case true  => ZIO.succeed(true)
-      case false => ZIO.fail(Fail(s"authorization header $auth_header is not equal to authorization $authorization"))
+      case true  => \/-(true)
+      case false => -\/(Fail(s"authorization header $auth_header is not equal to authorization $authorization"))
     }
 
   }

@@ -1,7 +1,7 @@
 package controllers
 
 import models.Users
-import org.scalatest.mockito.MockitoSugar
+import org.scalatestplus.mockito.MockitoSugar
 
 import scala.concurrent.Future
 import org.scalatestplus.play._

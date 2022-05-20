@@ -68,7 +68,8 @@ lazy val deps_tests = Seq(
     organization = "org.mockito"
   ),
   "com.opentable.components" % "otj-pg-embedded"    % "0.13.3"  % Test withSources (),
-  "org.gnieh"               %% "diffson-play-json"  % "4.1.1"   % Test withSources ()
+  "org.gnieh"               %% "diffson-play-json"  % "4.1.1"   % Test withSources (),
+  "com.h2database"           % "h2"                 % "1.4.194" % Test withSources ()
 )
 
 // Play 2.8.5 use akka 2.6.8
