@@ -10,6 +10,8 @@ resolvers += Classpaths.sbtPluginReleases
 
 resolvers += Resolver.jcenterRepo
 
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.11.0")
+
 // The Play plugin
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.8.19")
 

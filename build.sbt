@@ -34,6 +34,11 @@ lazy val playSettings = commonSettings ++ Seq(
 )
 
 lazy val core: Project = (project in file("modules/01-core"))
+  .enablePlugins(BuildInfoPlugin)
+  .settings(
+    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
+    buildInfoPackage := "core.build"
+  )
   .settings(commonSettings: _*)
 
 lazy val domain: Project = (project in file("modules/02-domain"))
