@@ -1,4 +1,4 @@
-package database
+package models.dao
 
 import play.api.libs.json.{ JsValue, Json }
 import slick.basic.Capability

@@ -235,4 +235,13 @@ object SorusDSL {
 
     implicit def stepToDisjonction[A](step: Step[A]): Future[\/[Fail, A]] = step.run
   }
+
+  object Sorus extends Sorus with scalaz.std.FutureInstances1 {
+    private[this] implicit val local_ec = executionContext
+
+    def success[T](x: T): Step[T] = EitherT.pure[Future, Fail, T](x)
+
+    def fail[T](fail:      Fail): Step[T]   = EitherT.pureLeft[Future, Fail, T](fail)
+    def fail[T](error_msg: String): Step[T] = EitherT.pureLeft[Future, Fail, T](new Fail(error_msg))
+  }
 }
