@@ -1,5 +1,6 @@
 import pl.iterators.kebs.tagged._
 import utils.{ StringUtils, TimeUtils }
+
 import java.time.{ OffsetDateTime, ZonedDateTime }
 
 package object event {
@@ -7,17 +8,17 @@ package object event {
   type EventId = String @@ EventIdTag
 
   object EventId {
-    def apply(arg: String) = arg.taggedWith[EventIdTag]
-    def generate() = EventId("evt_" + StringUtils.generateUuid())
+    def apply(arg: String): String @@ EventIdTag = arg.taggedWith[EventIdTag]
+    def generate(): String @@ EventIdTag         = EventId("evt_" + StringUtils.generateUuid())
   }
 
   trait TimestampTag
   type Timestamp = Long @@ TimestampTag
 
   object Timestamp {
-    def apply(arg: Long) = arg.taggedWith[TimestampTag]
-    def generate() = Timestamp(TimeUtils.now.toInstant.toEpochMilli)
-    def from(date: ZonedDateTime)  = Timestamp(date.toInstant.toEpochMilli)
-    def from(date: OffsetDateTime) = Timestamp(date.toInstant.toEpochMilli)
+    def apply(arg: Long): Long @@ TimestampTag           = arg.taggedWith[TimestampTag]
+    def generate(): Long @@ TimestampTag                 = Timestamp(TimeUtils.now.toInstant.toEpochMilli)
+    def from(date: ZonedDateTime): Long @@ TimestampTag  = Timestamp(date.toInstant.toEpochMilli)
+    def from(date: OffsetDateTime): Long @@ TimestampTag = Timestamp(date.toInstant.toEpochMilli)
   }
 }

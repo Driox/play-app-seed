@@ -1,13 +1,13 @@
 package event.services
 
+import akka.stream.scaladsl.Source
 import event.{ Event, EventSearchCriteria }
+import helpers.sorus.Fail
+import play.api.libs.json.JsValue
+import scalaz.\/
 
 import scala.concurrent.Future
 
-import scalaz.\/
-import helpers.sorus.Fail
-import akka.stream.scaladsl.Source
-import play.api.libs.json.JsValue
 import com.sksamuel.pulsar4s.Subscription
 import com.sksamuel.pulsar4s.akka.streams.Control
 

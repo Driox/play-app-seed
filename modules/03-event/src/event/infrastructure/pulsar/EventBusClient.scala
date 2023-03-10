@@ -2,6 +2,7 @@ package event.infrastructure.pulsar
 
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.Source
+import event.services._
 import event.{ Event, EventSearchCriteria }
 import helpers.sorus.Fail
 import play.api.Configuration
@@ -10,14 +11,12 @@ import scalaz.\/
 
 import javax.inject.{ Inject, Singleton }
 import scala.concurrent.Future
+import scala.concurrent.duration._
+
+import org.apache.pulsar.client.api.{ CompressionType, SubscriptionInitialPosition, SubscriptionType }
 
 import com.sksamuel.pulsar4s._
 import com.sksamuel.pulsar4s.akka.streams._
-import scala.concurrent.duration._
-import event.services._
-import org.apache.pulsar.client.api.SubscriptionInitialPosition
-import org.apache.pulsar.client.api.SubscriptionType
-import org.apache.pulsar.client.api.CompressionType
 
 @Singleton
 class EventBusClient @Inject() (
@@ -81,6 +80,6 @@ class EventBusClient @Inject() (
     )
   }
 
-  def onStop() = pulsar_app.onStop()
+  def onStop(): Unit = pulsar_app.onStop()
 
 }

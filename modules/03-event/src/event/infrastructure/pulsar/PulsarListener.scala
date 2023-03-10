@@ -1,14 +1,13 @@
 package event.infrastructure.pulsar
 
-import event._
-
 import akka.stream.scaladsl.Source
+import event._
 import helpers.DisjunctionHelper
 import helpers.sorus.Fail
 import play.api.libs.json._
 import scalaz.{ -\/, \/, \/- }
 
-import org.apache.pulsar.client.api.{ Schema, SubscriptionInitialPosition, SubscriptionType }
+import org.apache.pulsar.client.api.Schema
 
 import com.sksamuel.pulsar4s._
 import com.sksamuel.pulsar4s.akka.streams._
@@ -32,7 +31,7 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
         case -\/(_)     => true
         case \/-(event) =>
           criteria.event_name.forall(_ == event.name) &&
-            criteria.created_by.forall(_ == event.created_by)
+          criteria.created_by.forall(_ == event.created_by)
       }
   }
 

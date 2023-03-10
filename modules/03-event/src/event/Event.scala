@@ -1,8 +1,8 @@
 package event
 
-import utils.json.JsonSerializable
-import play.api.libs.json._
 import event.{ EventId, Timestamp }
+import play.api.libs.json._
+import utils.json.JsonSerializable
 
 /**
  * @id         : event unique id, evt_<uuid>
@@ -23,7 +23,7 @@ case class Event[+A](
   payload:     A,
   tags:        Set[String] = Set()
 ) {
-  def payloadAsJson(): JsValue = {
+  def payloadAsJson(): JsValue        = {
     payload match {
       case json: JsValue       => json
       case x: JsonSerializable => x.toJson()

@@ -1,11 +1,10 @@
 package event.infrastructure.pulsar
 
 import event.Event
-
 import helpers.sorus.Fail
 import helpers.sorus.SorusDSL.Sorus
-import play.api.libs.json.JsValue
 import play.api.Logging
+import play.api.libs.json.JsValue
 import scalaz.Scalaz.ToEitherOps
 import scalaz.\/
 
@@ -19,7 +18,7 @@ import com.sksamuel.pulsar4s.playjson._
 
 private[pulsar] class PulsarPublisher(pulsar_app: PulsarApplicationClient) extends Logging with Sorus {
 
-  private[this] implicit val ec: ExecutionContext = pulsar_app.ec
+  private[this] implicit val ec: ExecutionContext                                                               = pulsar_app.ec
   def publish[EVENT_BODY](event: Event[EVENT_BODY], producer_config: ProducerConfig): Future[Fail \/ MessageId] = {
     logger.info(s"[Pulsar]publish event ${event.name} => ${producer_config.topic.name}")
 

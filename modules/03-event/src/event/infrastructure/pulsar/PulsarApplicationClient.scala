@@ -2,9 +2,12 @@ package event.infrastructure.pulsar
 
 import akka.actor.ActorSystem
 import play.api.{ Configuration, Logging }
-import org.apache.pulsar.client.api.AuthenticationFactory
-import com.sksamuel.pulsar4s._
+
 import scala.concurrent.ExecutionContext
+
+import org.apache.pulsar.client.api.AuthenticationFactory
+
+import com.sksamuel.pulsar4s._
 
 private[pulsar] class PulsarApplicationClient(config: Configuration, system: ActorSystem) extends Logging {
 
@@ -25,7 +28,7 @@ private[pulsar] class PulsarApplicationClient(config: Configuration, system: Act
   )
   private[pulsar] val pulsar_client = PulsarClient(pulsar_config)
 
-  private[pulsar] def build_topic(topic_name:       String) = Topic(s"persistent://$tenant/$ns/$topic_prefix-$topic_name")
+  private[pulsar] def build_topic(topic_name: String)       = Topic(s"persistent://$tenant/$ns/$topic_prefix-$topic_name")
   private[pulsar] def build_topic_regex(topic_name: String) = s"$tenant/$ns/$topic_prefix-$topic_name".r
 
   def default_properties(): Map[String, String] = Map(
