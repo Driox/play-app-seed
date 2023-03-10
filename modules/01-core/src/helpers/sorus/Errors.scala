@@ -1,7 +1,6 @@
 package helpers.sorus
 
-import play.api.libs.json.{ JsValue, Json }
-import play.api.libs.json.OFormat
+import play.api.libs.json.{ JsValue, Json, OFormat }
 
 /**
  * Standard error format for Particeep's API

@@ -10,8 +10,7 @@ import java.nio.charset.StandardCharsets
 import java.time.OffsetDateTime
 import scala.concurrent.{ ExecutionContext, Future }
 
-import org.slf4j.LoggerFactory
-import org.slf4j.Logger
+import org.slf4j.{ Logger, LoggerFactory }
 
 final class HmacCoreSecurity(
   val config:    HmacSecurityConfig,
