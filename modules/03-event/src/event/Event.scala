@@ -1,5 +1,7 @@
 package event
 
+import utils.json.JsonSerializable
+import play.api.libs.json._
 import event.{ EventId, Timestamp }
 
 /**
@@ -21,9 +23,22 @@ case class Event[+A](
   payload:     A,
   tags:        Set[String] = Set()
 ) {
+  def payloadAsJson(): JsValue = {
+    payload match {
+      case json: JsValue       => json
+      case x: JsonSerializable => x.toJson()
+      case _                   => JsString(s"Json serialisation for ${payload.getClass()} not implemented yet")
+    }
+  }
   def metadata(): Map[String, String] = Map(
     "id"         -> id,
     "created_by" -> created_by,
     "event_name" -> name.toString
   )
 }
+
+case class EventSearchCriteria(
+  event_name:    Option[EventName] = None,
+  created_by:    Option[String]    = None,
+  publish_after: Option[Timestamp] = None
+)
