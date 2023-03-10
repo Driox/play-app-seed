@@ -39,19 +39,27 @@ class EventSourcingClient @Inject() (
     s"event-sourced-${entity_type}-${entity_id}"
 
   /**
-   * We need a productName on producer to have optimistic locking available
+   * We need a producerName on producer to have optimistic locking available
    * Pulsar ensure only one producer can publish at the same time
    * Associate with event deduplication this ensure a good event flow
+   *
+   * We close producer after every message so we may have multiple instance of the server
+   * and each instance publish message
+   * Pulsar enforce a SingleWriter at the same time
+   *
+   * see : https://github.com/apache/pulsar/wiki/PIP-68:-Exclusive-Producer
    */
   private[this] def build_producer_config(topic_name: String): ProducerConfig = {
     val topic = pulsar_app.build_topic(topic_name)
     ProducerConfig(
-      topic                   = topic,
-      sendTimeout             = Some(0 second),
-      enableBatching          = Some(true),
-      batchingMaxMessages     = Some(1000),
-      batchingMaxPublishDelay = Some(100 milliseconds),
-      compressionType         = Some(CompressionType.ZLIB)
+      topic                = topic,
+      sendTimeout          = Some(0 second), // see https://pulsar.apache.org/docs/2.11.x/cookbooks-deduplication/#pulsar-clients
+      enableBatching       = Some(false),    // no batching, we want event as unit message
+      compressionType      = Some(CompressionType.ZLIB),
+      producerName         = Some(topic_name),
+      additionalProperties = Map(
+        "accessMode" -> "WaitForExclusive"
+      )
     )
   }
 
@@ -61,7 +69,7 @@ class EventSourcingClient @Inject() (
     criteria:      EventSearchCriteria = EventSearchCriteria()
   )(implicit read: Reads[EntityType]): Source[Fail \/ Event[EntityType], Control] = {
     val topic_name      = compute_topic_name(entity_type, entity_id)
-    val consumer_config = build_consumer_config(topic_name, None)
+    val consumer_config = build_consumer_config(topic_name)
     pulsar_listener
       .subscribe(consumer_config, criteria)
       .map(_.flatMap(entity => parseJsonToEvent(entity)))
@@ -76,23 +84,18 @@ class EventSourcingClient @Inject() (
     }
   }
 
-  private[this] def build_consumer_config(
-    topic_name:        String,
-    subscription_name: Option[Subscription]
-  ): ConsumerConfig = {
+  private[this] def build_consumer_config(topic_name: String): ConsumerConfig = {
     val (topics, topic_pattern) = topic_name match {
       case s if s.contains("*") => (Nil, Some(pulsar_app.build_topic_regex(topic_name)))
       case _                    => (Seq(pulsar_app.build_topic(topic_name)), None)
     }
 
     ConsumerConfig(
-      subscriptionName            = subscription_name.getOrElse(Subscription.generate),
+      subscriptionName            = Subscription.generate,
       topics                      = topics,
       topicPattern                = topic_pattern,
-      subscriptionType            = Some(SubscriptionType.Shared),
-      subscriptionInitialPosition = subscription_name
-        .map(_ => SubscriptionInitialPosition.Earliest)
-        .orElse(Some(SubscriptionInitialPosition.Latest))
+      subscriptionType            = Some(SubscriptionType.Exclusive), // we want all the event in one subscription
+      subscriptionInitialPosition = Some(SubscriptionInitialPosition.Earliest)
     )
   }
 

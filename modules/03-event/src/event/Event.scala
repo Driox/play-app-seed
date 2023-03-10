@@ -41,7 +41,8 @@ case class Event[+A](
 }
 
 case class EventSearchCriteria(
-  event_name:    Option[EventName] = None,
-  created_by:    Option[String]    = None,
-  publish_after: Option[Timestamp] = None
+  event_name:        Option[EventName] = None,
+  created_by:        Option[String]    = None,
+  publish_after:     Option[Timestamp] = None,
+  sequence_nb_after: Option[Long]      = None
 )

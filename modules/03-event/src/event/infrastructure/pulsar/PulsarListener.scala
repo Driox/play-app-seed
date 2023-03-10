@@ -24,7 +24,8 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
   ): Source[Fail \/ Event[JsValue], Control] = {
     event_source(consumer_config)
       .filter { event =>
-        criteria.publish_after.forall(_ < event.eventTime.value)
+        criteria.publish_after.forall(_ < event.eventTime.value) &&
+        criteria.sequence_nb_after.forall(_ < event.sequenceId.value)
       }
       .map(msg => parse_message(msg))
       .filter {
