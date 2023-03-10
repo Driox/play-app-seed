@@ -11,7 +11,7 @@ object Dependencies {
     Resolver.mavenCentral
   )
 
-  lazy val deps_all = deps_common ++ deps_db ++ deps_akka ++ deps_tests
+  lazy val deps_all = deps_common ++ deps_db ++ deps_akka ++ deps_tests ++ deps_pulsar
 
   val zio_version      = "1.0.13"
   lazy val deps_common = Seq(
@@ -68,5 +68,14 @@ object Dependencies {
     "com.github.tminglei" %% "slick-pg_play-json"    % slick_pg_version withSources () excludeAll ExclusionRule(
       organization = "com.typesafe.play"
     )
+  )
+
+  val pulsar4sVersion  = "2.9.0"
+  lazy val deps_pulsar = Seq(
+    "com.clever-cloud.pulsar4s" %% "pulsar4s-core"         % pulsar4sVersion withSources (),
+    // for the akka-streams integration
+    "com.clever-cloud.pulsar4s" %% "pulsar4s-akka-streams" % pulsar4sVersion withSources (),
+    // if you want to use play-json for schemas
+    "com.clever-cloud.pulsar4s" %% "pulsar4s-play-json"    % pulsar4sVersion withSources ()
   )
 }

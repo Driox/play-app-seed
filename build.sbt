@@ -40,11 +40,15 @@ lazy val domain: Project = (project in file("modules/02-domain"))
   .settings(commonSettings: _*)
   .dependsOn(core % "test->test;compile->compile")
 
+lazy val event: Project  = (project in file("modules/03-event"))
+  .settings(commonSettings: _*)
+  .dependsOn(core % "test->test;compile->compile")
+
 lazy val root: Project   = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(playSettings: _*)
-  .aggregate(core, domain)
-  .dependsOn(core % "test->test;compile->compile", domain)
+  .aggregate(core, domain, event)
+  .dependsOn(core % "test->test;compile->compile", domain, event)
 
 // code coverage
 coverageExcludedPackages := "<empty>;Reverse.*;.*AuthService.*;models\\.data\\..*;views.html.*"
