@@ -16,6 +16,6 @@
 
 package object utils {
 
-  implicit def symbolToString(symbol:  Symbol)              = symbol.name
-  implicit def symbolAnyToStringAny(t: Tuple2[Symbol, Any]) = (t._1.name, t._2)
+  implicit def symbolToString(symbol: Symbol): String                      = symbol.name
+  implicit def symbolAnyToStringAny(t: Tuple2[Symbol, Any]): (String, Any) = (t._1.name, t._2)
 }

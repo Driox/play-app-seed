@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import org.scalatestplus.play.PlaySpec
 
 trait HmacSecurityHelper extends Logging { self: PlaySpec with FutureAwaits with DefaultAwaitTimeout =>
-  def verify_security(security: HmacCoreSecurity, auth_header: String, req: HmacSecurityRequest) = {
+  def verify_security(security: HmacCoreSecurity, auth_header: String, req: HmacSecurityRequest): Boolean = {
     val is_secure = await(
       security.verify(auth_header, req).run
     )

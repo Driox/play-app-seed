@@ -29,7 +29,7 @@ package views.html.tags.html {
 
   class EnhancedOptionalFormError(error: Option[FormError]) {
     def translate()(implicit lng: Lang): String = error.map(e => new EnhancedFormError(e).translate()).getOrElse("")
-    def html()(implicit lng:      Lang): Html   = error.map(e => new EnhancedFormError(e).html()).getOrElse(Html(""))
+    def html()(implicit lng: Lang): Html        = error.map(e => new EnhancedFormError(e).html()).getOrElse(Html(""))
   }
 
   case class FieldElements(id: String, field: play.api.data.Field, input: Html, args: Map[Symbol, Any], lang: Lang) {
@@ -100,7 +100,7 @@ package views.html.tags.html {
       def apply(elts: FieldElements) = f(elts)
     }
 
-    implicit def inlineFieldConstructor(f:     (FieldElements) => Html)        = FieldConstructor(f)
+    implicit def inlineFieldConstructor(f: (FieldElements) => Html)            = FieldConstructor(f)
     implicit def templateAsFieldConstructor(t: Template1[FieldElements, Html]) = FieldConstructor(t.render)
   }
 

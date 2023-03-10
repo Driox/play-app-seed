@@ -56,8 +56,8 @@ object JsonTransformation {
     }
 
     data.value match {
-      case a_map if(a_map.isEmpty) => data
-      case _                       => inner_jsObject_flatten(data).reduceOption(_ ++ _).getOrElse(Json.obj())
+      case a_map if (a_map.isEmpty) => data
+      case _                        => inner_jsObject_flatten(data).reduceOption(_ ++ _).getOrElse(Json.obj())
     }
   }
 

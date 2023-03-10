@@ -1,7 +1,6 @@
 package utils
 
 import java.nio.charset.StandardCharsets
-
 import scala.util.Try
 
 import org.mindrot.jbcrypt.BCrypt

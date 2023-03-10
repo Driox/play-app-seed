@@ -8,7 +8,7 @@ import zio._
 
 trait ZioTestHelper extends Logging { self: AppSpec =>
 
-  val default_layer = PlatformAppSpecific.ZEnv.live
+  val default_layer: ZLayer[Any, Nothing, PlatformAppSpecific.ZEnv] = PlatformAppSpecific.ZEnv.live
 
   def run[A](effect: ZIO[Any, Fail, A]): Either[Fail, A] = Runtime.default.unsafeRun(effect.either)
 

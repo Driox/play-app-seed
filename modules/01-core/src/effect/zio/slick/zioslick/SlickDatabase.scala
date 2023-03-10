@@ -9,7 +9,7 @@ trait SlickDatabase {
 object SlickDatabase {
 
   object Live {
-    def apply(db: BasicBackend#DatabaseDef) = new SlickDatabase {
+    def apply(db: BasicBackend#DatabaseDef): SlickDatabase = new SlickDatabase {
       override val database = db
     }
   }

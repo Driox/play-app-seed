@@ -15,11 +15,11 @@ import com.ibm.icu.text.MessageFormat
  * Java doc : http://icu-project.org/apiref/icu4j/com/ibm/icu/text/MessageFormat.html
  */
 object m extends Logging {
-  private[this] val messagesCache = mutable.Map[Lang, Resource]()
+  private[this] val messagesCache        = mutable.Map[Lang, Resource]()
   private[this] def messages(lang: Lang) =
     messagesCache.getOrElseUpdate(lang, Resource("i18n/messages." + lang.code + ".conf"))
 
-  private[this] val formatCache = mutable.Map[(String, Lang), MessageFormat]()
+  private[this] val formatCache                              = mutable.Map[(String, Lang), MessageFormat]()
   private[this] def format(key: String)(implicit lang: Lang) =
     formatCache.getOrElseUpdate((key, lang), new MessageFormat(m(key), lang.toLocale))
 

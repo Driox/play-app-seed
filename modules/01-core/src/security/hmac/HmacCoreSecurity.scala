@@ -3,15 +3,15 @@ package security.hmac
 import helpers.sorus.Fail
 import helpers.sorus.SorusDSL.Sorus
 import scalaz.{ -\/, \/, \/-, EitherT }
+import security.Crypto
 import utils.{ StringUtils, TimeUtils }
 
 import java.nio.charset.StandardCharsets
 import java.time.OffsetDateTime
-
 import scala.concurrent.{ ExecutionContext, Future }
-import security.Crypto
 
 import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 final class HmacCoreSecurity(
   val config:    HmacSecurityConfig,
@@ -21,7 +21,7 @@ final class HmacCoreSecurity(
     with HmacSecuritySigner
     with HmacSecurityVerifier {
 
-  protected lazy val log = LoggerFactory.getLogger(this.getClass)
+  protected lazy val log: Logger = LoggerFactory.getLogger(this.getClass)
 
   def withVerifier(new_verifiers: (HmacSecurityRequest => Future[Boolean])*): HmacCoreSecurity = {
     new HmacCoreSecurity(config, verifiers ++ new_verifiers)

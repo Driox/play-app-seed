@@ -12,19 +12,20 @@ object Tags {
   type Id[A] = String @@ IdTag[A]
 
   object Id {
-    def apply[A](arg: String) = from[A](arg)
-    def from[A](arg: String)  = arg.taggedWith[IdTag[A]]
+    def apply[A](arg: String): String @@ IdTag[A] = from[A](arg)
+    def from[A](arg: String): String @@ IdTag[A]  = arg.taggedWith[IdTag[A]]
   }
 
   object IdTag {
-    implicit def IdCaseClass1Rep[A] = new CaseClass1Rep[Id[A], String](Id.apply(_), identity)
+    implicit def IdCaseClass1Rep[A]: CaseClass1Rep[Id[A], String] =
+      new CaseClass1Rep[Id[A], String](Id.apply(_), identity)
   }
 
   trait IdCapabilities[A] {
     protected def prefix: String
 
-    def generate()      = Id[A](prefix + StringUtils.generateUuid())
-    def from(s: String) = Id[A](s)
+    def generate(): String @@ IdTag[A]      = Id[A](prefix + StringUtils.generateUuid())
+    def from(s: String): String @@ IdTag[A] = Id[A](s)
 
     def validate(s: String): Either[Fail, Id[A]] = {
       s.startsWith(prefix) match {

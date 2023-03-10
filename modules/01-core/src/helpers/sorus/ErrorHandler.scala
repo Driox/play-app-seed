@@ -29,7 +29,7 @@ object ErrorHandler {
     top_level_message(err) + " : " + err.message + " - " + err.stack.getOrElse("no stack available")
   }
 
-  private[this] val i18n_regex = "^([a-z0-9\\.]*)$".r
+  private[this] val i18n_regex                                       = "^([a-z0-9\\.]*)$".r
   private[this] def translate(s: String)(implicit lng: Lang): String = {
     s match {
       case i18n_regex(s) => m(s)

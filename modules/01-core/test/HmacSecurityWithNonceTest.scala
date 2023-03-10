@@ -16,7 +16,7 @@ class HmacSecurityWithNonceTest extends PlaySpec with FutureAwaits with DefaultA
       val cache          = new CacheMock()
       val nonce_verifier = new NonceVerifier(
         cache
-        //,Configuration.from(Map("hmacsecurity.time_window" -> 10))
+        // ,Configuration.from(Map("hmacsecurity.time_window" -> 10))
       )
       val security       =
         new HmacCoreSecurity(HmacSecurityConfig("a_key", "a_secret"), List(nonce_verifier.verify))
@@ -40,7 +40,7 @@ class HmacSecurityWithNonceTest extends PlaySpec with FutureAwaits with DefaultA
       val cache          = new CacheMock()
       val nonce_verifier = new NonceVerifier(
         cache
-        //, Configuration.from(Map("hmacsecurity.time_window" -> 10))
+        // , Configuration.from(Map("hmacsecurity.time_window" -> 10))
       )
       val security       =
         new HmacCoreSecurity(HmacSecurityConfig("a_key", "a_secret"), List(nonce_verifier.verify))

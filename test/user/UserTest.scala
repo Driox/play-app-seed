@@ -3,14 +3,15 @@ package test.user
 import global.{ ApiSpecServer, TestUtils }
 import models.Users
 import notifier.WelcomeNotifier
-
-import scala.concurrent.Future
 import play.api.mvc.Result
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import org.scalatestplus.mockito.MockitoSugar
 import test.global.CtrlHelper
+
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+
+import org.scalatestplus.mockito.MockitoSugar
 
 /**
  * In this test we test the full application stack : ctrl + models + db (h2) + evolutions

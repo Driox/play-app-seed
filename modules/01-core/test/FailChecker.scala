@@ -6,7 +6,7 @@ import scalaz.{ -\/, \/, \/- }
 import org.scalatest.matchers.{ MatchResult, Matcher }
 
 trait FailChecker {
-  def beRight(): RightFailCheckerMatcher = new RightFailCheckerMatcher()
+  def beRight(): RightFailCheckerMatcher                  = new RightFailCheckerMatcher()
   def beLeft(top_message: String): LeftFailCheckerMatcher = new LeftFailCheckerMatcher(top_message)
 
   class RightFailCheckerMatcher() extends Matcher[Fail \/ _] {

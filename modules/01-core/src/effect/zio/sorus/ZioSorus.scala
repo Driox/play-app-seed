@@ -10,10 +10,10 @@ import zio.ZIO
 trait ZioSorus extends ZioExtension {
 
   class ZioFail[R, A](effect: Sorus[R, A]) {
-    def ?|(err_msg:   String): Sorus[R, A]       = effect.mapError(fail => new Fail(err_msg).withEx(fail))
-    def ?|(new_fail:  Fail): Sorus[R, A]         = effect.mapError(fail => new_fail.withEx(fail))
+    def ?|(err_msg: String): Sorus[R, A]         = effect.mapError(fail => new Fail(err_msg).withEx(fail))
+    def ?|(new_fail: Fail): Sorus[R, A]          = effect.mapError(fail => new_fail.withEx(fail))
     def ?|(fail_func: Fail => Fail): Sorus[R, A] = effect.mapError(fail => fail_func(fail).withEx(fail))
-    def ?|(err:       Throwable): Sorus[R, A]    = effect.mapError(fail => fail.withEx(err))
+    def ?|(err: Throwable): Sorus[R, A]          = effect.mapError(fail => fail.withEx(err))
   }
 
   implicit def zio_with_fail[R, E, A](effect: ZIO[R, E, A]): ZioFail[R, A] = {

@@ -1,11 +1,12 @@
 package filters
 
-import javax.inject.Inject
 import play.api.http.HttpFilters
-import play.filters.gzip.GzipFilter
 import play.filters.cors.CORSFilter
 import play.filters.csrf.CSRFFilter
+import play.filters.gzip.GzipFilter
 import play.filters.headers.SecurityHeadersFilter
+
+import javax.inject.Inject
 
 class AppliedFilters @Inject() (
   gzip:                  GzipFilter,

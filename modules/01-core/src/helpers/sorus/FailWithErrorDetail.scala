@@ -18,10 +18,10 @@ case class FailWithErrorDetail(
   def withResult(result: Result)(implicit lng: Lang): Result = {
     logger.error(ErrorHandler.toLog(errors))
     result match {
-      case redirect if(result.header.status >= 300 && result.header.status < 400) => {
+      case redirect if (result.header.status >= 300 && result.header.status < 400) => {
         redirect.flashing("error" -> userMessage())
       }
-      case _                                                                      => (new Status(result.header.status))(userMessage())
+      case _                                                                       => (new Status(result.header.status))(userMessage())
     }
   }
 

@@ -1,15 +1,14 @@
 package models
 
-import javax.inject._
-
-import play.api.db.slick._
-import utils.{ StringUtils, TimeUtils }
-
-import scala.concurrent.{ ExecutionContext, Future }
 import models.dao._
+import play.api.db.slick._
 import play.api.libs.json.JsValue
 import slick.jdbc.JdbcProfile
+import utils.{ StringUtils, TimeUtils }
+
 import java.time.OffsetDateTime
+import javax.inject._
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * easy to mock :

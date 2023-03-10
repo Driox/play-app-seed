@@ -1,12 +1,13 @@
 package global
 
+import play.api.inject.guice.GuiceApplicationBuilder
+import play.api.mvc.Results
+import test.fixture.FixtureModule
+
 import org.scalatest.TestData
 import org.scalatest.concurrent.{ IntegrationPatience, ScalaFutures }
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
-import play.api.inject.guice.GuiceApplicationBuilder
-import play.api.mvc.Results
-import test.fixture.FixtureModule
 
 abstract class ApiSpecServer
   extends PlaySpec

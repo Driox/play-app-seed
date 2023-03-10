@@ -1,15 +1,16 @@
 package controllers
 
 import models.Users
-import org.scalatestplus.mockito.MockitoSugar
-
-import scala.concurrent.Future
-import org.scalatestplus.play._
 import play.api.mvc._
-import play.api.test._
 import play.api.test.Helpers._
+import play.api.test._
 import test.global.CtrlHelper
+
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+
+import org.scalatestplus.mockito.MockitoSugar
+import org.scalatestplus.play._
 
 /**
  * This is a unit test of a ctrl, no db involved

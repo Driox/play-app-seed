@@ -13,7 +13,7 @@ trait SorusEnhanced extends Sorus {
 
   private[this] val logger = LoggerFactory.getLogger("helpers.sorus.SorusEnhanced")
 
-  override implicit def fDisjunctionToStepOps[A, B](fDisjunction: Future[B \/ A]): StepOps[A, B] =
+  override implicit def fDisjunctionToStepOps[A, B](fDisjunction: Future[B \/ A]): StepOpsWithDefaultError[A, B] =
     new StepOpsEnhanced[A, B] {
       override def orFailWith(failureHandler: (B) => Fail) =
         EitherT[Future, Fail, A] {
@@ -25,17 +25,19 @@ trait SorusEnhanced extends Sorus {
         }
     }
 
-  override implicit def disjunctionToStepOps[A, B](disjunction: B \/ A): StepOps[A, B] = new StepOpsEnhanced[A, B] {
-    override def orFailWith(failureHandler: (B) => Fail) =
-      EitherT[Future, Fail, A](Future.successful(disjunction.leftMap(failureHandler)))
-  }
+  override implicit def disjunctionToStepOps[A, B](disjunction: B \/ A): StepOpsWithDefaultError[A, B] =
+    new StepOpsEnhanced[A, B] {
+      override def orFailWith(failureHandler: (B) => Fail) =
+        EitherT[Future, Fail, A](Future.successful(disjunction.leftMap(failureHandler)))
+    }
 
-  override implicit def eitherToStepOps[A, B](either: Either[B, A]): StepOps[A, B] = new StepOpsEnhanced[A, B] {
-    override def orFailWith(failureHandler: (B) => Fail) =
-      EitherT[Future, Fail, A](Future.successful(either.fold(failureHandler andThen \/.left, \/.right)))
-  }
+  override implicit def eitherToStepOps[A, B](either: Either[B, A]): StepOpsWithDefaultError[A, B] =
+    new StepOpsEnhanced[A, B] {
+      override def orFailWith(failureHandler: (B) => Fail) =
+        EitherT[Future, Fail, A](Future.successful(either.fold(failureHandler andThen \/.left, \/.right)))
+    }
 
-  override implicit def fEitherToStepOps[A, B](fEither: Future[Either[B, A]]): StepOps[A, B] =
+  override implicit def fEitherToStepOps[A, B](fEither: Future[Either[B, A]]): StepOpsWithDefaultError[A, B] =
     new StepOpsEnhanced[A, B] {
       override def orFailWith(failureHandler: (B) => Fail) = EitherT[Future, Fail, A] {
         fEither
@@ -52,7 +54,7 @@ trait SorusEnhanced extends Sorus {
   }
 }
 
-trait StepOpsEnhanced[A, B] extends StepOps[A, B] {
+trait StepOpsEnhanced[A, B] extends StepOpsWithDefaultError[A, B] {
   override def ?|(failureThunk: => String): Step[A] = orFailWith {
     case err: Throwable   => new Fail(failureThunk).withEx(err)
     case fail: Fail       => new Fail(failureThunk).withEx(fail)

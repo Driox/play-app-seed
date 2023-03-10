@@ -5,7 +5,6 @@ import slick.jdbc.JdbcProfile
 import slick.relational.RelationalProfile
 
 import scala.concurrent.{ ExecutionContext, Future }
-import slick.lifted._
 
 trait CrudRepository[E <: Entity[E], J <: JdbcProfile] { self: HasDatabaseConfig[J] =>
 
@@ -61,8 +60,8 @@ trait CrudRepository[E <: Entity[E], J <: JdbcProfile] { self: HasDatabaseConfig
 
   lazy protected val byId               = Compiled { id: Rep[String] => tables.filter(_.id === id) }
   // can't compile inSet for now : https://github.com/slick/slick/issues/718
-  //lazy protected val byIds = Compiled { ids: Rep[Traversable[String]] => tables.filter(_.id inSet ids).to[List] }
+  // lazy protected val byIds = Compiled { ids: Rep[Traversable[String]] => tables.filter(_.id inSet ids).to[List] }
   lazy protected val tableQueryCompiled = Compiled(tables.to[List])
   lazy protected val saveCompiled       = tables returning tables.map(_.id)
-  lazy private val countCompiled        = Compiled(tables.map(_.id).length)
+  Compiled(tables.map(_.id).length)
 }

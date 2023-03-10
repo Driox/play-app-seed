@@ -1,7 +1,6 @@
 package security.hmac
 
 import helpers.sorus.Fail
-import javax.inject.{ Inject, Singleton }
 import play.api.Configuration
 import play.api.cache.AsyncCacheApi
 import play.api.mvc.RequestHeader
@@ -9,14 +8,15 @@ import scalaz.Scalaz._
 import scalaz._
 import security.hmac.verifier.NonceVerifier
 
+import javax.inject.{ Inject, Singleton }
 import scala.concurrent.{ ExecutionContext, Future }
 
 @Singleton
 class HmacVerifier @Inject() (configuration: Configuration, cache: AsyncCacheApi, ec: ExecutionContext) {
 
-  lazy val config = HmacSecurity.parse_config(configuration)
+  lazy val config: HmacSecurityConfig = HmacSecurity.parse_config(configuration)
 
-  val nonce_verifier = new NonceVerifier(cache)(ec)
+  val nonce_verifier: NonceVerifier = new NonceVerifier(cache)(ec)
 
   def verify(req: RequestHeader)(implicit ec: ExecutionContext): EitherT[Future, Fail, Boolean] = {
     verify(req, config.key, config.secret)

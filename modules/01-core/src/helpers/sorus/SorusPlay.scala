@@ -52,9 +52,10 @@ trait SorusPlay[T <: Request[_]] extends Sorus with Logging { self: FormatErrorR
   private[SorusPlay] def fromForm[A](onError: Form[A] => Fail)(form: Form[A]): Step[A] =
     EitherT[Future, Fail, A](Future.successful(form.fold(onError andThen \/.left, \/.right)))
 
-  implicit def formToStepOps[A](form: Form[A]): StepOps[A, Form[A]] = new StepOps[A, Form[A]] {
-    override def orFailWith(failureHandler: (Form[A]) => Fail) = fromForm(failureHandler)(form)
-  }
+  implicit def formToStepOps[A](form: Form[A]): StepOpsWithDefaultError[A, Form[A]] =
+    new StepOpsWithDefaultError[A, Form[A]] {
+      override def orFailWith(failureHandler: (Form[A]) => Fail) = fromForm(failureHandler)(form)
+    }
 
   implicit def resultStepToResult(step: Step[Result])(implicit request: T): Future[Result] = {
     step.run.map { s =>
@@ -66,7 +67,7 @@ trait SorusPlay[T <: Request[_]] extends Sorus with Logging { self: FormatErrorR
     }(executionContext)
   }
 
-  private[this] def addExceptionCode(fail: Fail): Fail = {
+  private def addExceptionCode(fail: Fail): Fail = {
     fail.getRootException()
       .map(_ => Fail(s"#${StringUtils.randomAlphanumericString(8)} ${fail.message}", fail.cause))
       .getOrElse(fail)

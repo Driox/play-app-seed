@@ -38,7 +38,7 @@ object ConverterUtils {
     }.toOption
   }
 
-  def prettyPrintXml(xml: NodeSeq) = {
+  def prettyPrintXml(xml: NodeSeq): String = {
     xml.toList.map(_.toString).fold("")((x, y) => x + y)
   }
 

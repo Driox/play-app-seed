@@ -19,7 +19,7 @@ object PlayUtils {
     }
   }
 
-  private[this] val supportedTypes: Seq[String] = List("application/json", "text/html")
+  private[this] val supportedTypes: Seq[String]    = List("application/json", "text/html")
   def is_json_req(request: RequestHeader): Boolean = {
     MediaRange.preferred(request.acceptedTypes, supportedTypes).map(_ == "application/json").getOrElse(false)
   }

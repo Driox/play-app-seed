@@ -4,6 +4,7 @@ import models.dao._
 import play.api.db.slick.HasDatabaseConfig
 import play.api.libs.json.JsValue
 import slick.jdbc.JdbcProfile
+
 import java.time.OffsetDateTime
 
 trait UserComponent extends TableMapping {

@@ -2,13 +2,13 @@ package notifier
 
 import akka.actor.ActorSystem
 import play.api.mvc.RequestHeader
-
-import scala.concurrent.{ ExecutionContext, Future }
-import org.apache.commons.mail._
 import play.api.mvc.request.RemoteConnection
 import play.api.{ Configuration, Logging }
 
+import scala.concurrent.{ ExecutionContext, Future }
 import scala.util.Try
+
+import org.apache.commons.mail._
 
 trait Notifier extends Logging {
 

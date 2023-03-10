@@ -130,16 +130,11 @@ object SorusDSL {
   trait StepOps[A, B] {
     def orFailWith(failureHandler: B => Fail): Step[A]
     def ?|(failureHandler: B => Fail): Step[A] = orFailWith(failureHandler)
-    def ?|(failureThunk:   => String): Step[A] = orFailWith {
+    def ?|(failureThunk: => String): Step[A]   = orFailWith {
       case err: Throwable => new Fail(failureThunk).withEx(err)
       case fail: Fail     => new Fail(failureThunk).withEx(fail)
       case _: Unit        => new Fail(failureThunk.toString)
       case b              => new Fail(b.toString).withEx(failureThunk)
-    }
-    def ?|(empty:          Unit): Step[A]      = orFailWith {
-      case err: Throwable => new Fail("Unexpected exception").withEx(err)
-      case fail: Fail     => fail
-      case b              => new Fail(b.toString)
     }
 
     /**
@@ -162,17 +157,25 @@ object SorusDSL {
     }
   }
 
+  trait StepOpsWithDefaultError[A, B] extends StepOps[A, B] {
+    def ?|(empty: Unit): Step[A] = orFailWith {
+      case err: Throwable => new Fail("Unexpected exception").withEx(err)
+      case fail: Fail     => fail
+      case b              => new Fail(b.toString)
+    }
+  }
+
   trait Sorus {
 
     protected val executionContext: ExecutionContext = SorusDSL.executionContext
 
     protected def sequenceFail[A](data: List[Fail \/ A]): Fail \/ List[A] = SorusDSL.sequenceFail(data)
 
-    implicit val futureIsAFunctor = new Functor[Future] {
+    implicit val futureIsAFunctor: Functor[Future] = new Functor[Future] {
       override def map[A, B](fa: Future[A])(f: (A) => B) = fa.map(f)(executionContext)
     }
 
-    implicit val futureIsAMonad = new Monad[Future] {
+    implicit val futureIsAMonad: Monad[Future] = new Monad[Future] {
       override def point[A](a: => A) = Future(a)(executionContext)
 
       override def bind[A, B](fa: Future[A])(f: (A) => Future[B]) = fa.flatMap(f)(executionContext)
@@ -180,7 +183,7 @@ object SorusDSL {
 
     // This instance is needed to enable filtering/pattern-matching in for-comprehensions
     // It is acceptable for pattern-matching
-    implicit val failIsAMonoid = new Monoid[Fail] {
+    implicit val failIsAMonoid: Monoid[Fail] = new Monoid[Fail] {
       override def zero = new Fail("")
 
       override def append(f1: Fail, f2: => Fail) = f1.withEx(f2)
@@ -192,40 +195,46 @@ object SorusDSL {
     }
 
     implicit def fOptionToStepOps[A](fOption: Future[Option[A]]): StepOps[A, Unit] = new StepOps[A, Unit] {
-      override def orFailWith(failureHandler: Unit => Fail) = fromFOption(failureHandler(()))(fOption)(executionContext)
+      override def orFailWith(failureHandler: Unit => Fail) =
+        fromFOption(failureHandler(()))(fOption)(executionContext)
     }
 
-    implicit def fEitherToStepOps[A, B](fEither: Future[Either[B, A]]): StepOps[A, B] = new StepOps[A, B] {
-      override def orFailWith(failureHandler: (B) => Fail) = fromFEither(failureHandler)(fEither)(executionContext)
-    }
+    implicit def fEitherToStepOps[A, B](fEither: Future[Either[B, A]]): StepOpsWithDefaultError[A, B] =
+      new StepOpsWithDefaultError[A, B] {
+        override def orFailWith(failureHandler: (B) => Fail) = fromFEither(failureHandler)(fEither)(executionContext)
+      }
 
-    implicit def fDisjunctionToStepOps[A, B](fDisjunction: Future[B \/ A]): StepOps[A, B] = new StepOps[A, B] {
-      override def orFailWith(failureHandler: (B) => Fail) =
-        fromFDisjunction(failureHandler)(fDisjunction)(executionContext)
-    }
+    implicit def fDisjunctionToStepOps[A, B](fDisjunction: Future[B \/ A]): StepOpsWithDefaultError[A, B] =
+      new StepOpsWithDefaultError[A, B] {
+        override def orFailWith(failureHandler: (B) => Fail) =
+          fromFDisjunction(failureHandler)(fDisjunction)(executionContext)
+      }
 
     implicit def optionToStepOps[A](option: Option[A]): StepOps[A, Unit] = new StepOps[A, Unit] {
       override def orFailWith(failureHandler: (Unit) => Fail) = fromOption(failureHandler(()))(option)
     }
 
-    implicit def disjunctionToStepOps[A, B](disjunction: B \/ A): StepOps[A, B] = new StepOps[A, B] {
-      override def orFailWith(failureHandler: (B) => Fail) = fromDisjunction(failureHandler)(disjunction)
-    }
+    implicit def disjunctionToStepOps[A, B](disjunction: B \/ A): StepOpsWithDefaultError[A, B] =
+      new StepOpsWithDefaultError[A, B] {
+        override def orFailWith(failureHandler: (B) => Fail) = fromDisjunction(failureHandler)(disjunction)
+      }
 
-    implicit def eitherToStepOps[A, B](either: Either[B, A]): StepOps[A, B] = new StepOps[A, B] {
-      override def orFailWith(failureHandler: (B) => Fail) = fromEither(failureHandler)(either)
-    }
+    implicit def eitherToStepOps[A, B](either: Either[B, A]): StepOpsWithDefaultError[A, B] =
+      new StepOpsWithDefaultError[A, B] {
+        override def orFailWith(failureHandler: (B) => Fail) = fromEither(failureHandler)(either)
+      }
 
     implicit def booleanToStepOps(boolean: Boolean): StepOps[Unit, Unit] = new StepOps[Unit, Unit] {
       override def orFailWith(failureHandler: (Unit) => Fail) = fromBoolean(failureHandler(()))(boolean)
     }
 
-    implicit def tryToStepOps[A](tryValue: Try[A]): StepOps[A, Throwable] = new StepOps[A, Throwable] {
-      override def orFailWith(failureHandler: (Throwable) => Fail) = fromTry(failureHandler)(tryValue)
-    }
+    implicit def tryToStepOps[A](tryValue: Try[A]): StepOpsWithDefaultError[A, Throwable] =
+      new StepOpsWithDefaultError[A, Throwable] {
+        override def orFailWith(failureHandler: (Throwable) => Fail) = fromTry(failureHandler)(tryValue)
+      }
 
-    implicit def jsResultToStepOps[A](jsResult: JsResult[A]): StepOps[A, JsErrorContent] =
-      new StepOps[A, JsErrorContent] {
+    implicit def jsResultToStepOps[A](jsResult: JsResult[A]): StepOpsWithDefaultError[A, JsErrorContent] =
+      new StepOpsWithDefaultError[A, JsErrorContent] {
         override def orFailWith(failureHandler: (JsErrorContent) => Fail) = fromJsResult(failureHandler)(jsResult)
       }
 
@@ -241,7 +250,7 @@ object SorusDSL {
 
     def success[T](x: T): Step[T] = EitherT.pure[Future, Fail, T](x)
 
-    def fail[T](fail:      Fail): Step[T]   = EitherT.pureLeft[Future, Fail, T](fail)
+    def fail[T](fail: Fail): Step[T]        = EitherT.pureLeft[Future, Fail, T](fail)
     def fail[T](error_msg: String): Step[T] = EitherT.pureLeft[Future, Fail, T](new Fail(error_msg))
   }
 }

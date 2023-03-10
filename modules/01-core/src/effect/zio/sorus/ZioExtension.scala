@@ -32,9 +32,9 @@ class ZioEither[E, A](either: Either[E, A]) {
 }
 
 trait ZioExtension {
-  implicit def future2Zio[A](future:    => Future[A]) = new ZioFuture(future)
-  implicit def option2Zio[A](option:    Option[A])    = new ZioOption(option)
-  implicit def either2Zio[E, A](either: Either[E, A]) = new ZioEither(either)
+  implicit def future2Zio[A](future: => Future[A]): ZioFuture[A]       = new ZioFuture(future)
+  implicit def option2Zio[A](option: Option[A]): ZioOption[A]          = new ZioOption(option)
+  implicit def either2Zio[E, A](either: Either[E, A]): ZioEither[E, A] = new ZioEither(either)
 }
 
 object ZioExtension extends ZioExtension

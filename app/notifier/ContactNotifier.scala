@@ -1,12 +1,11 @@
 package notifier
 
-import javax.inject._
-
 import akka.actor.ActorSystem
 import play.api.Configuration
 
-import scala.util.Try
+import javax.inject._
 import scala.concurrent.Future
+import scala.util.Try
 
 /**
  * @author Grignou
@@ -15,7 +14,7 @@ import scala.concurrent.Future
 class ContactNotifier @Inject() (val configuration: Configuration, val system: ActorSystem) extends Notifier {
 
   def notify(firstName: String, lastName: String, email: String, message: String): Future[Try[String]] = {
-    val contactMail = "adrien.crovetto@gmail.com" //FROM._1
+    val contactMail = "adrien.crovetto@gmail.com" // FROM._1
     sendMail(
       from        = (email, s"$firstName $lastName"),
       to          = Seq(contactMail),

@@ -42,7 +42,8 @@ object Dependencies {
   val akkaVersion    = "2.6.20"
   lazy val deps_akka = Seq(
     "com.typesafe.akka"  %% "akka-testkit"             % akkaVersion % Test withSources () excludeAll ExclusionRule(organization =
-      "com.typesafe.akka"),
+      "com.typesafe.akka"
+    ),
     "com.lightbend.akka" %% "akka-stream-alpakka-csv"  % "4.0.0" withSources (),
     "com.lightbend.akka" %% "akka-stream-alpakka-file" % "4.0.0" withSources ()
   )

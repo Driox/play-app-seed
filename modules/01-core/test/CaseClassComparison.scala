@@ -15,8 +15,8 @@ trait CaseClassComparison {
       val error_msg =
         s"""Matching error:
            |  ${diff.map { case (label, _) =>
-          s"$label -> ${left_map.getOrElse(label, "No Value")} \n!=\n ${right_map.getOrElse(label, "No Value")}"
-        }.mkString("\n")}
+            s"$label -> ${left_map.getOrElse(label, "No Value")} \n!=\n ${right_map.getOrElse(label, "No Value")}"
+          }.mkString("\n")}
          """.stripMargin
       MatchResult(matches = diff.isEmpty, error_msg, "all good")
     }

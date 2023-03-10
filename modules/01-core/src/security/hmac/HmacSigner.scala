@@ -1,16 +1,16 @@
 package security.hmac
 
-import javax.inject.{ Inject, Singleton }
 import play.api.Configuration
 import play.api.libs.ws.{ StandaloneWSRequest, WSRequestExecutor, WSRequestFilter }
 import play.shaded.ahc.org.asynchttpclient.BoundRequestBuilder
 import utils.{ StringUtils, TimeUtils }
 
+import javax.inject.{ Inject, Singleton }
 import scala.jdk.CollectionConverters._
 
 @Singleton
 class HmacSigner @Inject() (configuration: Configuration) extends HmacSignerSecurity {
-  override lazy val config = HmacSecurity.parse_config(configuration)
+  override lazy val config: HmacSecurityConfig = HmacSecurity.parse_config(configuration)
 }
 
 trait HmacSignerSecurity {

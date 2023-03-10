@@ -1,11 +1,12 @@
 package utils
 
-import com.ibm.icu.util.Currency
 import play.api.i18n.Lang
 
 import java.util.Locale
 import scala.math.BigDecimal.RoundingMode
 import scala.math.BigDecimal.RoundingMode.RoundingMode
+
+import com.ibm.icu.util.Currency
 
 object NumberUtils {
 

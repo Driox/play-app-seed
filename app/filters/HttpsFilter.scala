@@ -1,12 +1,11 @@
 package filters
 
-import javax.inject.Inject
-
 import akka.stream.Materializer
-
-import scala.concurrent.{ ExecutionContext, Future }
-import play.api.mvc._
 import play.api.Configuration
+import play.api.mvc._
+
+import javax.inject.Inject
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * @author Grignou

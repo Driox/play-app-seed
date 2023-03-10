@@ -1,12 +1,12 @@
 package test.global
 
-import scala.concurrent.{ Await, Future }
-import scala.concurrent.duration._
+import play.api.Logging
 import play.api.mvc.InjectedController
 import play.api.test.Helpers
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import play.api.Logging
+import scala.concurrent.duration._
+import scala.concurrent.{ Await, Future }
 
 trait TestGlobal extends Logging {
   def await[A](f: Future[A]): A           = Await.result(f, 10 seconds)

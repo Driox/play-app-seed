@@ -1,10 +1,11 @@
-import org.scalatestplus.play.PlaySpec
 import utils.NumberUtils
+
+import org.scalatestplus.play.PlaySpec
 
 class NumberUtilsTest extends PlaySpec {
 
   // This 4-tuple list represents (percentage: Double, amount: Cents, expected_result: Double, truncated_expected_result: Double)
-  val data_factory = List[(Double, Int, Double, Double)](
+  val data_factory: List[(Double, Int, Double, Double)] = List[(Double, Int, Double, Double)](
     (25, 50, 12.5, 12),
     (10.2489751, 123456, 12652.97, 12652),
     (33, 100, 33, 33),

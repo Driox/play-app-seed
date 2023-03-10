@@ -7,7 +7,6 @@ import play.api.mvc.RequestHeader
 
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
-
 import scala.util.control.NonFatal
 
 trait PlayHelper {

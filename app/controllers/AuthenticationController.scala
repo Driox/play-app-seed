@@ -1,12 +1,11 @@
 package controllers
 
-import javax.inject._
-
-import notifier.WelcomeNotifier
-import play.api.data._
-import play.api.data.Forms._
 import models._
+import notifier.WelcomeNotifier
+import play.api.data.Forms._
+import play.api.data._
 
+import javax.inject._
 import scala.concurrent.ExecutionContext
 
 @Singleton
@@ -57,7 +56,7 @@ class AuthenticationController @Inject() (welcomeNotifier: WelcomeNotifier, val 
     }
   }
 
-  def logout() = Action { implicit request =>
+  def logout() = Action { _ =>
     Redirect(routes.Application.home()).withNewSession
   }
 

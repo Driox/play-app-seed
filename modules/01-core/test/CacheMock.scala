@@ -1,13 +1,13 @@
 package test.mock
 
+import akka.Done
 import play.api.cache.AsyncCacheApi
 
 import scala.collection.mutable
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.concurrent.duration._
 import scala.reflect.ClassTag
-import akka.Done
-import scala.concurrent.ExecutionContext.Implicits.global
 
 class CacheMock extends AsyncCacheApi {
 
@@ -20,7 +20,7 @@ class CacheMock extends AsyncCacheApi {
    * @param value Item value.
    * @param expiration Expiration time.
    */
-  def set(key: String, value: Any, expiration: Duration = Duration.Inf) = Future.successful {
+  def set(key: String, value: Any, expiration: Duration = Duration.Inf): Future[Done.type] = Future.successful {
     data.put(key, value)
     Done
   }
@@ -28,7 +28,7 @@ class CacheMock extends AsyncCacheApi {
   /**
    * Remove a value from the cache
    */
-  def remove(key: String) = Future.successful {
+  def remove(key: String): Future[Done.type] = Future.successful {
     data.remove(key)
     Done
   }

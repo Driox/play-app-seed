@@ -44,11 +44,11 @@ class DisjunctionEnhanced[A](disjunction: Fail \/ A) {
 }
 
 trait DisjunctionHelper {
-  implicit def optionToDisjunction[A](option:     Option[A]): OptionEnhanced[A]       = new OptionEnhanced(option)
-  implicit def booleanToDisjunction(boolean:      Boolean): BooleanEnhanced           = new BooleanEnhanced(boolean)
-  implicit def eitherToDisjunction[A](either:     Either[Fail, A]): EitherEnhanced[A] = new EitherEnhanced(either)
-  implicit def jsResultToDisjunction[A](jsResult: JsResult[A]): JsResultEnhanced[A]   = new JsResultEnhanced(jsResult)
-  implicit def disjunctionToDisjunction[A](disj:  Fail \/ A): DisjunctionEnhanced[A]  = new DisjunctionEnhanced(disj)
+  implicit def optionToDisjunction[A](option: Option[A]): OptionEnhanced[A]         = new OptionEnhanced(option)
+  implicit def booleanToDisjunction(boolean: Boolean): BooleanEnhanced              = new BooleanEnhanced(boolean)
+  implicit def eitherToDisjunction[A](either: Either[Fail, A]): EitherEnhanced[A]   = new EitherEnhanced(either)
+  implicit def jsResultToDisjunction[A](jsResult: JsResult[A]): JsResultEnhanced[A] = new JsResultEnhanced(jsResult)
+  implicit def disjunctionToDisjunction[A](disj: Fail \/ A): DisjunctionEnhanced[A] = new DisjunctionEnhanced(disj)
 
 }
 object DisjunctionHelper extends DisjunctionHelper

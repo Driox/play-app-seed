@@ -57,11 +57,11 @@ class HmacSecurityWithCustomVerifierTest
           false
         )
       }
-      val now      = "2019-04-09T13:32:04Z"
-      val security = new HmacCoreSecurity(HmacSecurityConfig("a_key", "a_secret", time_windows = 3600000)).withVerifier(
+      val now                                                          = "2019-04-09T13:32:04Z"
+      val security                                                     = new HmacCoreSecurity(HmacSecurityConfig("a_key", "a_secret", time_windows = 3600000)).withVerifier(
         user_id_validator
       )
-      val req      = HmacSecurityRequest("GET", None, None, now, custom_headers = List("user_id" -> "1234"))
+      val req                                                          = HmacSecurityRequest("GET", None, None, now, custom_headers = List("user_id" -> "1234"))
 
       val auth = security.authorization_header(req)
       auth must startWith("HMAC a_key:")

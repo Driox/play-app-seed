@@ -1,9 +1,8 @@
 package controllers
 
-import javax.inject._
-
 import models.Users
 
+import javax.inject._
 import scala.concurrent.ExecutionContext
 
 /**

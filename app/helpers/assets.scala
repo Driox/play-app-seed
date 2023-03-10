@@ -7,7 +7,7 @@ import play.twirl.api.Html
  * Static resources convenience handlers
  */
 private[helpers] sealed trait asset {
-  protected val ext = "" //." + folder
+  protected val ext = "" // ." + folder
   protected def folder: String
 
   protected def toArgs(args: (Symbol, Any)*) = PlayMagic.toHtmlArgs(args.toMap).body

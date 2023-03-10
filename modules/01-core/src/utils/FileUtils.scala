@@ -1,7 +1,6 @@
 package utils
 
 import java.io._
-
 import scala.language.reflectiveCalls
 
 class FileUtils(file: File) {
@@ -27,7 +26,7 @@ class FileUtils(file: File) {
     finally { fw.close }
   }
 
-  def append(textData: String) = {
+  def append(textData: String): Unit = {
     using(new FileWriter(file, true)) {
       fileWriter =>
         using(new PrintWriter(fileWriter)) {
@@ -54,5 +53,5 @@ class FileUtils(file: File) {
 }
 
 object FileUtils {
-  implicit def enhancedFile(file: File) = new FileUtils(file)
+  implicit def enhancedFile(file: File): FileUtils = new FileUtils(file)
 }

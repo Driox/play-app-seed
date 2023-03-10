@@ -15,7 +15,7 @@ private[controllers] trait Security { self: BaseController =>
   def userDao: Users
 
   def secureAction()(implicit ec: ExecutionContext) = new ActionRefiner[Request, AuthRequest] {
-    def executionContext = ec
+    def executionContext                                                       = ec
     def refine[A](request: Request[A]): Future[Either[Result, AuthRequest[A]]] = reqToUser(request) map {
       case Some(user) => Right(new AuthRequest(user, request))
       case None       => Left(Forbidden("error.login.required"))

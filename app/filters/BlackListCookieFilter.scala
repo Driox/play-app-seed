@@ -1,12 +1,12 @@
 package filters
 
-import scala.concurrent.{ ExecutionContext, Future }
-import play.api.mvc._
-import play.api.mvc.Results.Redirect
-import javax.inject._
-
 import akka.stream.Materializer
 import play.api.cache.AsyncCacheApi
+import play.api.mvc.Results.Redirect
+import play.api.mvc._
+
+import javax.inject._
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * BlackListCookieFilter is a filter that allow logout to disable session totally

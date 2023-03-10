@@ -3,7 +3,6 @@ package effect.zio.play
 import effect.Fail
 import play.api.Logging
 import play.api.mvc._
-import play.api.mvc.{ Action, ActionBuilder, BodyParser, Result }
 
 import scala.util.control.NonFatal
 

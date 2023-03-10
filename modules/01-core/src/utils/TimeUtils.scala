@@ -5,7 +5,6 @@ import play.api.libs.json._
 import java.time.format.DateTimeFormatter
 import java.time.{ Instant, Month, OffsetDateTime, ZoneId, ZoneOffset }
 import java.util.Locale
-
 import scala.util.Try
 
 import com.ibm.icu.text.DateTimePatternGenerator
@@ -61,6 +60,6 @@ object TimeUtils {
       case JsString(s) => parse(s).map(JsSuccess(_)).getOrElse(JsError(s"can't parse $s as ISO date"))
       case _           => JsError(s"can't parse $json as ISO date")
     }
-    def writes(t:   OffsetDateTime): JsValue           = JsString(toIso(t))
+    def writes(t: OffsetDateTime): JsValue             = JsString(toIso(t))
   }
 }

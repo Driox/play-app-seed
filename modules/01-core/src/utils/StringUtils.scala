@@ -3,14 +3,13 @@ package utils
 import java.security.SecureRandom
 import java.text.Normalizer
 import java.util.regex.Pattern
-
 import scala.util.Try
 
 import com.google.common.io.BaseEncoding
 
 object StringUtils {
 
-  val separatorLine = System.getProperty("line.separator")
+  val separatorLine: String = System.getProperty("line.separator")
 
   def splitStringToArray(value: String, separator: String): Seq[String] = {
     value.replaceAll(" ", "").split(separator).toIndexedSeq
@@ -82,7 +81,7 @@ object StringUtils {
   /**
    * Elegant random strign generation in Scala -> http://www.bindschaedler.com/2012/04/07/elegant-random-string-generation-in-scala/
    */
-  //Random Generator
+  // Random Generator
   private[this] val random = new SecureRandom()
 
   // Generate a random string of length n from the given alphabet

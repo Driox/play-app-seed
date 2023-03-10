@@ -3,8 +3,7 @@ package effect.zio.play
 import effect.Fail
 import play.api.Logging
 import play.api.data.Form
-import play.api.libs.json.Json
-import play.api.libs.json.{ JsPath, JsValue, JsonValidationError, Reads }
+import play.api.libs.json.{ JsPath, JsValue, Json, JsonValidationError, Reads }
 import play.api.mvc.Result
 import utils.StringUtils
 
@@ -40,7 +39,7 @@ trait ZioPlayHelper  extends Logging {
   protected def jsonValidation[A](jsValue: JsValue)(implicit reads: Reads[A]): ZIO[Any, Fail, A] =
     IO.fromEither(jsValue.validate[A].asEither).mapError(defaultJsonError2Fail)
 
-  implicit def form2Zio[A](form: Form[A]) = new ZioForm(form)
+  implicit def form2Zio[A](form: Form[A]): ZioForm[A] = new ZioForm(form)
 
   /**
    * Allow this kind of mapping with result on the left
@@ -72,7 +71,7 @@ class ZioForm[T](form: Form[T]) {
     )
   }
 
-  def ?|(unit: Unit): ZIO[Any, Fail, T] = ?|(f => default_failure_handler(f))
+  def ?|(unit: Unit): ZIO[Any, Fail, T]                                       = ?|(f => default_failure_handler(f))
   private[this] def default_failure_handler[A](formWithErrors: Form[A]): Fail = {
     val msg = formWithErrors.errors.map(_.message).mkString("\n")
     Fail(s"Error in your input data : $msg")

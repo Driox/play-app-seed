@@ -17,7 +17,7 @@ case class StreamResult(
   errors:            Map[String, Fail] = SortedMap()
 ) {
   def is_success(): Boolean = (element_processed == element_succeeded) && errors.isEmpty && (element_succeeded >= 0)
-  def toJson(): JsValue = {
+  def toJson(): JsValue     = {
     if(is_success()) {
       Json.obj(
         "tech_message" -> JsString("import.success"),

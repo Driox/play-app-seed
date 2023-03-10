@@ -1,10 +1,10 @@
 package security
 
-import javax.crypto._
-import javax.crypto.spec.{ IvParameterSpec, SecretKeySpec }
 import play.api.libs.Codecs
 
 import java.security.{ MessageDigest, SecureRandom }
+import javax.crypto._
+import javax.crypto.spec.{ IvParameterSpec, SecretKeySpec }
 
 import org.apache.commons.codec.binary.{ Base64, Hex }
 

@@ -1,5 +1,6 @@
-import org.scalatestplus.play.PlaySpec
 import utils.StringUtils
+
+import org.scalatestplus.play.PlaySpec
 
 class UtilsTest extends PlaySpec {
 

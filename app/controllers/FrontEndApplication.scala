@@ -1,13 +1,13 @@
 package controllers
 
-import javax.inject._
 import models.Users
 import play.api.Environment
-import play.twirl.api.Html
 import play.api.libs.json.Json
-
-import scala.concurrent.ExecutionContext
+import play.twirl.api.Html
 import utils.FileUtils._
+
+import javax.inject._
+import scala.concurrent.ExecutionContext
 
 @Singleton
 class FrontEndApplication @Inject() (val userDao: Users, env: Environment)(implicit ec: ExecutionContext)

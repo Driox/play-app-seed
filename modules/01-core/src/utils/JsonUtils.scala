@@ -4,6 +4,7 @@ import play.api.i18n.Lang
 import play.api.libs.json._
 
 import scala.annotation.tailrec
+
 import org.apache.commons.validator.routines.UrlValidator
 
 object JsonUtils {
@@ -100,8 +101,8 @@ object JsonUtils {
 
   def findInPath(json: JsValue, path: String): JsLookupResult = {
 
-    val pattern_array = "\\[([0-9]+)\\]".r
-    val pattern       = "(.*)\\[([0-9]+)\\]".r
+    val pattern_array                                                             = "\\[([0-9]+)\\]".r
+    val pattern                                                                   = "(.*)\\[([0-9]+)\\]".r
     @tailrec
     def findInPathRec(result: JsLookupResult, path: List[String]): JsLookupResult = {
       path match {

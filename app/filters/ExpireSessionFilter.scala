@@ -1,13 +1,13 @@
 package filters
 
-import scala.concurrent.Future
-import play.api.Configuration
-import play.api.mvc._
-import play.api.mvc.Results.Redirect
-import javax.inject._
-
 import akka.stream.Materializer
+import play.api.Configuration
+import play.api.mvc.Results.Redirect
+import play.api.mvc._
 import utils.TimeUtils
+
+import javax.inject._
+import scala.concurrent.Future
 import scala.util.Try
 
 /**
@@ -39,6 +39,6 @@ class ExpireSessionFilter @Inject() (val mat: Materializer, config: Configuratio
 
   private[this] def timestamp(): Long = TimeUtils.now.toEpochSecond()
 
-  private[this] val apiPath = "^/v[0-9]*/.*"
+  private[this] val apiPath                                  = "^/v[0-9]*/.*"
   private[this] def isEnable(header: RequestHeader): Boolean = !header.path.matches(apiPath)
 }

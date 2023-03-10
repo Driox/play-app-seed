@@ -1,16 +1,15 @@
 package test.fixture
 
-import javax.inject._
-
 import models._
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import test.global.TestGlobal
-import com.google.inject.AbstractModule
-
-import scala.concurrent.Future
-import play.api.inject.ApplicationLifecycle
 import play.api.Logging
+import play.api.inject.ApplicationLifecycle
+import test.global.TestGlobal
+
+import javax.inject._
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+
+import com.google.inject.AbstractModule
 
 class FixtureModule() extends AbstractModule with TestGlobal {
 
