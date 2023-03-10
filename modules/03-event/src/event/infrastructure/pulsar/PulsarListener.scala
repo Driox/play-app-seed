@@ -46,13 +46,14 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
 
   private[this] def parse_message(message: ConsumerMessage[JsValue]): Fail \/ Event[JsValue] = {
     for {
-      event_id         <- message.props.get("id")         |> "Pulsar parsing error : no event id"
-      entity_id        <- message.key                     |> "Pulsar parsing error : no event key"
-      event_name_props <- message.props.get("event_name") |> "Pulsar parsing error : no event name"
+      event_id         <- message.props.get("id")          |> "Pulsar parsing error : no event id"
+      entity_type      <- message.props.get("entity_type") |> "Pulsar parsing error : no event entity_type"
+      entity_id        <- message.key                      |> "Pulsar parsing error : no event key"
+      event_name_props <- message.props.get("event_name")  |> "Pulsar parsing error : no event name"
       event_name       <- EventName.parse(
                             event_name_props
                           ) |> s"Pulsar parsing error : Error parsing event name from key $event_name_props"
-      author           <- message.props.get("created_by") |> "Pulsar parsing error : no created by"
+      author           <- message.props.get("created_by")  |> "Pulsar parsing error : no created by"
     } yield {
       Event(
         id          = EventId(event_id),
@@ -60,6 +61,7 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
         sequence_nb = message.sequenceId.value,
         created_at  = Timestamp(message.eventTime.value),
         entity_id   = entity_id,
+        entity_type = entity_type,
         created_by  = author,
         payload     = message.value
       )

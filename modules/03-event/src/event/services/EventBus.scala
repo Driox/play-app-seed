@@ -8,18 +8,18 @@ import scalaz.\/
 
 import scala.concurrent.Future
 
-import com.sksamuel.pulsar4s.Subscription
+import com.sksamuel.pulsar4s.MessageId
 import com.sksamuel.pulsar4s.akka.streams.Control
 
 trait EventBusPublisher {
 
-  def publish[EVENT_BODY](topic_name: String, event: Event[EVENT_BODY]): Future[Fail \/ _]
+  def publish[EVENT_BODY](topic_name: String, event: Event[EVENT_BODY]): Future[Fail \/ MessageId]
 
 }
 trait EventBusListener {
 
   def subscribe(
-    subscription_name: Subscription,
+    subscription_name: String,
     topic_name:        String,
     criteria:          EventSearchCriteria = EventSearchCriteria()
   ): Source[Fail \/ Event[JsValue], Control]

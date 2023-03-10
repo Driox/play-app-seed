@@ -7,7 +7,8 @@ import event.{ Event, EventSearchCriteria }
 import helpers.sorus.Fail
 import play.api.Configuration
 import play.api.libs.json._
-import scalaz.\/
+import scalaz.{ -\/, \/, \/- }
+import tagged.Tags.Id
 
 import javax.inject.{ Inject, Singleton }
 import scala.concurrent.Future
@@ -19,23 +20,23 @@ import com.sksamuel.pulsar4s._
 import com.sksamuel.pulsar4s.akka.streams._
 
 @Singleton
-class EventBusClient @Inject() (
+class EventSourcingClient @Inject() (
   config: Configuration,
   system: ActorSystem
-) extends EventBusPublisher
-    with EventBusListener {
+) extends EventSourcing {
 
   private[this] val pulsar_app                        = new PulsarApplicationClient(config, system)
   private[this] val pulsar_listener: PulsarListener   = new PulsarListener(pulsar_app)
   private[this] val pulsar_publisher: PulsarPublisher = new PulsarPublisher(pulsar_app)
 
-  // for logging purpose
-  def topic_name(s: String): Topic = pulsar_app.build_topic(s)
-
-  def publish[EVENT_BODY](topic_name: String, event: Event[EVENT_BODY]): Future[Fail \/ MessageId] = {
+  def persist[EVENT_BODY](event: Event[EVENT_BODY]): Future[Fail \/ MessageId] = {
+    val topic_name      = compute_topic_name(event.entity_type, event.entity_id)
     val producer_config = build_producer_config(topic_name)
     pulsar_publisher.publish(event, producer_config)
   }
+
+  private[this] def compute_topic_name(entity_type: String, entity_id: String) =
+    s"event-sourced-${entity_type}-${entity_id}"
 
   /**
    * We need a productName on producer to have optimistic locking available
@@ -54,22 +55,25 @@ class EventBusClient @Inject() (
     )
   }
 
-  /**
-    * If subscription_name is a constant then the subscription (i.e. stream of events) would be unique amongs every server's instance
-    * This is usefull for jobs, sending mail, etc...
-    *
-    * If subscription_name is random (like s"all-user-${uuid}") then we can have many streams of events
-    *
-    * If you want more control / usecase then you need to expose ConsumerConfig as an input
-    * see doc https://pulsar.apache.org/docs/2.11.x/concepts-messaging/#subscriptions
-    */
-  def subscribe(
-    subscription_name: String,
-    topic_name:        String,
-    criteria:          EventSearchCriteria = EventSearchCriteria()
-  ): Source[Fail \/ Event[JsValue], Control] = {
-    val consumer_config = build_consumer_config(topic_name, Some(Subscription(subscription_name)))
-    pulsar_listener.subscribe(consumer_config, criteria)
+  def reload_event[EntityType](
+    entity_type:   String,
+    entity_id:     Id[EntityType],
+    criteria:      EventSearchCriteria = EventSearchCriteria()
+  )(implicit read: Reads[EntityType]): Source[Fail \/ Event[EntityType], Control] = {
+    val topic_name      = compute_topic_name(entity_type, entity_id)
+    val consumer_config = build_consumer_config(topic_name, None)
+    pulsar_listener
+      .subscribe(consumer_config, criteria)
+      .map(_.flatMap(entity => parseJsonToEvent(entity)))
+  }
+
+  private[this] def parseJsonToEvent[EntityType](event_json: Event[JsValue])(implicit
+    read:                                                    Reads[EntityType]
+  ): Fail \/ Event[EntityType] = {
+    event_json.payload.validate[EntityType] match {
+      case JsSuccess(entity, _) => \/-(event_json.copy[EntityType](payload = entity))
+      case JsError(err)         => -\/(Fail(err))
+    }
   }
 
   private[this] def build_consumer_config(

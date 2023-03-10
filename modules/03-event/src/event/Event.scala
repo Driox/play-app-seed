@@ -20,6 +20,7 @@ case class Event[+A](
   created_at:  Timestamp   = Timestamp.generate(),
   created_by:  String,
   entity_id:   String,
+  entity_type: String,
   payload:     A,
   tags:        Set[String] = Set()
 ) {
@@ -31,9 +32,11 @@ case class Event[+A](
     }
   }
   def metadata(): Map[String, String] = Map(
-    "id"         -> id,
-    "created_by" -> created_by,
-    "event_name" -> name.toString
+    "id"          -> id,
+    "event_name"  -> name.toString,
+    "created_by"  -> created_by,
+    "entity_id"   -> entity_id, // entity_id is set on the key in pulsar implem
+    "entity_type" -> entity_type
   )
 }
 
