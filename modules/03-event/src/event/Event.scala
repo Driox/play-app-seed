@@ -38,6 +38,18 @@ case class Event[+A](
     "entity_id"   -> entity_id, // entity_id is set on the key in pulsar implem
     "entity_type" -> entity_type
   )
+
+  def toJson(): JsValue =
+    Json.obj(
+      "id"         -> this.id,
+      "name"       -> this.name.toString(),
+      "created_at" -> this.created_at.toString(),
+      "created_by" -> this.created_by,
+      "entity_id"  -> this.entity_id,
+      "payload"    -> this.payloadAsJson(),
+      "tags"       -> this.tags
+    )
+
 }
 
 case class EventSearchCriteria(
@@ -46,3 +58,8 @@ case class EventSearchCriteria(
   publish_after:     Option[Timestamp] = None,
   sequence_nb_after: Option[Long]      = None
 )
+
+object Event {
+  implicit val event_writer: Writes[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
+  // implicit val event_read: Reads[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
+}

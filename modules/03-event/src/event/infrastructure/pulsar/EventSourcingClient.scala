@@ -58,6 +58,7 @@ class EventSourcingClient @Inject() (
       compressionType      = Some(CompressionType.ZLIB),
       producerName         = Some(topic_name),
       additionalProperties = Map(
+        // XXX : see https://github.com/apache/pulsar/tree/82237d3684fe506bcb6426b3b23f413422e6e4fb/pulsar-client/src/main/java/org/apache/pulsar/client/impl/conf
         "accessMode" -> "WaitForExclusive"
       )
     )
