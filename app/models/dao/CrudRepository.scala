@@ -63,5 +63,4 @@ trait CrudRepository[E <: Entity[E], J <: JdbcProfile] { self: HasDatabaseConfig
   // lazy protected val byIds = Compiled { ids: Rep[Traversable[String]] => tables.filter(_.id inSet ids).to[List] }
   lazy protected val tableQueryCompiled = Compiled(tables.to[List])
   lazy protected val saveCompiled       = tables returning tables.map(_.id)
-  Compiled(tables.map(_.id).length)
 }
