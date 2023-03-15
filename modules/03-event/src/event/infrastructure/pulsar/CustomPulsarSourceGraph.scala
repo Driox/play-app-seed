@@ -14,6 +14,7 @@ import org.apache.pulsar.client.api.ConsumerStats
 import com.sksamuel.exts.Logging
 import com.sksamuel.pulsar4s.akka.streams.Control
 import com.sksamuel.pulsar4s.{ Consumer, ConsumerMessage, MessageId }
+import org.apache.pulsar.client.api.PulsarClientException.AlreadyClosedException
 
 /**
   * We overload the pulsar4s lib to be able to access the consumer in the akka stream
@@ -58,13 +59,20 @@ private class PulsarSourceGraphStageWithConsumer[T](create: () => Consumer[T], s
         consumerOpt.getOrElse(throw new IllegalStateException("Consumer not initialized!"))
       private var consumerOpt: Option[Consumer[T]]                        = None
       private val receiveCallback: AsyncCallback[Try[ConsumerMessage[T]]] = getAsyncCallback {
-        case Success(msg) =>
+        case Success(msg) => {
           logger.debug(s"Msg received $msg")
           push(out, MessageWithConsumer(consumer, msg))
           consumer.acknowledge(msg.messageId)
-        case Failure(e)   =>
-          logger.warn("Error when receiving message", e)
-          failStage(e)
+        }
+        case Failure(e)   => {
+          e match {
+            case err: AlreadyClosedException => failStage(err) // fail silently, check comment on PulsarListener
+            case _                           => {
+              logger.warn("Error when receiving message", e)
+              failStage(e)
+            }
+          }
+        }
       }
       private val stopped: Promise[Done]                                  = Promise()
       private val stopCallback: AsyncCallback[Unit]                       = getAsyncCallback { _ => completeStage() }
