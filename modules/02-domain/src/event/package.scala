@@ -12,6 +12,14 @@ package object event {
     def generate(): String @@ EventIdTag         = EventId("evt_" + StringUtils.generateUuid())
   }
 
+  trait EventNameTag
+  type EventName = String @@ EventNameTag
+
+  object EventName {
+    val EMPTY: String @@ EventNameTag                                      = EventName("EMPTY")
+    def apply(arg: String): String @@ EventNameTag = arg.taggedWith[EventNameTag]
+  }
+
   trait TimestampTag
   type Timestamp = Long @@ TimestampTag
 

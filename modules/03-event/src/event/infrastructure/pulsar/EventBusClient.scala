@@ -2,8 +2,7 @@ package event.infrastructure.pulsar
 
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.Source
-import event.services._
-import event.{ Event, EventSearchCriteria }
+import event._
 import helpers.sorus.Fail
 import play.api.Configuration
 import play.api.libs.json._

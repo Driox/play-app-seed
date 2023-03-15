@@ -1,4 +1,4 @@
-package event.services
+package event
 
 import akka.stream.scaladsl.Source
 import event.{ Event, EventSearchCriteria }
@@ -16,9 +16,9 @@ trait EventSourcing {
 
   def persist[EVENT_BODY](event: Event[EVENT_BODY]): Future[Fail \/ MessageId]
 
-  def reload_event[EntityType](
+  def reload_event[EntityIdType, EventPayload](
     entity_type:   String,
-    entity_id:     Id[EntityType],
+    entity_id:     Id[EntityIdType],
     criteria:      EventSearchCriteria = EventSearchCriteria()
-  )(implicit read: Reads[EntityType]): Source[Fail \/ Event[EntityType], Control]
+  )(implicit read: Reads[EventPayload]): Source[Fail \/ Event[EventPayload], Control]
 }

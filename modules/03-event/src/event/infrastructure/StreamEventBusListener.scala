@@ -3,9 +3,8 @@ package event.infrastructure
 import akka.Done
 import akka.stream.Materializer
 import akka.stream.scaladsl._
-import event.Event
 import event.infrastructure.pulsar.EventBusClient
-import event.services.EventBusListener
+import event.{ Event, EventBusListener }
 import helpers.StreamHelper
 import helpers.sorus.Fail
 import play.api.Logging

@@ -47,7 +47,7 @@ lazy val domain: Project = (project in file("modules/02-domain"))
 
 lazy val event: Project = (project in file("modules/03-event"))
   .settings(commonSettings: _*)
-  .dependsOn(core % "test->test;compile->compile")
+  .dependsOn(core % "test->test;compile->compile", domain)
 
 lazy val root: Project = (project in file("."))
   .enablePlugins(PlayScala)

@@ -60,6 +60,15 @@ case class EventSearchCriteria(
 )
 
 object Event {
+  val empty: Event[JsObject] = Event(
+    name        = EventName.EMPTY,
+    sequence_nb = 0,
+    created_by  = "",
+    entity_id   = "",
+    entity_type = "",
+    payload     = Json.obj()
+  )
+
   implicit val event_writer: Writes[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
   // implicit val event_read: Reads[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
 }

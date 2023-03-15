@@ -2,8 +2,7 @@ package event.infrastructure.pulsar
 
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.Source
-import event.services._
-import event.{ Event, EventSearchCriteria }
+import event._
 import helpers.sorus.Fail
 import play.api.Configuration
 import play.api.libs.json._
@@ -64,11 +63,11 @@ class EventSourcingClient @Inject() (
     )
   }
 
-  def reload_event[EntityType](
+  def reload_event[EntityIdType, EventPayload](
     entity_type:   String,
-    entity_id:     Id[EntityType],
+    entity_id:     Id[EntityIdType],
     criteria:      EventSearchCriteria = EventSearchCriteria()
-  )(implicit read: Reads[EntityType]): Source[Fail \/ Event[EntityType], Control] = {
+  )(implicit read: Reads[EventPayload]): Source[Fail \/ Event[EventPayload], Control] = {
     val topic_name      = compute_topic_name(entity_type, entity_id)
     val consumer_config = build_consumer_config(topic_name)
     pulsar_listener
@@ -76,11 +75,11 @@ class EventSourcingClient @Inject() (
       .map(_.flatMap(entity => parseJsonToEvent(entity)))
   }
 
-  private[this] def parseJsonToEvent[EntityType](event_json: Event[JsValue])(implicit
-    read:                                                    Reads[EntityType]
-  ): Fail \/ Event[EntityType] = {
-    event_json.payload.validate[EntityType] match {
-      case JsSuccess(entity, _) => \/-(event_json.copy[EntityType](payload = entity))
+  private[this] def parseJsonToEvent[EventPayload](event_json: Event[JsValue])(implicit
+    read:                                                      Reads[EventPayload]
+  ): Fail \/ Event[EventPayload] = {
+    event_json.payload.validate[EventPayload] match {
+      case JsSuccess(entity, _) => \/-(event_json.copy[EventPayload](payload = entity))
       case JsError(err)         => -\/(Fail(err))
     }
   }

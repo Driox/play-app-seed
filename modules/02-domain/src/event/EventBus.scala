@@ -1,4 +1,4 @@
-package event.services
+package event
 
 import akka.stream.scaladsl.Source
 import event.{ Event, EventSearchCriteria }
