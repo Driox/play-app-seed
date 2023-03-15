@@ -71,7 +71,7 @@ class EventSourcingClient @Inject() (
     val topic_name      = compute_topic_name(entity_type, entity_id)
     val consumer_config = build_consumer_config(topic_name)
     pulsar_listener
-      .subscribe(consumer_config, criteria)
+      .subscribe(consumer_config, criteria, true)
       .map(_.flatMap(entity => parseJsonToEvent(entity)))
   }
 

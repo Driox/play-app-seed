@@ -68,7 +68,7 @@ class EventBusClient @Inject() (
     criteria:          EventSearchCriteria = EventSearchCriteria()
   ): Source[Fail \/ Event[JsValue], Control] = {
     val consumer_config = build_consumer_config(topic_name, Some(Subscription(subscription_name)))
-    pulsar_listener.subscribe(consumer_config, criteria)
+    pulsar_listener.subscribe(consumer_config, criteria, false)
   }
 
   private[this] def build_consumer_config(

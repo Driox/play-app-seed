@@ -29,7 +29,7 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
   private[pulsar] def subscribe(
     consumer_config:                 ConsumerConfig,
     criteria:                        EventSearchCriteria,
-    close_when_all_message_received: Boolean = false
+    close_when_all_message_received: Boolean
   ): Source[Fail \/ Event[JsValue], Control] = {
     event_source(consumer_config)
       .map { event =>
