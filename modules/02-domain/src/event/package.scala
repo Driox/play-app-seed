@@ -16,7 +16,7 @@ package object event {
   type EventName = String @@ EventNameTag
 
   object EventName {
-    val EMPTY: String @@ EventNameTag                                      = EventName("EMPTY")
+    val EMPTY: String @@ EventNameTag              = EventName("EMPTY")
     def apply(arg: String): String @@ EventNameTag = arg.taggedWith[EventNameTag]
   }
 

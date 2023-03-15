@@ -1,6 +1,6 @@
 package domain
 
-import event.EventSourcedBehavior
+import event._
 import helpers.sorus.Fail
 import play.api.libs.json._
 import scalaz.{ -\/, \/, \/- }
@@ -10,7 +10,7 @@ import utils.json.JsonSerializable
 object UserPersistentBehavior extends UserJsonParser {
 
   // TODO : check how to remove JsonSerializable from here
-  sealed trait UserCommand extends Product with Serializable with JsonSerializable {
+  sealed trait UserCommand extends Product with Serializable with JsonSerializable with CommandType[User] {
     def id: Id[User]
     def toJson(): JsValue = Json.toJson(this)
   }
@@ -21,7 +21,7 @@ object UserPersistentBehavior extends UserJsonParser {
       extends UserCommand
   }
 
-  sealed trait UserEvent extends Product with Serializable with JsonSerializable {
+  sealed trait UserEvent extends Product with Serializable with JsonSerializable with EventType[User] {
     def id: Id[User]
     def toJson(): JsValue = Json.toJson(this)
   }
@@ -31,7 +31,7 @@ object UserPersistentBehavior extends UserJsonParser {
   }
   final case class UserState(user: Option[User])
 
-  def apply(): EventSourcedBehavior[UserCommand, UserEvent, UserState] = new EventSourcedBehavior(
+  def apply(): EventSourcedBehavior[User, UserCommand, UserEvent, UserState] = new EventSourcedBehavior(
     "USER",
     UserState(None),
     commandHandler,
