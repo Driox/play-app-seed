@@ -71,4 +71,6 @@ object Event {
   )
 
   implicit val event_writer: Writes[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
+
+  // def tupled = (Event.apply _).tupled
 }

@@ -72,7 +72,7 @@ private[pulsar] class PulsarPublisher(pulsar_app: PulsarApplicationClient) exten
   private[this] def build_message[EVENT_BODY](event: Event[EVENT_BODY]): ProducerMessage[JsValue] = {
     DefaultProducerMessage(
       key       = Some(event.entity_id),
-      // TODO event : test it with decuplication enabled on topic https://pulsar.apache.org/docs/2.11.x/cookbooks-deduplication/
+      // TODO event decuplication : test it with decuplication enabled on topic https://pulsar.apache.org/docs/2.11.x/cookbooks-deduplication/
       // sequenceId = Some(SequenceId(event.sequence_nb)),
       props     = pulsar_app.default_properties() ++ event.metadata(),
       value     = event.payloadAsJson(),
