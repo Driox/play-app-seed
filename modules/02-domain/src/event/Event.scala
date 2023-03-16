@@ -28,7 +28,8 @@ case class Event[+A](
     payload match {
       case json: JsValue       => json
       case x: JsonSerializable => x.toJson()
-      case _                   => JsString(s"Json serialisation for ${payload.getClass()} not implemented yet")
+      // TODO event : find a way to encode it into type
+      case _                   => throw new Exception(s"Json serialisation for ${payload.getClass()} not implemented yet")
     }
   }
   def metadata(): Map[String, String] = Map(
@@ -70,5 +71,4 @@ object Event {
   )
 
   implicit val event_writer: Writes[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
-  // implicit val event_read: Reads[Event[JsValue]] = (evt: Event[JsValue]) => evt.toJson()
 }

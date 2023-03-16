@@ -3,12 +3,13 @@ package event
 import tagged.Tags.Id
 import helpers.sorus.Fail
 import scalaz.\/
+import utils.json.JsonSerializable
 
 trait CommandType[T] {
   def id: Id[T]
 }
 
-trait EventType[T] {
+trait EventType[T] extends JsonSerializable {
   def id: Id[T]
 }
 

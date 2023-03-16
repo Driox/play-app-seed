@@ -9,10 +9,8 @@ import utils.json.JsonSerializable
 
 object UserPersistentBehavior extends UserJsonParser {
 
-  // TODO event : check how to remove JsonSerializable from here
-  sealed trait UserCommand extends Product with Serializable with JsonSerializable with CommandType[User] {
+  sealed trait UserCommand extends Product with Serializable with CommandType[User] {
     def id: Id[User]
-    def toJson(): JsValue = Json.toJson(this)
   }
   object UserCommand {
     final case class USER_CREATION(id: Id[User] = UserId.generate(), email: String, first_name: String, last_name: String)
@@ -21,7 +19,7 @@ object UserPersistentBehavior extends UserJsonParser {
       extends UserCommand
   }
 
-  sealed trait UserEvent extends Product with Serializable with JsonSerializable with EventType[User] {
+  sealed trait UserEvent extends Product with Serializable with EventType[User] {
     def id: Id[User]
     def toJson(): JsValue = Json.toJson(this)
   }
