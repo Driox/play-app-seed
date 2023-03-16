@@ -51,8 +51,7 @@ class EventSourceControllerTest @Inject() (
   }
 
   def create(entity_type: String) = Action.async(parse.json) { implicit request =>
-    // TODO : load it from credentials
-    val created_by = "context-id-1234"
+    val created_by = requestToCreds(request)
 
     for {
       cmd    <- request.body.validate[UserPersistentBehavior.UserCommand.USER_CREATION] ?| ()
@@ -63,8 +62,7 @@ class EventSourceControllerTest @Inject() (
   }
 
   def update(entity_id: String, entity_type: String) = Action.async(parse.json) { implicit request =>
-    // TODO : load it from credentials
-    val created_by = "context-id-1234"
+    val created_by = requestToCreds(request)
 
     for {
       json_body <- request.body.asOpt[JsObject]                                      ?| "Body should be a json object"
@@ -75,5 +73,8 @@ class EventSourceControllerTest @Inject() (
       Ok(result.toJson())
     }
   }
+
+  // You should load created_by from request / credential / session / api key / whatever
+  private[this] def requestToCreds(request: RequestHeader): String = "context-id-1234"
 
 }

@@ -9,7 +9,7 @@ import utils.json.JsonSerializable
 
 object UserPersistentBehavior extends UserJsonParser {
 
-  // TODO : check how to remove JsonSerializable from here
+  // TODO event : check how to remove JsonSerializable from here
   sealed trait UserCommand extends Product with Serializable with JsonSerializable with CommandType[User] {
     def id: Id[User]
     def toJson(): JsValue = Json.toJson(this)

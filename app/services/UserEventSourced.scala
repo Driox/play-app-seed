@@ -32,13 +32,6 @@ class UserEventSourced @Inject() (
   protected val entity_json_parser: Reads[UserPersistentBehavior.UserEvent] = userEventJsonParser
 
   protected val behaviour = UserPersistentBehavior.apply()
-
-  protected def is_creation_command(cmd: UserPersistentBehavior.UserCommand): Boolean = {
-    cmd match {
-      case _: USER_CREATION => true
-      case _                => false
-    }
-  }
 }
 
 // check this https://doc.akka.io/docs/akka/current/typed/persistence.html
@@ -80,7 +73,7 @@ class UserEventSourced2 @Inject() (event_sourcing_client: EventSourcingClient)(i
     entity_id:   Id[User],
     entity_type: String
   ): Future[Fail \/ PersistedState[UserPersistentBehavior.UserState]] = {
-    // TODO : handle stream supervision & co
+    // TODO event : handle stream supervision & co
     event_sourcing_client
       .reload_event[User, UserPersistentBehavior.UserEvent](entity_type, entity_id)(userEventJsonParser)
       .runWith(

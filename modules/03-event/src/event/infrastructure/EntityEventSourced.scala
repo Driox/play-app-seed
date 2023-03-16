@@ -34,7 +34,6 @@ trait EntityEventSourced[
     * Should come from domain
     */
   protected def behaviour: EventSourcedBehavior[EntityType, Cmd, Evt, State]
-  protected def is_creation_command(cmd: Cmd): Boolean
 
   private[this] lazy val empty_state: Fail \/ PersistedState[State] = \/-(PersistedState(behaviour.emptyState, 0))
 
@@ -42,14 +41,12 @@ trait EntityEventSourced[
     created_by: String,
     cmd:        Cmd
   ): Step[Event[Evt]] = {
-    val p_state_f = if(false && is_creation_command(cmd)) {
-      Future.successful(empty_state)
-    } else {
-      replayEvent(cmd.id, behaviour.persistenceType)
-    }
+
+    // TODO event 2 : traiter les cas d'erreurs
+    // TODO event 3 : voir si on a vraiment besoin de pulsar ou si slick + PG + optimistic lockin peut faire l'affaire
     for {
-      p_state   <- p_state_f                                    ?| ()
-      payload   <- behaviour.commandHandler(p_state.state, cmd) ?| ()
+      p_state   <- replayEvent(cmd.id, behaviour.persistenceType) ?| ()
+      payload   <- behaviour.commandHandler(p_state.state, cmd)   ?| ()
       event_name = EventName(payload.getClass().getSimpleName())
       event      = Event(
                      name        = event_name,
@@ -59,7 +56,7 @@ trait EntityEventSourced[
                      entity_type = behaviour.persistenceType,
                      payload     = payload
                    )
-      _         <- event_sourcing_client.persist(event)         ?| ()
+      _         <- event_sourcing_client.persist(event)           ?| ()
     } yield {
       event
     }

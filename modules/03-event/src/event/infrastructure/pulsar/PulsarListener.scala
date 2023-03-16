@@ -24,9 +24,23 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
    *
    * @param : close_when_all_message_received : We need to close the consumer when getLastMessageId() == messageId otherwise the stream run endlessly
    * However this throw an AlreadyClosedException we need to handle with Event.empty
-   * TODO : find a better way to close the stream
+   * TODO event : find a better way to close the stream
+   *
+   * We got a similar issue when the stream is empty : we shoul return empty Source otherwise the stream wait incoming message forever
    */
   private[pulsar] def subscribe(
+    consumer_config:                 ConsumerConfig,
+    criteria:                        EventSearchCriteria,
+    close_when_all_message_received: Boolean
+  ): Source[Fail \/ Event[JsValue], Control] = {
+    if(is_empty(consumer_config)) {
+      Source.empty[Fail \/ Event[JsValue]].asInstanceOf[Source[Fail \/ Event[JsValue], Control]]
+    } else {
+      non_empty_subscribe(consumer_config, criteria, close_when_all_message_received)
+    }
+  }
+
+  private[this] def non_empty_subscribe(
     consumer_config:                 ConsumerConfig,
     criteria:                        EventSearchCriteria,
     close_when_all_message_received: Boolean
@@ -67,6 +81,11 @@ private[pulsar] class PulsarListener(pulsar_app: PulsarApplicationClient) extend
         case -\/(_)     => true
         case \/-(event) => event.name != EventName.EMPTY
       }
+  }
+
+  private def is_empty(consumer_config: ConsumerConfig) = {
+    val last_id = build_consumer[JsValue](consumer_config.copy(subscriptionName = Subscription.generate)).getLastMessageId()
+    last_id == MessageId.earliest
   }
 
   private[this] def event_source(consumer_config: ConsumerConfig): Source[MessageWithConsumer[JsValue], Control] = {
