@@ -1,8 +1,8 @@
 package event
 
-import tagged.Tags.Id
 import helpers.sorus.Fail
 import scalaz.\/
+import tagged.Tags.Id
 import utils.json.JsonSerializable
 
 trait CommandType[T] {

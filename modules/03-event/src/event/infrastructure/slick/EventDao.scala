@@ -1,6 +1,5 @@
 package event.infrastructure.slick
 
-import tagged.Tags.Id
 import event._
 import models.dao.{ EnhancedPostgresDriver, SlickUtils }
 import play.api.db.slick.HasDatabaseConfig

@@ -3,9 +3,9 @@ package event.infrastructure.slick
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.Source
 import event._
+import helpers.DisjunctionHelper
 import helpers.sorus.Fail
 import helpers.sorus.SorusDSL.Sorus
-import helpers.DisjunctionHelper
 import play.api.Configuration
 import play.api.libs.json._
 import scalaz.{ -\/, \/, \/- }

@@ -5,7 +5,6 @@ import helpers.sorus.Fail
 import play.api.libs.json._
 import scalaz.{ -\/, \/, \/- }
 import tagged.Tags._
-import utils.json.JsonSerializable
 
 object UserPersistentBehavior extends UserJsonParser {
 

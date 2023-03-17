@@ -1,24 +1,14 @@
 package services
 
-import domain.UserPersistentBehavior.UserCommand.USER_CREATION
 import domain._
 
 import akka.actor.ActorSystem
-import akka.stream.scaladsl.Sink
-import event._
 import event.infrastructure._
 import event.infrastructure.pulsar.EventSourcingClient
-import event.infrastructure.slick.DBEventSourcingClient
-import helpers.DisjunctionHelper
-import helpers.sorus.Fail
-import helpers.sorus.SorusDSL._
 import models.JsonParser
-import scalaz.{ \/, \/- }
-import tagged.Tags._
+import play.api.libs.json.Reads
 
 import javax.inject._
-import scala.concurrent.Future
-import play.api.libs.json.Reads
 
 @Singleton
 class UserEventSourced @Inject() (

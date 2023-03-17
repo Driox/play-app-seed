@@ -1,11 +1,11 @@
 package models.dao
 
+import helpers.sorus.Fail
 import pl.iterators.kebs.tagged.slick.SlickSupport
 import play.api.db.slick.HasDatabaseConfig
-import scala.concurrent.Future
 import scalaz.{ -\/, \/, \/- }
-import helpers.sorus.Fail
-import scala.concurrent.ExecutionContext
+
+import scala.concurrent.{ExecutionContext, Future}
 
 trait SlickUtils extends SlickSupport {
   self: HasDatabaseConfig[EnhancedPostgresDriver] =>

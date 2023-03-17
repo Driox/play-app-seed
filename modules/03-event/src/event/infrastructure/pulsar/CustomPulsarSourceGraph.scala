@@ -10,11 +10,11 @@ import scala.util.control.NonFatal
 import scala.util.{ Failure, Success, Try }
 
 import org.apache.pulsar.client.api.ConsumerStats
+import org.apache.pulsar.client.api.PulsarClientException.AlreadyClosedException
 
 import com.sksamuel.exts.Logging
 import com.sksamuel.pulsar4s.akka.streams.Control
 import com.sksamuel.pulsar4s.{ Consumer, ConsumerMessage, MessageId }
-import org.apache.pulsar.client.api.PulsarClientException.AlreadyClosedException
 
 /**
   * We overload the pulsar4s lib to be able to access the consumer in the akka stream

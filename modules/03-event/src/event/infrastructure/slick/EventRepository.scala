@@ -1,26 +1,18 @@
 package event.infrastructure.slick
 
 import event._
-
 import helpers.sorus.Fail
 import helpers.sorus.SorusDSL.Sorus
 import models.dao._
 import play.api.db.slick._
-import scalaz.{ -\/, \/, \/- }
-import slick.dbio.DBIOAction
-import slick.sql.FixedSqlAction
-import utils.{ HashUtils, LoggerUtils, StringUtils, TimeUtils }
+import play.api.libs.json.JsObject
+import scalaz.\/
+import slick.basic.DatabasePublisher
+import slick.jdbc.{ ResultSetConcurrency, ResultSetType }
+import tagged.Tags.Id
 
 import javax.inject.{ Inject, Singleton }
 import scala.concurrent.{ ExecutionContext, Future }
-import scala.util.control.NonFatal
-
-import org.postgresql.util.PSQLException
-import play.api.libs.json.JsObject
-import tagged.Tags.Id
-import slick.basic.DatabasePublisher
-import slick.jdbc.ResultSetType
-import slick.jdbc.ResultSetConcurrency
 
 @Singleton
 class EventRepository @Inject() (

@@ -1,15 +1,16 @@
 package event.infrastructure
 
-import tagged.Tags.Id
-import event._
-import helpers.sorus.SorusDSL._
-import helpers.DisjunctionHelper
-import scala.concurrent.Future
-import scalaz.{ \/, \/- }
-import helpers.sorus.Fail
-import akka.stream.scaladsl.Sink
-import play.api.libs.json._
 import akka.actor.ActorSystem
+import akka.stream.scaladsl.Sink
+import event._
+import helpers.DisjunctionHelper
+import helpers.sorus.Fail
+import helpers.sorus.SorusDSL._
+import play.api.libs.json._
+import scalaz.{ \/, \/- }
+import tagged.Tags.Id
+
+import scala.concurrent.Future
 
 trait EntityEventSourced[
   EntityType,
