@@ -4,12 +4,12 @@ import akka.actor.ActorSystem
 import helpers.sorus.SorusDSL._
 import play.api.Configuration
 import play.api.libs.json._
-import play.api.libs.ws.{EmptyBody, WSClient}
+import play.api.libs.ws.{ EmptyBody, WSClient }
 
 import javax.inject.{ Inject, Singleton }
 import scala.concurrent.ExecutionContext
 
-import org.apache.pulsar.client.admin.PulsarAdmin
+import org.apache.pulsar.client.admin.{ PulsarAdmin => PulsarAdminJava }
 import org.apache.pulsar.client.api.AuthenticationFactory
 import org.apache.pulsar.client.admin
 
@@ -26,13 +26,12 @@ class PulsarAdmin @Inject() (
   private[this] val ns          = config.get[String]("pulsar.ns")
   private[this] val environment = config.get[String]("application.environment")
 
-  lazy val client: admin.PulsarAdmin = buildClient()
+  lazy val client: PulsarAdminJava = buildClient()
 
   private[this] val topic_base_url = s"$url/admin/v2/persistent/${tenant}/${ns}"
 
   private[this] def buildClient() = {
-    println(s"pulsar url : $url")
-    PulsarAdmin
+    PulsarAdminJava
       .builder()
       .serviceHttpUrl(url)
       .authentication(AuthenticationFactory.token(token))
